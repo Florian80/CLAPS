@@ -1,5 +1,8 @@
 package claps.patientpath;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.annotation.WebServlet;
 
 import claps.patientpath.Home;
@@ -46,7 +49,15 @@ public class MyUI extends UI {
 		navigator = new Navigator(UI.getCurrent(), viewDisplay);
 		navigator.addView("", new Login());
 		navigator.addView(HOME, new Home());
-		navigator.addView(VERSIONONE, new VersionOne());
+		try {
+			navigator.addView(VERSIONONE, new VersionOne());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		navigator.addView(VERSIONTWO, new VersionTwo());
     }
 
