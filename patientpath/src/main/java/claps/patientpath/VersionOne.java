@@ -70,6 +70,7 @@ public class VersionOne extends VerticalLayout implements View {
 	      while (resultSet.next()) {
 	        System.out.println(resultSet.getString(1));
 	      }
+	      connection.close();
 	    }
 	    
 	    

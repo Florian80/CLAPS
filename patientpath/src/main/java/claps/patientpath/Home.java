@@ -20,6 +20,7 @@ public class Home extends VerticalLayout implements View {
 		addComponent(labelVersions);
 		addComponent(viewOneButton());
 		addComponent(viewTwoButton());
+		addComponent(viewThreeButton());
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class Home extends VerticalLayout implements View {
 	}
 	
 	private Button viewOneButton() {
-		Button viewOneButton = new Button("Version 1", new Button.ClickListener() {
+		Button viewOneButton = new Button("Version 1 - Liste", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(MyUI.VERSIONONE);
@@ -38,7 +39,7 @@ public class Home extends VerticalLayout implements View {
 	}
 	
 	private Button viewTwoButton() {
-		Button viewTwoButton = new Button("Version 2", new Button.ClickListener() {
+		Button viewTwoButton = new Button("Version 2 - Kalender", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(MyUI.VERSIONTWO);
@@ -47,4 +48,14 @@ public class Home extends VerticalLayout implements View {
 		return viewTwoButton;
 	}
 	
+	
+	private Button viewThreeButton() {
+		Button viewTwoButton = new Button("Version 3 - Provider", new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				getUI().getNavigator().navigateTo(MyUI.VERSIONTHREE);
+			}
+		});
+		return viewTwoButton;
+	}
 }

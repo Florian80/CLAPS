@@ -36,6 +36,7 @@ public class MyUI extends UI {
 	public static final String HOME = "home";
 	public static final String VERSIONONE = "versionOne";
 	public static final String VERSIONTWO = "versionTwo";
+	public static final String VERSIONTHREE = "versionThree";
 	
 
     @Override
@@ -59,6 +60,7 @@ public class MyUI extends UI {
 			e.printStackTrace();
 		}
 		navigator.addView(VERSIONTWO, new VersionTwo());
+		navigator.addView(VERSIONTHREE, new VersionThree());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
