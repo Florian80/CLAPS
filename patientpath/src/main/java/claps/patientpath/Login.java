@@ -1,6 +1,8 @@
 package claps.patientpath;
 
 import claps.patientpath.MyUI;
+import claps.persistence.User;
+import claps.persistence.UserDAO;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -38,6 +40,8 @@ public class Login extends VerticalLayout implements View {
 		Button button = new Button("Log In", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
+				UserDAO user = new UserDAO();
+				user.findAllUser();
 				getUI().getNavigator().navigateTo(MyUI.HOME);
 			}
 		});
