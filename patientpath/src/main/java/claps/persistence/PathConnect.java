@@ -14,7 +14,7 @@ public class PathConnect {
     String instanceConnectionName = "patientpathdb:europe-west1:patientpathdb001";
 
     // The database from which to list tables.
-    String databaseName = "ppdb001a";
+    String databaseName = "ppdb002a";
 
     String username = "patientpath";
 
