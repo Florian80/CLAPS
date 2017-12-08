@@ -129,8 +129,8 @@ public class EventDAO {
 						System.out.println("eventID " + resultSet.getInt("eventID")
 								+ ", userID " + resultSet.getInt("userID") + ", pathObjectID "
 								+ resultSet.getInt("pathObjectID") + ", providerID " +  resultSet.getInt("providerID")
-								+ ", encouterID" + resultSet.getInt("encounterID") + ", eventinfoID "
-								+ resultSet.getInt("eventinfoID") + ", eventNAme" + resultSet.getString("eventName")
+								+ ", encouterID " + resultSet.getInt("encounterID") + ", eventinfoID "
+								+ resultSet.getInt("eventinfoID") + ", eventName " + resultSet.getString("eventName")
 								+ ", eventDateTime" + resultSet.getTimestamp("eventDateTime") + ", eventDuration" 
 								+ resultSet.getInt("eventDuration"));
 					}

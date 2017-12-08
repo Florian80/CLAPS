@@ -1,5 +1,9 @@
 package claps.patientpath;
 
+import claps.persistence.Event;
+import claps.persistence.EventDAO;
+import claps.persistence.UserDAO;
+
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Button;
@@ -7,7 +11,15 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Grid;
+import com.vaadin.ui.Grid.SelectionMode;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Collection;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Arrays;
 
 @SuppressWarnings("serial")
 public class Home extends VerticalLayout implements View {
@@ -21,6 +33,7 @@ public class Home extends VerticalLayout implements View {
 		addComponent(viewOneButton());
 		addComponent(viewTwoButton());
 		addComponent(viewThreeButton());
+		//addComponent(myGrid());
 	}
 
 	@Override
@@ -53,9 +66,26 @@ public class Home extends VerticalLayout implements View {
 		Button viewTwoButton = new Button("Version 3 - Provider", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
+				
+				EventDAO myEvent = new EventDAO();
+				myEvent.findAllEvent();
+				
 				getUI().getNavigator().navigateTo(MyUI.VERSIONTHREE);
 			}
 		});
 		return viewTwoButton;
 	}
+	
+	/**
+	private Grid myGrid() {
+		
+		Grid myGrid = new Grid<>();
+		
+		// Disable selecting items
+		myGrid.setSelectionMode(SelectionMode.NONE);
+		
+		return myGrid();
+	}
+	**/
+
 }

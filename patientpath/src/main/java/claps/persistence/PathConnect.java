@@ -30,7 +30,7 @@ public class PathConnect {
         instanceConnectionName);
   	*/
     
-    String jdbcUrl = "jdbc:mysql://google/ppdb001a?socketFactory=com.google.cloud.sql.mysql.SocketFactory&cloudSqlInstance=patientpathdb:europe-west1:patientpathdb001";
+    String jdbcUrl = "jdbc:mysql://google/ppdb002a?socketFactory=com.google.cloud.sql.mysql.SocketFactory&cloudSqlInstance=patientpathdb:europe-west1:patientpathdb001";
     
     private static PathConnect pathConnect = null;
 	
