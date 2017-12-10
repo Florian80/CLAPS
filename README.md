@@ -2,7 +2,7 @@ patientpath
 ==============
 
 A Demo Application "Medical-Appointment-Manager" for Patients undergoing a long-time treatment.
-Providing a simple to use appointment management tool helping patients to see further and
+Providing a simple to use appointment management tool helping patients to see future and
 past appointments.
 
 
