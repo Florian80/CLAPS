@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class EventDAO {
@@ -119,7 +121,8 @@ public class EventDAO {
 
 			}
 
-			public void findAllEvent() {
+			/**
+			public void findAllEvent(){
 				try {
 					String queryString = "SELECT * FROM event";
 					connection = getConnection();
@@ -152,4 +155,64 @@ public class EventDAO {
 
 				}
 			}
+			**/
+			
+			public List<Event> findAllEvent(){
+				List<Event> events = new ArrayList<Event>();
+				try {
+					
+					String queryString = "SELECT * FROM event";
+					connection = getConnection();
+					ptmt = connection.prepareStatement(queryString);
+					resultSet = ptmt.executeQuery();
+					while (resultSet.next()) {
+						Event event = new Event();
+						event.setEventID(resultSet.getInt("eventID"));
+						event.setUserID(resultSet.getInt("userID"));
+						event.setPathObjectID(resultSet.getInt("pathObjectID"));
+						event.setProviderID(resultSet.getInt("providerID"));
+						event.setEncounterID(resultSet.getInt("encounterID"));
+						event.setEventinfoID(resultSet.getInt("eventinfoID"));
+						event.setEventName(resultSet.getString("eventName"));
+						event.setEventDateTime(resultSet.getTimestamp("eventDateTime") );
+						event.setEventDuration(resultSet.getInt("eventDuration"));
+						events.add(event);
+						System.out.println(event);
+					}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} 
+				/**
+				finally {
+					try {
+						if (resultSet != null)
+							resultSet.close();
+						if (ptmt != null)
+							ptmt.close();
+						if (connection != null)
+							connection.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				**/
+				try {
+					if (resultSet != null)
+						resultSet.close();
+					if (ptmt != null)
+						ptmt.close();
+					if (connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println(events);
+				return events;
+			}
+			
+			
 }

@@ -1,8 +1,6 @@
 package claps.patientpath;
 
-import claps.persistence.Event;
 import claps.persistence.EventDAO;
-import claps.persistence.UserDAO;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -13,13 +11,6 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.SelectionMode;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Collection;
-import java.io.Serializable;
-import java.util.List;
-import java.util.Arrays;
 
 @SuppressWarnings("serial")
 public class Home extends VerticalLayout implements View {
@@ -33,7 +24,7 @@ public class Home extends VerticalLayout implements View {
 		addComponent(viewOneButton());
 		addComponent(viewTwoButton());
 		addComponent(viewThreeButton());
-		//addComponent(myGrid());
+		addComponent(myGrid());
 	}
 
 	@Override
@@ -76,16 +67,19 @@ public class Home extends VerticalLayout implements View {
 		return viewTwoButton;
 	}
 	
-	/**
-	private Grid myGrid() {
+	
+	private Grid<claps.persistence.Event> myGrid() {
 		
-		Grid myGrid = new Grid<>();
+		EventDAO eventDAO = new EventDAO();
 		
-		// Disable selecting items
+		Grid<claps.persistence.Event> myGrid = new Grid();
 		myGrid.setSelectionMode(SelectionMode.NONE);
-		
-		return myGrid();
+		myGrid.addColumn(claps.persistence.Event::getEventName).setCaption("Name");
+		myGrid.addColumn(claps.persistence.Event::getEventDateTime).setCaption("Date");
+		myGrid.setItems(eventDAO.findAllEvent());
+
+		return myGrid;
 	}
-	**/
+	
 
 }
