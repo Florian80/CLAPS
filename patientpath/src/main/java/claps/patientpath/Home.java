@@ -29,6 +29,7 @@ public class Home extends VerticalLayout implements View {
 		addComponent(myGrid());
 	}
 
+	//Test Notification
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("WELCOME");

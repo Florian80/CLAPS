@@ -41,6 +41,7 @@ public class Login extends VerticalLayout implements View {
 		addComponent(selection);
 	}
 
+	//Test Notification
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("Welcome! Please log in.");

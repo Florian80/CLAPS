@@ -8,6 +8,7 @@ import com.vaadin.ui.VerticalLayout;
 @SuppressWarnings("serial")
 public class ProviderTest extends VerticalLayout implements View {
 
+	//Under construction
 	private Label labelHeader = new Label("Provider");
 	
 	public ProviderTest() {

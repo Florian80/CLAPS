@@ -40,7 +40,7 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        
+        //Please change with caution
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         layout.setMargin(true);

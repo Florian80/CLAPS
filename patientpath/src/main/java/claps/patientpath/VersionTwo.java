@@ -15,5 +15,7 @@ public class VersionTwo extends VerticalLayout implements View {
 		addComponent(labelHeader);
 	}
 	
+	
+	//Under construction
 	private Label labelHeader = new Label("Version 2");
 }

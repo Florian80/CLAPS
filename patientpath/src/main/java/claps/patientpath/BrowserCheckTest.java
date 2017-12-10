@@ -35,7 +35,7 @@ public class BrowserCheckTest extends VerticalLayout implements View {
 		//addComponent(labelHeader);
 	    
 	  }
-
+	//A test thing
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("IP" + Page.getCurrent().getWebBrowser());
