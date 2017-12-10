@@ -24,6 +24,8 @@ public class Home extends VerticalLayout implements View {
 		addComponent(viewOneButton());
 		addComponent(viewTwoButton());
 		addComponent(viewThreeButton());
+		addComponent(viewProviderTestButton());
+		addComponent(browserCheckTestButton());
 		addComponent(myGrid());
 	}
 
@@ -52,19 +54,34 @@ public class Home extends VerticalLayout implements View {
 		return viewTwoButton;
 	}
 	
-	
-	private Button viewThreeButton() {
-		Button viewTwoButton = new Button("Version 3 - Provider", new Button.ClickListener() {
+	private Button viewProviderTestButton() {
+		Button viewProviderTestButton = new Button("ProviderTest", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				
-				EventDAO myEvent = new EventDAO();
-				myEvent.findAllEvent();
-				
+				getUI().getNavigator().navigateTo(MyUI.PROVIDERTEST);
+			}
+		});
+		return viewProviderTestButton;
+	}
+	
+	private Button viewThreeButton() {
+		Button viewThreeButton = new Button("Version 3 - Provider", new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(MyUI.VERSIONTHREE);
 			}
 		});
-		return viewTwoButton;
+		return viewThreeButton;
+	}
+	
+	private Button browserCheckTestButton() {
+		Button browserCheckTestButton = new Button("BrowserCheck", new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				getUI().getNavigator().navigateTo(MyUI.BROWSERCHECKTEST);
+			}
+		});
+		return browserCheckTestButton;
 	}
 	
 	

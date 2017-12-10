@@ -34,6 +34,8 @@ public class MyUI extends UI {
 	public static final String VERSIONONE = "versionOne";
 	public static final String VERSIONTWO = "versionTwo";
 	public static final String VERSIONTHREE = "versionThree";
+	public static final String PROVIDERTEST = "providerTest";
+	public static final String BROWSERCHECKTEST = "providerCheckTest";
 	
 
     @Override
@@ -50,6 +52,8 @@ public class MyUI extends UI {
 		navigator.addView(VERSIONONE, new VersionOne());
 		navigator.addView(VERSIONTWO, new VersionTwo());
 		navigator.addView(VERSIONTHREE, new VersionThree());
+		navigator.addView(PROVIDERTEST,  new ProviderTest());
+		navigator.addView(BROWSERCHECKTEST, new BrowserCheckTest());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
