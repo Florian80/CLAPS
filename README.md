@@ -27,4 +27,11 @@ To produce a deployable production mode WAR: good luck, we didn't try yet...
 Client-Side compilation
 -------------------------
 
-The generated maven project is using an automatically generated widgetset by default. 
+The generated maven project is using an automatically generated widgetset by default.
+
+
+Theme
+-------------------------
+
+App uses Vaadin standard theme "Valo". New Theme is under construction.
+
