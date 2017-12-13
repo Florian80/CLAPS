@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProviderDAO {
 			Connection connection = null;
@@ -103,16 +105,19 @@ public class ProviderDAO {
 
 			}
 
-			public void findAllProvider() {
+			public List<Provider> findAllProvider() {
+				List<Provider> providers = new ArrayList<Provider>();
 				try {
 					String queryString = "SELECT * FROM provider";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
 					resultSet = ptmt.executeQuery();
 					while (resultSet.next()) {
-						System.out.println("providerID " + resultSet.getInt("providerID")
-								+ ", providerinfoID " + resultSet.getString("providerinfoID") + ", providerName "
-								+ resultSet.getString("providerName"));
+						Provider provider = new Provider();
+						provider.setProviderID(resultSet.getInt("providerID"));
+						provider.setProviderinfoID(resultSet.getInt("providerinfoID"));
+						provider.setProviderName(resultSet.getString("providerName"));
+						providers.add(provider);
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -131,5 +136,6 @@ public class ProviderDAO {
 					}
 
 				}
+				return providers;
 			}
 }
