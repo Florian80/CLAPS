@@ -7,7 +7,6 @@ import claps.patientpath.Login;
 import claps.patientpath.Kalender;
 import claps.patientpath.VersionTwo;
 
-import javax.servlet.annotation.WebServlet;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;
 import com.vaadin.annotations.Theme;
