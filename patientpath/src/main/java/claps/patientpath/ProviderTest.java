@@ -11,6 +11,7 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Window;
 
 import claps.persistence.Provider;
 import claps.persistence.ProviderDAO;
@@ -42,10 +43,27 @@ public class ProviderTest extends VerticalLayout implements View {
 			myGrid.addColumn(Provider -> "Info",
 				      new ButtonRenderer(clickEvent -> {
 				          System.out.println("yep");
+				          MyUI.getCurrent().addWindow(subWindowModalExample());
 				    }));
 			myGrid.setItems(providerDAO.findAllProvider());
 
 			return myGrid;
 		}
 
+		private Window subWindowModalExample() {
+			
+			Window subWindow = new Window("A test window");
+			subWindow.setModal(true);
+			VerticalLayout subContent = new VerticalLayout();
+			Label message = new Label("Hello World");
+			Label test = new Label("This is a test");
+			subContent.addComponent(message);
+			subContent.addComponent(test);
+	        subWindow.setContent(subContent);
+
+			return subWindow;
+			
+			
+		}
+		
 }
