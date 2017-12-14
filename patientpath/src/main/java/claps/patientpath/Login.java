@@ -48,7 +48,7 @@ public class Login extends VerticalLayout implements View {
 	}
 	
 	private Button loginButton() {
-		Button button = new Button("Log In", new Button.ClickListener() {
+		Button button = new Button("Login", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				UserDAO user = new UserDAO();
