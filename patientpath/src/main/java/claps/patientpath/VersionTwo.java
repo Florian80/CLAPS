@@ -19,17 +19,13 @@ public class VersionTwo extends VerticalLayout implements View {
 		setSizeFull();
 		setSpacing(true);
 		
-		//Horizontal Versuch
+		//Horizontal
         sample = new HorizontalLayout();
         sample.addStyleName("outlined");
         sample.setSpacing(false);
         sample.setMargin(false);
         sample.setSizeFull();
  
-        /*for (int i = 0; i < 3; i++) {
-            final Component childComponent = new LayoutSampleUtil.LayoutChildComponent(sample);
-            sample.addComponent(childComponent);
-        }*/
         Label label1 = new Label("Logo1");
         Label label2 = new Label("Logo2");
 		
@@ -39,17 +35,10 @@ public class VersionTwo extends VerticalLayout implements View {
 		//Under construction
 		Label labelHeader = new Label("Stammdaten");
 		Label labelHeader2 = new Label("Stammdaten");
-		
-		/*MenuBar uebersichtMenu = new MenuBar();
-		MenuItem uebersicht = uebersichtMenu.addItem("Übersicht", null, null);
-		    MenuItem kalender = uebersicht.addItem("Kalender", null, null);
-		    MenuItem akteure = uebersicht.addItem("Akteure", null, null);
-			MenuItem logout = uebersicht.addItem("Logout", null, null);*/
 			
 			addComponent(labelHeader);
 			addComponent(labelHeader2);
 			addComponent(sample);
-			//addComponent(uebersichtMenu);
 	}	
 }
 
