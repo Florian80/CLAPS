@@ -14,7 +14,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.MenuBar.MenuItem;
 
-/*
+
 @SuppressWarnings("serial")
 public class VersionOne extends VerticalLayout implements View {
 
@@ -27,12 +27,14 @@ public class VersionOne extends VerticalLayout implements View {
 		setSpacing(true);
 		addComponent(labelHeader);
 		addComponent(calendarLabel);
+		addComponent(loginButton());
+		addComponent(selection);
 	    
 	  }
 	
 	private Label calendarLabel = new Label("Calendar goes here");
-}*/
-
+	
+/**
 @SuppressWarnings("serial")
 public class Login extends VerticalLayout implements View {
 
@@ -50,14 +52,17 @@ public class Login extends VerticalLayout implements View {
 		TextField username = new TextField("Username");
 		TextField password = new TextField("Password");
 		
+
 		addComponent(loginmenu);
 		addComponent(label);
 		addComponent(username);
 		addComponent(password);
-		addComponent(loginButton());
-		addComponent(selection);
-	}
+		}
+		**/
+		
 
+
+	
 	//Test Notification
 	@Override
 	public void enter(ViewChangeEvent event) {
