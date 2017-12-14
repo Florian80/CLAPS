@@ -4,6 +4,8 @@
 	import java.sql.PreparedStatement;
 	import java.sql.ResultSet;
 	import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 	public class InfoDAO {
@@ -152,5 +154,47 @@
 					}
 
 				}
+			}
+			
+			public Info returnInfo(int infoID) {
+				Info info = new Info();	
+				try {
+					String queryString = "SELECT FROM info WHERE infoID=?";
+					connection = getConnection();
+					ptmt = connection.prepareStatement(queryString);
+					ptmt.setInt(1, infoID);
+					resultSet = ptmt.executeQuery();
+					while (resultSet.next()) {
+						info.setInfoName(resultSet.getString("infoName"));
+						info.setInfoImageURL(resultSet.getString("infoImageURL"));
+						info.setAddressLineOne(resultSet.getString("addressLineOne"));
+						info.setAddressLineTwo(resultSet.getString("addressLineTwo"));
+						info.setAddressLineThree(resultSet.getString("addressLineThree"));
+						info.setAddressLineFour(resultSet.getString("adressLineFour"));
+						info.setTelefon(resultSet.getString("telefon"));
+						info.setFax(resultSet.getString("fax"));
+						info.setWebsite(resultSet.getString("website"));
+						info.setWebsite(resultSet.getString("eMail"));
+						info.setInfoText(resultSet.getString("infoText"));
+						
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (resultSet != null)
+							resultSet.close();
+						if (ptmt != null)
+							ptmt.close();
+						if (connection != null)
+							connection.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				}
+				return info;
 			}
 }

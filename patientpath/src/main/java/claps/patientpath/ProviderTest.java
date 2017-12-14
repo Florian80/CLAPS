@@ -4,6 +4,8 @@ import com.vaadin.navigator.View;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
+import com.vaadin.ui.renderers.ButtonRenderer;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Button;
@@ -27,7 +29,9 @@ public class ProviderTest extends VerticalLayout implements View {
 		addComponent(myGrid());
 	    
 	  }
-		
+
+
+	
 		private Grid<Provider> myGrid() {
 			
 			ProviderDAO providerDAO = new ProviderDAO();
@@ -35,6 +39,10 @@ public class ProviderTest extends VerticalLayout implements View {
 			Grid<Provider> myGrid = new Grid();
 			myGrid.setSelectionMode(SelectionMode.NONE);
 			myGrid.addColumn(claps.persistence.Provider::getProviderName).setCaption("Name");
+			myGrid.addColumn(Provider -> "Info",
+				      new ButtonRenderer(clickEvent -> {
+				          System.out.println("yep");
+				    }));
 			myGrid.setItems(providerDAO.findAllProvider());
 
 			return myGrid;
