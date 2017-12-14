@@ -23,62 +23,46 @@ import com.vaadin.ui.MenuBar.MenuItem;
 @SuppressWarnings("serial")
 public class Kalender extends HorizontalLayout implements View {
 	
-	HorizontalLayout TitleLayout;
 	Label title;
 	//DateField date;
 	Button logout;
 	
-	VerticalLayout sample;
-	
-	//VerticalLayout verticalLayout = new VerticalLayout();
+	//VerticalLayout sample;
+	//VerticalLayout verticalLayout;
 	
 	public Kalender() {
 		//setSizeFull();
 		//setSpacing(true);
 		//layout.setWidth("400px");
 		
-		//HorizontalLayout horizontalLayout = new HorizontalLayout();
+		HorizontalLayout sample;
+		HorizontalLayout sample2;
 		
-		Label label = new Label("Logo");
+		//Label label = new Label("Logo");
 		
-		//horizontalLayout.addComponent(label);
-		
-		//Horizontal Versuch
-        sample = new VerticalLayout();
+        ////
+      //Horizontal
+        sample = new HorizontalLayout();
         sample.addStyleName("outlined");
         sample.setSpacing(false);
         sample.setMargin(false);
         sample.setSizeFull();
  
-        /*for (int i = 0; i < 3; i++) {
-            final Component childComponent = new LayoutSampleUtil.LayoutChildComponent(sample);
-            sample.addComponent(childComponent);
-        }*/
         Label label1 = new Label("Logo1");
         Label label2 = new Label("Logo2");
 		
         sample.addComponent(label1);
         sample.addComponent(label2);
 		
-		
-		// Title
-				TitleLayout = new HorizontalLayout();
-				title = new Label("Patienten Schedule");
-
-				//date = new DateField();
-				//date.setValue(new Date());
-				//date.setDateFormat("dd.MM.yyyy");
-
-				logout = new Button("Logout");
-
-				TitleLayout.addComponent(title);
-				//TitleLayout.addComponent(date);
-				TitleLayout.addComponent(logout);
-				
-				TitleLayout.setMargin(true);
-				TitleLayout.setSpacing(true);
-		
-		
+		//Under construction
+		Label labelHeader = new Label("Stammdaten");
+		Label labelHeader2 = new Label("Stammdaten");
+			
+			addComponent(labelHeader);
+			addComponent(labelHeader2);
+			addComponent(sample);
+        
+        /////			
 		
 		//MenuBar
 		MenuBar uebersichtMenu = new MenuBar();
@@ -86,6 +70,26 @@ public class Kalender extends HorizontalLayout implements View {
 			    MenuItem kalender = uebersicht.addItem("Kalender", null, null);
 			    MenuItem akteure = uebersicht.addItem("Akteure", null, null);
 				MenuItem logout = uebersicht.addItem("Logout", null, null);
+				
+				
+		//********
+				//Horizontal
+		        sample2 = new HorizontalLayout();
+		        sample2.addStyleName("outlined");
+		        sample2.setSpacing(false);
+		        sample2.setMargin(false);
+		        sample2.setSizeFull();
+		 
+		        Label label3 = new Label("Logo3");
+		        Label label4 = new Label("Logo4");
+				
+		        sample2.addComponent(label3);
+		        sample2.addComponent(label4);
+		        addComponent(sample2);
+		//*************
+				
+				
+				
 		
 		//Label kalenderLabel = new Label("Kalender");
 		//TextField username = new TextField("Username");
@@ -99,12 +103,6 @@ public class Kalender extends HorizontalLayout implements View {
 		addComponent(loginButton());
 		addComponent(selection);
 		addComponent(myGrid());
-		
-		//VerticalLayout vertical = new VerticalLayout ();
-		//vertical.addComponent(new TextField("Name"));
-		//vertical.addComponent(new TextField("Street address"));
-		//vertical.addComponent(new TextField("Postal code"));
-		//layout.addComponent(vertical);
 		
 		
 	}
