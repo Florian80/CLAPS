@@ -43,60 +43,19 @@ public class Login extends VerticalLayout implements View {
 		Label label = new Label("Enter your information below to log in.");
 		TextField username = new TextField("Username");
 		TextField password = new TextField("Password");
-		  PopupView popupview = new PopupView(new PopupTextFieldContent());
-		
-		// A container with a defined width.
-	        Panel panel = new Panel("Hilfe");
-	        panel.setWidth("900px");
-	        panel.setHeight("300px");
-	        panel.setContent(
-	            new Label("Um dich in PatientPath einzulogen"+
-	                    "verwendest du den von deinem Arzt"+
-	                    "zugewiesenen Benutzername und das"+
-	                    "entsprechende Password"+
-	                    ""+"Falls du noch kein Login hast, kannst"+ 
-	                    "du bei einem angeschlossenen Arzt einen"+
-	                    "Account erstellen lassen"));
+		  
 		
 		addComponent(loginmenu);
+		addComponent(image);
 		addComponent(label);
 		addComponent(username);
 		addComponent(password);
-		addComponent(popupview);
-		addComponent(panel);
+		addComponent(WindowHilfe());
 		addComponent(loginButton());
 		addComponent(selection);
 	}
 
 
-	// Damit das Popup Für die Hilfe beim Klicken darauf erscheint
-     static class PopupTextFieldContent implements PopupView.Content {
-     private final     HorizontalLayout layout;
-     private final  TextField textField = new TextField("Hilfe", "Hilfe");
-     private final  Label labelfield = new Label("Um dich in PatientPath einzulogen"+
-                "verwendest du den von deinem Arzt"+
-               "zugewiesenen Benutzername und das"+
-                "entsprechende Password"+
-                ""+"Falls du noch kein Login hast, kannst"+ 
-                "du bei einem angeschlossenen Arzt einen"+
-                "Account erstellen lassen");
-     // labelfield.setValue("Stuff in the field");
-     
-     private PopupTextFieldContent() {
-         layout = new HorizontalLayout(labelfield);
-     }
-  
-        @Override
-        public final Component getPopupComponent() {
-            return layout;
-        }
- 
-        @Override
-        public final String getMinimizedValueAsHTML() {
-            return textField.getValue();
-        }
-    }
-	
 	
 	//Test Notification
 	@Override
@@ -116,6 +75,18 @@ public class Login extends VerticalLayout implements View {
 		return button;
 	}
 
+	private Button WindowHilfe() {
+		Button button = new Button("Hilfe", new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				UserDAO user = new UserDAO();
+				user.findAllUser();
+				getUI().getNavigator().navigateTo(MyUI.WINDOWHILFE);
+			}
+		});
+		return button;
+	}
+	
 	MenuBar.Command mycommand = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        selection.setValue("Ordered a " +
