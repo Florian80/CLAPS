@@ -6,6 +6,7 @@ import claps.persistence.UserDAO;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.ClassResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Label;
@@ -18,17 +19,14 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.MenuBar.MenuItem;
 
 @SuppressWarnings("serial")
 public class Kalender extends HorizontalLayout implements View {
 	
-	Label title;
-	//DateField date;
-	Button logout;
-	
-	//VerticalLayout sample;
-	//VerticalLayout verticalLayout;
+	//Label title;
+	//Button logout;
 	
 	public Kalender() {
 		//setSizeFull();
@@ -38,9 +36,6 @@ public class Kalender extends HorizontalLayout implements View {
 		HorizontalLayout sample;
 		HorizontalLayout sample2;
 		
-		//Label label = new Label("Logo");
-		
-        ////
       //Horizontal
         sample = new HorizontalLayout();
         sample.addStyleName("outlined");
@@ -48,31 +43,56 @@ public class Kalender extends HorizontalLayout implements View {
         sample.setMargin(false);
         sample.setSizeFull();
  
-        Label label1 = new Label("Logo1");
-        Label label2 = new Label("Logo2");
+        //Label label1 = new Label("Logo1");
+        //Label label2 = new Label("Logo2");
 		
-        sample.addComponent(label1);
-        sample.addComponent(label2);
+        //sample.addComponent(label1);
+        //sample.addComponent(label2);
 		
 		//Under construction
 		Label labelHeader = new Label("Stammdaten");
-		Label labelHeader2 = new Label("Stammdaten");
-			
+		Label labelKalender = new Label("Kalender");
+		
+		//Button backButton = new Button("", new Button.ClickListener() {
+		Button backButton = new Button(""); //{
+
+			/*public void buttonClick(ClickEvent event) {
+				getUI().getNavigator().navigateTo(Home.DASHBOARD);*/
+
+			//}
+		
+		//backButton.setIcon(new ClassResource("/PatientPath_Logo.png"));
+		//backButton.setHeight("1000%");
+		//backButton.setWidth("10%");
+		
+		//sample = new Image();
+        //sample.setSource(new ThemeResource("../runo/icons/64/document.png"));
+		
+		
+		///////////////
+		//Button backButton = new Image("", new Button.ClickListener() {
+				Image imageLogo = new Image();
+				
+				imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
+				imageLogo.setHeight("250px");
+				//imageLogo.setWidth("%");
+		
+		////////////////
+		
+				addComponent(imageLogo);
 			addComponent(labelHeader);
-			addComponent(labelHeader2);
+			addComponent(labelKalender);
 			addComponent(sample);
-        
-        /////			
+			addComponent(backButton);
 		
 		//MenuBar
 		MenuBar uebersichtMenu = new MenuBar();
+		uebersichtMenu.setWidth(500.0f, Unit.PERCENTAGE);
 			MenuItem uebersicht = uebersichtMenu.addItem("Übersicht", null, null);
 			    MenuItem kalender = uebersicht.addItem("Kalender", null, null);
 			    MenuItem akteure = uebersicht.addItem("Akteure", null, null);
-				MenuItem logout = uebersicht.addItem("Logout", null, null);
+				MenuItem logout = uebersicht.addItem("Logout", null, null);			
 				
-				
-		//********
 				//Horizontal
 		        sample2 = new HorizontalLayout();
 		        sample2.addStyleName("outlined");
@@ -80,24 +100,21 @@ public class Kalender extends HorizontalLayout implements View {
 		        sample2.setMargin(false);
 		        sample2.setSizeFull();
 		 
-		        Label label3 = new Label("Logo3");
-		        Label label4 = new Label("Logo4");
+		        //Label label3 = new Label("Logo3");
+		        //Label label4 = new Label("Logo4");
 				
-		        sample2.addComponent(label3);
-		        sample2.addComponent(label4);
+		        //sample2.addComponent(label3);
+		        //sample2.addComponent(label4);
 		        addComponent(sample2);
-		//*************
-				
-				
-				
+			
 		
 		//Label kalenderLabel = new Label("Kalender");
 		//TextField username = new TextField("Username");
 		//TextField password = new TextField("Password");
 		
 		//addComponent(label);
-		//horizontalLayout.addComponent(kalenderLabel);
 		addComponent(uebersichtMenu);
+		//addComponent(uebersichtMenu2);
 		/*addComponent(username);
 		addComponent(password);
 		addComponent(loginButton());
