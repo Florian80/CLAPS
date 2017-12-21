@@ -52,7 +52,7 @@ public class ProviderDAO {
 			public void updateProvider(Provider provider) {
 
 				try {
-					String queryString = "UPDATE user SET providerinfoID=? providerName=? WHERE providerID=?";
+					String queryString = "UPDATE provider SET providerinfoID=? providerName=? WHERE providerID=?";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
 					ptmt.setInt(1, provider.getProviderinfoID());

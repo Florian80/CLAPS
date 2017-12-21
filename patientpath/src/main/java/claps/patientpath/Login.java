@@ -18,11 +18,14 @@ import com.vaadin.ui.PopupView;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
+import claps.persistence.User;
 import claps.persistence.UserDAO;
 
 
 @SuppressWarnings("serial")
 public class Login extends VerticalLayout implements View {
+
+	User actualUser = new User();
 
 	public Login() {
 		setSizeFull();
@@ -33,16 +36,14 @@ public class Login extends VerticalLayout implements View {
 			MenuItem logout = loginmenu.addItem("EXIT", null, null);
 			
 				MenuItem exit = logout.addItem("QUIT", null, null);
-				//Blatzhalter für das logo
+				//Platzhalter für das logo
 				// Serve the image from the theme
 				Resource res = new ThemeResource("c:\\users\\Dropbox\\\\Klinische Apps für Tablets\\Logo\\PatientPath_Logo.png");
 
 				// Display the image without caption
 				Image image = new Image(null, res);
 				
-		Label label = new Label("Enter your information below to log in.");
-		TextField username = new TextField("Username");
-		TextField password = new TextField("Password");
+
 		  
 		
 		addComponent(loginmenu);
@@ -55,7 +56,11 @@ public class Login extends VerticalLayout implements View {
 		addComponent(selection);
 	}
 
-
+	Label label = new Label("Enter your information below to log in.");
+	
+	TextField username = new TextField("Username");
+	
+	TextField password = new TextField("Password");
 	
 	//Test Notification
 	@Override
@@ -67,8 +72,7 @@ public class Login extends VerticalLayout implements View {
 		Button button = new Button("Login", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				UserDAO user = new UserDAO();
-				user.findAllUser();
+
 				getUI().getNavigator().navigateTo(MyUI.HOME);
 			}
 		});
@@ -79,9 +83,28 @@ public class Login extends VerticalLayout implements View {
 		Button button = new Button("Hilfe", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				UserDAO user = new UserDAO();
-				user.findAllUser();
-				getUI().getNavigator().navigateTo(MyUI.WINDOWHILFE);
+				
+				UserDAO userDAO = new UserDAO();
+				
+				actualUser.setUserName(username.getValue());
+				actualUser.setPassword(password.getValue());
+				
+				
+				
+				System.out.println(actualUser.getUserName());
+				System.out.println(userDAO.returnUser(actualUser.getUserName()).getPassword());
+				
+				if (actualUser.getPassword() == userDAO.returnUser(actualUser.getUserName()).getPassword()) {
+					
+					getUI().getNavigator().navigateTo(MyUI.WINDOWHILFE);
+					
+				}
+				else {
+					
+					Notification.show("RETRY");
+					
+				}
+				
 			}
 		});
 		return button;

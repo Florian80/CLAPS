@@ -2,6 +2,7 @@ package claps.persistence;
 
 import java.io.Serializable;
 
+//Bean class for Info, containing a lot of variables (peek 2 lines below)
 public class Info implements Serializable {
 	
 	int infoID;

@@ -118,7 +118,7 @@ public class Home extends VerticalLayout implements View {
 		myGrid.setSelectionMode(SelectionMode.NONE);
 		myGrid.addColumn(claps.persistence.Event::getEventName).setCaption("Name");
 		myGrid.addColumn(claps.persistence.Event::getEventDateTime).setCaption("Date");
-		myGrid.setItems(eventDAO.findAllEvent());
+		myGrid.setItems(eventDAO.findAllEvent(1));
 
 		return myGrid;
 	}
