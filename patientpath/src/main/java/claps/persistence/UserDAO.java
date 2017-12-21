@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+//Data Access Object for User
 public class UserDAO {
 		Connection connection = null;
 		PreparedStatement ptmt = null;
@@ -21,13 +21,15 @@ public class UserDAO {
 			return conn;
 		}
 
+		
 		public void addUser(User user) {
 			try {
-				String queryString = "INSERT INTO user(userName, password) VALUES(?,?)";
+				String queryString = "INSERT INTO user(userID, userName, password) VALUES(?,?,?)";
 				connection = getConnection();
 				ptmt = connection.prepareStatement(queryString);
-				ptmt.setString(1, user.getUserName());
-				ptmt.setString(2, user.getPassword());
+				ptmt.setInt(1, user.getUserID());
+				ptmt.setString(2, user.getUserName());
+				ptmt.setString(3, user.getPassword());
 				ptmt.executeUpdate();
 				System.out.println("Data Added Successfully");
 			} catch (SQLException e) {
@@ -51,14 +53,14 @@ public class UserDAO {
 		public void updateUser(User user) {
 
 			try {
-				String queryString = "UPDATE user SET userNmae=? password=? WHERE userID=?";
+				String queryString = "UPDATE user SET userName=? password=? WHERE userID=?";
 				connection = getConnection();
 				ptmt = connection.prepareStatement(queryString);
 				ptmt.setString(1, user.getUserName());
 				ptmt.setString(2, user.getPassword());
 				ptmt.setInt(3, user.getUserID());
 				ptmt.executeUpdate();
-				System.out.println("Table Updated Successfully");
+				System.out.println("Data Updated Successfully");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
@@ -105,6 +107,8 @@ public class UserDAO {
 
 		}
 
+		/**Deactivated (not used in application), please dont't delete, needed for updates/development
+		 * 
 		public void findAllUser() {
 			try {
 				String queryString = "SELECT * FROM user";
@@ -133,5 +137,41 @@ public class UserDAO {
 				}
 
 			}
+		}
+		**/
+		
+		public User returnUser(String challenge) {
+			User user = new User();
+			try {
+				String queryString = "SELECT * FROM user WHERE userName=?";
+				connection = getConnection();
+				ptmt = connection.prepareStatement(queryString);
+				ptmt.setString(1, challenge);
+				resultSet = ptmt.executeQuery();
+				while (resultSet.next()) {
+					
+					user.setUserID(resultSet.getInt("userID"));
+					user.setUserName(resultSet.getString("userName"));
+					user.setPassword(resultSet.getString("password"));
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (resultSet != null)
+						resultSet.close();
+					if (ptmt != null)
+						ptmt.close();
+					if (connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+			return user;
 		}
 }

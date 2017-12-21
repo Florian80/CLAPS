@@ -7,21 +7,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+//The class which connects to the database/which creates the connection to the database
 public class PathConnect {
 
-	 // The instance connection name can be obtained from the instance overview page in Cloud Console
-    // or by running "gcloud sql instances describe <instance> | grep connectionName".
+	//The connection name (vm:region:database instance)
     String instanceConnectionName = "patientpathdb:europe-west1:patientpathdb001";
 
-    // The database from which to list tables.
+    //The database from which to list tables
     String databaseName = "ppdb002a";
 
+    //The user name of the database user
     String username = "patientpath";
 
-    // This is the password that was set via the Cloud Console or empty if never set
-    // (not recommended).
+    //The password for the database user
     String password = "patientpath";
 
+    //Automated jdbcURL generator class, deactivated for performance reasons (it doesn't work properly)
     /*
     String jdbcUrl = String.format(
         "jdbc:mysql://google/%s?cloudSqlInstance=%s&"
@@ -34,6 +35,7 @@ public class PathConnect {
     
     private static PathConnect pathConnect = null;
 	
+    	//Unused method, for connection checks during development and updates, for Java-jdbc-Driver-Bug
 		public PathConnect() throws IOException, SQLException {
 
 			   try {
@@ -41,38 +43,26 @@ public class PathConnect {
 		            // broken Java implementations
 		            Class.forName("com.mysql.jdbc.Driver").newInstance();
 		        } catch (Exception ex) {
-		        	System.out.println("ooops");
+		        	System.out.println("Database Driver Work-Around not working!");
 		        }
 		}
-			   
+		
+		//The method to make the connection to the database
 		public Connection getConnection() throws SQLException {
 					Connection conn = null;
 					conn = DriverManager.getConnection(jdbcUrl, username, password);
 					return conn;
 		}
 
-				public static PathConnect getInstance() {
+		//This method to make the connection to the instance (VM), where the database is located.
+		public static PathConnect getInstance() {
 					if (pathConnect == null) {
 					try {pathConnect = new PathConnect();}
 					catch (Exception ex) {
-					System.out.println("shitty");}}
+					System.out.println("No connection to database possible, check IP!");}}
 					return pathConnect;
-				}
-			   
-				
-				/**
-			    Connection con = DriverManager.getConnection(jdbcUrl, username, password);
-			    
-			    try (Statement statement = con.createStatement()) {
-			      ResultSet resultSet = statement.executeQuery("SHOW TABLES");
-			      while (resultSet.next()) {
-			        System.out.println(resultSet.getString(1));
-			      }
-			      con.close();
-			    }
+		}
 
-			  }
-			  **/
 }
 
 

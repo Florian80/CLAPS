@@ -73,8 +73,6 @@ public class Login extends VerticalLayout implements View {
 		Button button = new Button("Log In", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				UserDAO user = new UserDAO();
-				user.findAllUser();
 				getUI().getNavigator().navigateTo(MyUI.HOME);
 			}
 		});

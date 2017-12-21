@@ -3,6 +3,7 @@ package claps.persistence;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+//Simple Bean for Event with all Variables needed (peek 2 lines below)
 public class Event implements Serializable {
 	
 	int eventID;

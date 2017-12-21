@@ -2,6 +2,7 @@ package claps.persistence;
 
 import java.io.Serializable;
 
+//A simple Bean Class for PathObjects containing pathObjectID, pathObjectInfoID and pathObjectName;
 public class PathObject implements Serializable {
 
 	int pathObjectID;

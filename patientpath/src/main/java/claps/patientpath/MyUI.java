@@ -6,6 +6,7 @@ import claps.patientpath.Home;
 import claps.patientpath.Login;
 import claps.patientpath.Kalender;
 import claps.patientpath.VersionTwo;
+import claps.persistence.User;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;

@@ -157,13 +157,14 @@ public class EventDAO {
 			}
 			**/
 			
-			public List<Event> findAllEvent(){
+			public List<Event> findAllEvent(int userID){
 				List<Event> events = new ArrayList<Event>();
 				try {
 					
-					String queryString = "SELECT * FROM event";
+					String queryString = "SELECT * FROM event WHERE userID=?";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
+					ptmt.setInt(1, userID);
 					resultSet = ptmt.executeQuery();
 					while (resultSet.next()) {
 						Event event = new Event();
@@ -177,42 +178,25 @@ public class EventDAO {
 						event.setEventDateTime(resultSet.getTimestamp("eventDateTime") );
 						event.setEventDuration(resultSet.getInt("eventDuration"));
 						events.add(event);
-						System.out.println(event);
 					}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} 
-				/**
-				finally {
-					try {
-						if (resultSet != null)
-							resultSet.close();
-						if (ptmt != null)
-							ptmt.close();
-						if (connection != null)
-							connection.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				**/
-				try {
+
+			try {
 					if (resultSet != null)
 						resultSet.close();
 					if (ptmt != null)
 						ptmt.close();
 					if (connection != null)
 						connection.close();
-				} catch (SQLException e) {
+			} catch (SQLException e) {
 					e.printStackTrace();
-				} catch (Exception e) {
+			} catch (Exception e) {
 					e.printStackTrace();
-				}
-				System.out.println(events);
-				return events;
 			}
+			return events;
+		}
 			
 			
 }

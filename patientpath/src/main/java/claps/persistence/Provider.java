@@ -2,6 +2,7 @@ package claps.persistence;
 
 import java.io.Serializable;
 
+//A simple Bean for "Provider" with provideID, providerinfoID and providerName
 public class Provider implements Serializable {
 
 	int providerID;

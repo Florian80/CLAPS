@@ -2,6 +2,7 @@ package claps.persistence;
 
 import java.io.Serializable;
 
+//Simple Bean for User with UserID, UserName and Password
 public class User implements Serializable {
 
 	int userID;
@@ -39,7 +40,7 @@ public class User implements Serializable {
 		return password;
 	}
 
-	public void setpassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 

@@ -2,6 +2,7 @@ package claps.persistence;
 
 import java.io.Serializable;
 
+//A simple Bean class for "Encounter" containing the encounterId and encounterAll as a String
 public class Encounter implements Serializable {
 	
 	int encounterID;
