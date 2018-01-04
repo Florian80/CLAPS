@@ -1,9 +1,12 @@
 package claps.patientpath;
 
 import claps.persistence.EventDAO;
+import claps.patientpath.Login;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.Page;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
@@ -17,48 +20,53 @@ import com.vaadin.ui.MenuBar.MenuItem;
 
 @SuppressWarnings("serial")
 public class Home extends VerticalLayout implements View {
-
-	private Label labelVersions = new Label("Übersicht");
-	HorizontalLayout sample;
 	
+	private int id;
+    private VerticalLayout placeHolder = new VerticalLayout();
+
 	public Home() {
 		setSizeFull();
 		setSpacing(true);
-		addComponent(labelVersions);
+		addComponent(homeMenu);
+		addComponent(placeHolder);
 		addComponent(kalenderButton());
 		addComponent(viewTwoButton());
 		addComponent(viewThreeButton());
 		addComponent(viewProviderTestButton());
 		addComponent(browserCheckTestButton());
-		addComponent(myGrid());
-		
-		/*
-		//Horizontal Versuch
-		sample = new HorizontalLayout();
-	    sample.addStyleName("outlined");
-	    sample.setSpacing(false);
-	    sample.setMargin(false);
-	    sample.setSizeFull();
 
-	    //for (int i = 0; i < 3; i++) {
-	        //final Component childComponent = new LayoutSampleUtil.LayoutChildComponent(sample);
-	        //sample.addComponent(childComponent);
-	    //}
-	    Label label1 = new Label("Logo1");
-	    Label label2 = new Label("Logo2");
-		
-	    sample.addComponent(label1);
-	    sample.addComponent(label2);*/
-		
-		
 	}
 	
 	//Test Notification
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("WELCOME");
+		Label labelVersions = new Label("Übersicht: " + VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue"));
+		id = Integer.valueOf(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue").toString());
+		System.out.println(id);
+		placeHolder.removeAllComponents();
+		placeHolder.addComponent(myGrid());
+		placeHolder.addComponent(labelVersions);
 	}
 	
+	//Menu in Home
+	MenuBar homeMenu = new MenuBar();
+	MenuItem myMenu = homeMenu.addItem("MENU", null, null);
+	MenuItem exit = myMenu.addItem("QUIT", null, null);
+	
+	private Grid<claps.persistence.Event> myGrid() {
+		
+		EventDAO eventDAO = new EventDAO();
+		
+		Grid<claps.persistence.Event> myGrid = new Grid();
+		myGrid.setSelectionMode(SelectionMode.SINGLE);
+		myGrid.addColumn(claps.persistence.Event::getEventName).setCaption("Name");
+		myGrid.addColumn(claps.persistence.Event::getEventDateTime).setCaption("Date");
+		myGrid.setItems(eventDAO.findAllEvent(id));
+
+		return myGrid;
+	}
+
 	private Button kalenderButton() {
 		Button kalenderButton = new Button("Kalender", new Button.ClickListener() {
 			@Override
@@ -109,18 +117,4 @@ public class Home extends VerticalLayout implements View {
 		return browserCheckTestButton;
 	}
 	
-	
-	private Grid<claps.persistence.Event> myGrid() {
-		
-		EventDAO eventDAO = new EventDAO();
-		
-		Grid<claps.persistence.Event> myGrid = new Grid();
-		myGrid.setSelectionMode(SelectionMode.NONE);
-		myGrid.addColumn(claps.persistence.Event::getEventName).setCaption("Name");
-		myGrid.addColumn(claps.persistence.Event::getEventDateTime).setCaption("Date");
-		myGrid.setItems(eventDAO.findAllEvent(1));
-
-		return myGrid;
-	}
-
 }

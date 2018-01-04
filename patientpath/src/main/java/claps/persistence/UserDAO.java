@@ -140,7 +140,7 @@ public class UserDAO {
 		}
 		**/
 		
-		public User returnUser(String challenge) {
+		public User returnUserID(String challenge) {
 			User user = new User();
 			try {
 				String queryString = "SELECT * FROM user WHERE userName=?";

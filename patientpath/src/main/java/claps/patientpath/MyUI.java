@@ -10,6 +10,7 @@ import claps.persistence.User;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;
+import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -42,7 +43,9 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        //Please change with caution
+    	
+
+    	//Please change with caution
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         layout.setMargin(true);
@@ -58,8 +61,10 @@ public class MyUI extends UI {
 		navigator.addView(BROWSERCHECKTEST, new BrowserCheckTest());
 		navigator.addView(INFOHAUSARZT, new InfoHausarzt());
 		navigator.addView(WINDOWHILFE,new WindowHilfe());
+		
     }
 
+    
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {

@@ -1,9 +1,13 @@
 package claps.patientpath;
 
+import java.util.Arrays;
+
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.ClassResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.ThemeResource;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
@@ -20,43 +24,34 @@ import com.vaadin.ui.VerticalLayout;
 
 import claps.persistence.User;
 import claps.persistence.UserDAO;
+import claps.patientpath.MyUI;
 
 
 @SuppressWarnings("serial")
 public class Login extends VerticalLayout implements View {
 
-	User actualUser = new User();
-
 	public Login() {
+		
+		Image imageLogoLogin = new Image();
+		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
+		imageLogoLogin.setHeight("250px");
+		
 		setSizeFull();
-		setSpacing(true);
-		
-		MenuBar loginmenu = new MenuBar();
-		
-			MenuItem logout = loginmenu.addItem("EXIT", null, null);
-			
-				MenuItem exit = logout.addItem("QUIT", null, null);
-				//Platzhalter für das logo
-				// Serve the image from the theme
-				Resource res = new ThemeResource("c:\\users\\Dropbox\\\\Klinische Apps für Tablets\\Logo\\PatientPath_Logo.png");
-
-				// Display the image without caption
-				Image image = new Image(null, res);
-				
-
-		  
-		
+		setSpacing(true);	
 		addComponent(loginmenu);
-		addComponent(image);
-		addComponent(label);
+		addComponent(imageLogoLogin);
 		addComponent(username);
 		addComponent(password);
-		addComponent(WindowHilfe());
 		addComponent(loginButton());
-		addComponent(selection);
-	}
+		addComponent(loginButton2());
+		
+		
 
-	Label label = new Label("Enter your information below to log in.");
+	}
+	
+	MenuBar loginmenu = new MenuBar();
+	MenuItem myMenu = loginmenu.addItem("MENU", null, null);
+	MenuItem exit = myMenu.addItem("QUIT", null, null);
 	
 	TextField username = new TextField("Username");
 	
@@ -68,35 +63,34 @@ public class Login extends VerticalLayout implements View {
 		Notification.show("Welcome! Please log in.");
 	}
 	
-	private Button loginButton() {
-		Button button = new Button("Login", new Button.ClickListener() {
+	private Button loginButton2() {
+		Button button = new Button("Login Demo", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-
+				
 				getUI().getNavigator().navigateTo(MyUI.HOME);
+				
 			}
 		});
 		return button;
 	}
 
-	private Button WindowHilfe() {
-		Button button = new Button("Hilfe", new Button.ClickListener() {
+	private Button loginButton() {
+		Button button = new Button("Login", new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				
 				UserDAO userDAO = new UserDAO();
+				User actualUser = new User();
 				
 				actualUser.setUserName(username.getValue());
 				actualUser.setPassword(password.getValue());
 				
-				
-				
-				System.out.println(actualUser.getUserName());
-				System.out.println(userDAO.returnUser(actualUser.getUserName()).getPassword());
-				
-				if (actualUser.getPassword() == userDAO.returnUser(actualUser.getUserName()).getPassword()) {
+				if (actualUser.getPassword().equals(userDAO.returnUserID(actualUser.getUserName()).getPassword())) {
+
+					VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myValue", userDAO.returnUserID(actualUser.getUserName()).getUserID());
 					
-					getUI().getNavigator().navigateTo(MyUI.WINDOWHILFE);
+					getUI().getNavigator().navigateTo(MyUI.HOME);
 					
 				}
 				else {
@@ -109,15 +103,5 @@ public class Login extends VerticalLayout implements View {
 		});
 		return button;
 	}
-	
-	MenuBar.Command mycommand = new MenuBar.Command() {
-	    public void menuSelected(MenuItem selectedItem) {
-	        selection.setValue("Ordered a " +
-	                           selectedItem.getText() +
-	                           " from menu.");
-	    }
-	};
-	
-	final Label selection = new Label("-");
-	
+
 }
