@@ -175,7 +175,7 @@ public class EventDAO {
 						event.setEncounterID(resultSet.getInt("encounterID"));
 						event.setEventinfoID(resultSet.getInt("eventinfoID"));
 						event.setEventName(resultSet.getString("eventName"));
-						event.setEventDateTime(resultSet.getTimestamp("eventDateTime") );
+						event.setSimpleDateTime(resultSet.getTimestamp("eventDateTime").toLocalDateTime());
 						event.setEventDuration(resultSet.getInt("eventDuration"));
 						events.add(event);
 					}

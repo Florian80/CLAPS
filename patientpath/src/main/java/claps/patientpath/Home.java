@@ -1,19 +1,31 @@
 package claps.patientpath;
 
 import claps.persistence.EventDAO;
+import claps.persistence.Event;
 import claps.patientpath.Login;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
+
+import com.vaadin.data.provider.GridSortOrder;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
+import com.vaadin.shared.data.sort.SortDirection;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.renderers.LocalDateRenderer;
+import com.vaadin.ui.renderers.LocalDateTimeRenderer;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.MenuBar.MenuItem;
@@ -41,12 +53,9 @@ public class Home extends VerticalLayout implements View {
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("WELCOME");
-		Label labelVersions = new Label("Übersicht: " + VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue"));
 		id = Integer.valueOf(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue").toString());
-		System.out.println(id);
 		placeHolder.removeAllComponents();
 		placeHolder.addComponent(myGrid());
-		placeHolder.addComponent(labelVersions);
 	}
 	
 	//Menu in Home
@@ -59,11 +68,13 @@ public class Home extends VerticalLayout implements View {
 		EventDAO eventDAO = new EventDAO();
 		
 		Grid<claps.persistence.Event> myGrid = new Grid();
-		myGrid.setSelectionMode(SelectionMode.SINGLE);
-		myGrid.addColumn(claps.persistence.Event::getEventName).setCaption("Name");
-		myGrid.addColumn(claps.persistence.Event::getEventDateTime).setCaption("Date");
-		myGrid.setItems(eventDAO.findAllEvent(id));
-
+		
+			myGrid.setSelectionMode(SelectionMode.SINGLE);
+			myGrid.addColumn(claps.persistence.Event::getEventName);
+			Column <claps.persistence.Event, LocalDateTime> myColumn = myGrid.addColumn(claps.persistence.Event::getSimpleDateTime, new LocalDateTimeRenderer("dd.MM.yyyy 'um' hh:mm"));
+			myGrid.setItems(eventDAO.findAllEvent(id));
+			myGrid.sort(myColumn, SortDirection.ASCENDING);
+		
 		return myGrid;
 	}
 

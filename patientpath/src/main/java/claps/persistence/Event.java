@@ -2,6 +2,7 @@ package claps.persistence;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 //Simple Bean for Event with all Variables needed (peek 2 lines below)
 public class Event implements Serializable {
@@ -14,6 +15,7 @@ public class Event implements Serializable {
 	int eventinfoID;
 	String eventName;
 	Timestamp eventDateTime;
+	LocalDateTime simpleDateTime; 
 	int eventDuration;
 	
 	public Event() {
@@ -21,7 +23,7 @@ public class Event implements Serializable {
 	}
 	
 	public Event(int eventID, int userID, int pathObjectID, int providerID, int encounterID,
-			int eventinfoID, String eventName, Timestamp eventDateTime, int eventDuration) {
+			int eventinfoID, String eventName, Timestamp eventDateTime, LocalDateTime simpleDateTime, int eventDuration) {
 		
 		this.eventID = eventID;
 		this.userID = userID;
@@ -31,6 +33,7 @@ public class Event implements Serializable {
 		this.eventinfoID = eventinfoID;
 		this.eventName = eventName;
 		this.eventDateTime = eventDateTime;
+		this.simpleDateTime = simpleDateTime;
 		this.eventDuration = eventDuration;	
 		
 	}
@@ -90,11 +93,20 @@ public class Event implements Serializable {
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
 	}
+	
+	public LocalDateTime getSimpleDateTime() {
+		return simpleDateTime;
+	}
+	
+	public void setSimpleDateTime(LocalDateTime simpleDateTime) {
+		this.simpleDateTime = simpleDateTime;
+	}
 
 	public Timestamp getEventDateTime() {
 		return eventDateTime;
 	}
-
+	
+	//Problem long - timestamp
 	public void setEventDateTime(Timestamp eventDateTime) {
 		this.eventDateTime = eventDateTime;
 	}
