@@ -20,6 +20,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.SingleSelect;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.renderers.LocalDateRenderer;
 import com.vaadin.ui.renderers.LocalDateTimeRenderer;
@@ -44,12 +45,9 @@ public class Home extends VerticalLayout implements View {
 		addComponent(kalenderButton());
 		addComponent(viewTwoButton());
 		addComponent(viewThreeButton());
-		addComponent(viewProviderTestButton());
-		addComponent(browserCheckTestButton());
 
 	}
-	
-	//Test Notification
+
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("WELCOME");
@@ -58,10 +56,17 @@ public class Home extends VerticalLayout implements View {
 		placeHolder.addComponent(myGrid());
 	}
 	
+	MenuBar.Command myCommandProvider = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.PROVIDER);
+	    }
+	};
+	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
-	MenuItem myMenu = homeMenu.addItem("MENU", null, null);
-	MenuItem exit = myMenu.addItem("QUIT", null, null);
+	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
+		MenuItem hilfe = myMenu.addItem("Hilfe", null, null);
+		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandProvider);
 	
 	private Grid<claps.persistence.Event> myGrid() {
 		
@@ -70,6 +75,15 @@ public class Home extends VerticalLayout implements View {
 		Grid<claps.persistence.Event> myGrid = new Grid();
 		
 			myGrid.setSelectionMode(SelectionMode.SINGLE);
+			SingleSelect<claps.persistence.Event> selection = myGrid.asSingleSelect();
+			
+			myGrid.addSelectionListener(event -> {
+			
+				selection.getValue().getEventinfoID();
+				System.out.println(selection.getValue().getEventinfoID());
+				
+			});
+			
 			myGrid.addColumn(claps.persistence.Event::getEventName);
 			Column <claps.persistence.Event, LocalDateTime> myColumn = myGrid.addColumn(claps.persistence.Event::getSimpleDateTime, new LocalDateTimeRenderer("dd.MM.yyyy 'um' hh:mm"));
 			myGrid.setItems(eventDAO.findAllEvent(id));
@@ -97,16 +111,7 @@ public class Home extends VerticalLayout implements View {
 		});
 		return viewTwoButton;
 	}
-	
-	private Button viewProviderTestButton() {
-		Button viewProviderTestButton = new Button("ProviderTest", new Button.ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				getUI().getNavigator().navigateTo(MyUI.PROVIDERTEST);
-			}
-		});
-		return viewProviderTestButton;
-	}
+
 	
 	private Button viewThreeButton() {
 		Button viewThreeButton = new Button("Version 3 - Provider", new Button.ClickListener() {
@@ -116,16 +121,6 @@ public class Home extends VerticalLayout implements View {
 			}
 		});
 		return viewThreeButton;
-	}
-	
-	private Button browserCheckTestButton() {
-		Button browserCheckTestButton = new Button("BrowserCheck", new Button.ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				getUI().getNavigator().navigateTo(MyUI.BROWSERCHECKTEST);
-			}
-		});
-		return browserCheckTestButton;
 	}
 	
 }

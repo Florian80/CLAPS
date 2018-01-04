@@ -5,6 +5,7 @@ import java.util.Arrays;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
+import com.vaadin.server.Page;
 import com.vaadin.server.Resource;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinService;
@@ -49,19 +50,20 @@ public class Login extends VerticalLayout implements View {
 
 	}
 	
+	@Override
+	public void enter(ViewChangeEvent event) {
+		Notification.show(Page.getCurrent().getWebBrowser().toString());
+		Notification.show("Welcome! Please log in.");
+	}
+	
+	
 	MenuBar loginmenu = new MenuBar();
 	MenuItem myMenu = loginmenu.addItem("MENU", null, null);
-	MenuItem exit = myMenu.addItem("QUIT", null, null);
+	MenuItem exit = myMenu.addItem("HILFE", null, null);
 	
 	TextField username = new TextField("Username");
 	
 	TextField password = new TextField("Password");
-	
-	//Test Notification
-	@Override
-	public void enter(ViewChangeEvent event) {
-		Notification.show("Welcome! Please log in.");
-	}
 	
 	private Button loginButton2() {
 		Button button = new Button("Login Demo", new Button.ClickListener() {

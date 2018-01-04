@@ -35,10 +35,9 @@ public class MyUI extends UI {
 	public static final String KALENDER = "kalender";
 	public static final String VERSIONTWO = "versionTwo";
 	public static final String VERSIONTHREE = "versionThree";
-	public static final String PROVIDERTEST = "providerTest";
-	public static final String BROWSERCHECKTEST = "providerCheckTest";
 	public static final String INFOHAUSARZT = "InfoHausarzt";
 	public static final String WINDOWHILFE ="WindowHilfe";
+	public static final String PROVIDER ="provider";
 	
 
     @Override
@@ -57,11 +56,9 @@ public class MyUI extends UI {
 		navigator.addView(KALENDER, new Kalender());
 		navigator.addView(VERSIONTWO, new VersionTwo());
 		navigator.addView(VERSIONTHREE, new VersionThree());
-		navigator.addView(PROVIDERTEST,  new ProviderTest());
-		navigator.addView(BROWSERCHECKTEST, new BrowserCheckTest());
 		navigator.addView(INFOHAUSARZT, new InfoHausarzt());
 		navigator.addView(WINDOWHILFE,new WindowHilfe());
-		
+		navigator.addView(PROVIDER,new Provider());
     }
 
     
