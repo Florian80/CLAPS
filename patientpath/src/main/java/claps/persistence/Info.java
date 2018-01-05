@@ -49,14 +49,6 @@ public class Info implements Serializable {
 		this.infoID = infoID;
 	}
 
-	public String getInfoName() {
-		return infoName;
-	}
-
-	public void setInfoName(String infoName) {
-		this.infoName = infoName;
-	}
-
 	public String getInfoImageURL() {
 		return infoImageURL;
 	}
