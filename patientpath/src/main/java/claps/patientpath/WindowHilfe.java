@@ -3,13 +3,15 @@ package claps.patientpath;
 import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 @SuppressWarnings("serial")
 public class WindowHilfe extends VerticalLayout implements View {
-    protected void init(VaadinRequest request) {
+    
+	/*protected void init(VaadinRequest request) {
     
 
         // Create a sub-window and set the content
@@ -56,4 +58,15 @@ public class WindowHilfe extends VerticalLayout implements View {
 		// TODO Auto-generated method stub
 		
 	}
+	*/
+	
+	
+	//Under Construction
+		private Button labelVersions = new Button("Zurück");
+
+		public WindowHilfe() {
+			setSizeFull();
+			setSpacing(true);
+			addComponent(labelVersions);
+		}
 }
