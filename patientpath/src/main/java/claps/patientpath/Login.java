@@ -12,6 +12,7 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
@@ -35,7 +36,7 @@ public class Login extends VerticalLayout implements View {
 		
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
-		imageLogoLogin.setHeight("50%");
+		imageLogoLogin.setHeight("40%");
 		
 		setSizeFull();
 		setSpacing(true);	
@@ -55,7 +56,6 @@ public class Login extends VerticalLayout implements View {
 		Notification.show(Page.getCurrent().getWebBrowser().toString());
 		Notification.show("Welcome! Please log in.");
 	}
-	
 	
 	MenuBar loginmenu = new MenuBar();
 	MenuItem myMenu = loginmenu.addItem("MENU", null, null);
