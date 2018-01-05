@@ -317,8 +317,8 @@
 
 @font-face {
 	font-family: "Vaadin-Icons";
-	src: url(../valo/fonts/vaadin-icons/Vaadin-Icons.eot);
-	src: url(../valo/fonts/vaadin-icons/Vaadin-Icons.eot?#iefix) format("embedded-opentype"), url(../valo/fonts/vaadin-icons/Vaadin-Icons.woff) format("woff"), url(../valo/fonts/vaadin-icons/Vaadin-Icons.ttf) format("truetype"), url(../valo/fonts/vaadin-icons/Vaadin-Icons.svg#icomoon) format("svg");
+	src: url(src/webapp/VAADIN/themes/valo/fonts/vaadin-icons/Vaadin-Icons.eot);
+	src: url(src/webapp/VAADIN/themes/valo/fonts/vaadin-icons/Vaadin-Icons.eot?#iefix) format("embedded-opentype"), url(src/webapp/VAADIN/themes/valo/fonts/vaadin-icons/Vaadin-Icons.woff) format("woff"), url(src/webapp/VAADIN/themes/valo/fonts/vaadin-icons/Vaadin-Icons.ttf) format("truetype"), url(src/webapp/VAADIN/themes/valo/fonts/vaadin-icons/Vaadin-Icons.svg#icomoon) format("svg");
 }
 
 .Vaadin-Icons {
@@ -329,8 +329,8 @@
 	font-family: ThemeIcons;
 	font-weight: normal;
 	font-style: normal;
-	src: url(../valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.eot);
-	src: url(../valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.woff) format("woff"), url(../valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.ttf) format("truetype"), url(../valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.svg#ThemeIcons) format("svg");
+	src: url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.eot);
+	src: url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.eot?#iefix) format("embedded-opentype"), url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.woff) format("woff"), url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.ttf) format("truetype"), url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/themeicons-webfont/themeicons-webfont.svg#ThemeIcons) format("svg");
 }
 
 .ThemeIcons {
@@ -347,8 +347,8 @@
 	font-family: FontAwesome;
 	font-weight: normal;
 	font-style: normal;
-	src: url(../valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.eot);
-	src: url(../valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.woff) format("woff"), url(../valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.ttf) format("truetype"), url(../valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.svg#FontAwesome) format("svg");
+	src: url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.eot);
+	src: url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.eot?#iefix) format("embedded-opentype"), url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.woff) format("woff"), url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.ttf) format("truetype"), url(src/webapp/VAADIN/themes/valo/util/bourbon/css3/../../../../valo/fonts/fontawesome-webfont/fontawesome-webfont.svg#FontAwesome) format("svg");
 }
 
 .FontAwesome {
@@ -363,24 +363,24 @@
 
 @font-face {
 	font-family: "Open Sans";
-	src: url(../valo/fonts/open-sans/OpenSans-Light-webfont.eot);
-	src: url(../valo/fonts/open-sans/OpenSans-Light-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/fonts/open-sans/OpenSans-Light-webfont.woff) format("woff"), url(../valo/fonts/open-sans/OpenSans-Light-webfont.ttf) format("truetype");
+	src: url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Light-webfont.eot);
+	src: url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Light-webfont.eot?#iefix) format("embedded-opentype"), url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Light-webfont.woff) format("woff"), url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Light-webfont.ttf) format("truetype");
 	font-weight: 300;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: "Open Sans";
-	src: url(../valo/fonts/open-sans/OpenSans-Regular-webfont.eot);
-	src: url(../valo/fonts/open-sans/OpenSans-Regular-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/fonts/open-sans/OpenSans-Regular-webfont.woff) format("woff"), url(../valo/fonts/open-sans/OpenSans-Regular-webfont.ttf) format("truetype");
+	src: url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Regular-webfont.eot);
+	src: url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Regular-webfont.eot?#iefix) format("embedded-opentype"), url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Regular-webfont.woff) format("woff"), url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Regular-webfont.ttf) format("truetype");
 	font-weight: 400;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: "Open Sans";
-	src: url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.eot);
-	src: url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.eot?#iefix) format("embedded-opentype"), url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.woff) format("woff"), url(../valo/fonts/open-sans/OpenSans-Semibold-webfont.ttf) format("truetype");
+	src: url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Semibold-webfont.eot);
+	src: url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Semibold-webfont.eot?#iefix) format("embedded-opentype"), url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Semibold-webfont.woff) format("woff"), url(src/webapp/VAADIN/themes/valo/fonts/open-sans/OpenSans-Semibold-webfont.ttf) format("truetype");
 	font-weight: 600;
 	font-style: normal;
 }
@@ -1442,11 +1442,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .rgb-gradient .v-colorpicker-gradient-background {
-	background: url(../valo/components/img/colorpicker/gradient2.png);
+	background: url(src/webapp/VAADIN/themes/valo/components/img/colorpicker/gradient2.png);
 }
 
 .hsv-gradient .v-colorpicker-gradient-foreground {
-	background: url(../valo/components/img/colorpicker/gradient.png);
+	background: url(src/webapp/VAADIN/themes/valo/components/img/colorpicker/gradient.png);
 }
 
 .v-colorpicker-gradient-higherbox:before {
@@ -1475,7 +1475,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .v-colorpicker-popup .v-slider.hue-slider:before {
-	background: url(../valo/components/img/colorpicker/slider_hue_bg.png);
+	background: url(src/webapp/VAADIN/themes/valo/components/img/colorpicker/slider_hue_bg.png);
 }
 
 .v-colorpicker-popup input.v-textfield-dark {
@@ -1655,7 +1655,7 @@ div.v-layout.v-horizontal.v-widget {
 	padding: 9px;
 	margin-top: -24px;
 	margin-left: -24px;
-	background: #fff url(../valo/shared/img/spinner.gif) no-repeat 50%;
+	background: #fff url(src/webapp/VAADIN/themes/valo/shared/img/spinner.gif) no-repeat 50%;
 	border-radius: 4px;
 }
 
@@ -14778,4 +14778,20 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	width: 19px;
 	overflow: hidden;
+}
+
+.mytheme .v-ui {
+	background: -webkit-gradient(linear, 0% 0%, 100% 21%, from(#00E6BD), to(#FF8200));
+}
+
+.mytheme .v-button {
+	margin: 10px;
+	font-weight: bold;
+	height: 50px;
+	width: 50%;
+	position: center;
+}
+
+.mytheme .v-button .v-button-caption {
+	color: blue;
 }

@@ -1,11 +1,33 @@
-@import "mytheme.scss";
+@import "src/webapp/VAADIN/themes/mytheme/mytheme.scss";
 @import "addons.scss";
 
 // This file prefixes all rules with the theme name to avoid causing conflicts with other themes.
 // The actual styles should be defined in mytheme.scss
 
 .mytheme {
-  @include addons;
+  //@include addons;
   @include mytheme;
+  
+    /* White background for the entire UI */
+  .v-ui {
+    //background: #9AA637;
+    background:-webkit-gradient(linear, 0% 0%, 100% 21%, from(#00E6BD), to(#FF8200));
+  }
+   
+   //background-color: $awesome-blue;
+   
+     /* All buttons have blue caption and some margin */
+    .v-button {
+      margin: 10px;
+      font-weight: bold;
+      height: 50px;
+      width: 50%;
+      //float: center;
+      position: center;
+
+    /* A nested selector to increase specificity */
+    .v-button-caption {
+      color: blue;
+    }
 
 }

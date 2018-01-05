@@ -35,7 +35,7 @@ public class Login extends VerticalLayout implements View {
 		
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
-		imageLogoLogin.setHeight("250px");
+		imageLogoLogin.setHeight("50%");
 		
 		setSizeFull();
 		setSpacing(true);	
