@@ -7,10 +7,14 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.SingleSelect;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.MenuBar.MenuItem;
@@ -68,12 +72,17 @@ public class Provider extends VerticalLayout implements View {
 					myGrid.addSelectionListener(event -> {
 						
 						selection.getValue().getProviderinfoID();
+						
+						//addWindow(InfoSubWindow());
+						UI.getCurrent().addWindow(InfoSubWindow());
+						
+						
 						System.out.println(selection.getValue().getProviderinfoID());
 						
-						myGrid.sort(myColumn, SortDirection.DESCENDING);
-						
-						
+
 					});
+					
+					myGrid.sort(myColumn, SortDirection.DESCENDING);
 					
 					myGrid.setItems(providerDAO.findAllProvider());
 					
@@ -81,6 +90,38 @@ public class Provider extends VerticalLayout implements View {
 				
 				return myGrid;
 			}
-
+	
+	public Window InfoSubWindow() {
+		
+		Window subWin = new Window();
+		
+		VerticalLayout subContent = new VerticalLayout();
+        subWin.setContent(subContent);
+		
+		subContent.addComponent(new Label("Titel"));
+		
+		/**
+		myInfoGrid.addComponent(new Label("Picture"), 1, 1, 1, 4);
+		
+		myInfoGrid.addComponent(new Label("Adr 1"), 1, 1, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Adr 2"), 1, 2, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Adr 3"), 1, 3, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Adr 4"), 1, 4, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Web"), 0, 5, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Mail"), 0, 6, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Tel"), 1, 5, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Fax"), 1, 6, 1, 1);
+		
+		myInfoGrid.addComponent(new Label("Text"), 0, 7, 2, 1);
+		**/
+		return subWin;
+	}
 	
 }
