@@ -1,6 +1,8 @@
 package claps.patientpath;
 
 import claps.persistence.EventDAO;
+import claps.persistence.Info;
+import claps.persistence.InfoDAO;
 import claps.persistence.Event;
 import claps.patientpath.Login;
 
@@ -38,6 +40,7 @@ import com.vaadin.ui.MenuBar.MenuItem;
 public class Home extends VerticalLayout implements View {
 	
 	private int id;
+	private int infoID;
     private VerticalLayout placeHolder = new VerticalLayout();
 
 	public Home() {
@@ -88,12 +91,13 @@ public class Home extends VerticalLayout implements View {
 		Grid<claps.persistence.Event> myGrid = new Grid();
 		
 			myGrid.setSelectionMode(SelectionMode.SINGLE);
+			
 			SingleSelect<claps.persistence.Event> selection = myGrid.asSingleSelect();
 			
 			myGrid.addSelectionListener(event -> {
 			
-				selection.getValue().getEventinfoID();
-				System.out.println(selection.getValue().getEventinfoID());
+				infoID = selection.getValue().getEventinfoID();
+
 				//addWindow(InfoSubWindow());
 				UI.getCurrent().addWindow(InfoSubWindow());
 				
@@ -114,10 +118,19 @@ public class Home extends VerticalLayout implements View {
 		GridLayout myGridLayout = new GridLayout(2,8);
 		
 		VerticalLayout subContent = new VerticalLayout();
+		
+		InfoDAO infoDAO = new InfoDAO();
+		Info myInfo = new Info();
+		myInfo = infoDAO.returnInfo(infoID);
+		
+		//System.out.println(infoDAO.returnInfo(infoID).getAddressLineOne());
+		
+		System.out.println("Hello: " + myInfo.getAddressLineOne());
+		
         subWin.setContent(subContent);
 		subContent.addComponent(myGridLayout);
 		
-		myGridLayout.addComponent(new Label("Titel"), 0, 0, 1, 0);
+		myGridLayout.addComponent(new Label("Information"), 0, 0, 1, 0);
 		
 		myGridLayout.addComponent(new Label("Picture"), 0, 1, 0, 4);
 		
