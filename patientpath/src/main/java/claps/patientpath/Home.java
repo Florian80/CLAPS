@@ -21,11 +21,14 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.SingleSelect;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.renderers.LocalDateRenderer;
 import com.vaadin.ui.renderers.LocalDateTimeRenderer;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
@@ -81,6 +84,8 @@ public class Home extends VerticalLayout implements View {
 			
 				selection.getValue().getEventinfoID();
 				System.out.println(selection.getValue().getEventinfoID());
+				//addWindow(InfoSubWindow());
+				UI.getCurrent().addWindow(InfoSubWindow());
 				
 			});
 			
@@ -90,6 +95,41 @@ public class Home extends VerticalLayout implements View {
 			myGrid.sort(myColumn, SortDirection.ASCENDING);
 		
 		return myGrid;
+	}
+	
+	public Window InfoSubWindow() {
+		
+		Window subWin = new Window();
+		
+		GridLayout myGridLayout = new GridLayout(2,8);
+		
+		VerticalLayout subContent = new VerticalLayout();
+        subWin.setContent(subContent);
+		subContent.addComponent(myGridLayout);
+		
+		myGridLayout.addComponent(new Label("Titel"), 0, 0, 1, 0);
+		
+		myGridLayout.addComponent(new Label("Picture"), 0, 1, 0, 4);
+		
+		myGridLayout.addComponent(new Label("Adr 1"), 1, 1, 1, 1);
+		
+		myGridLayout.addComponent(new Label("Adr 2"), 1, 2, 1, 2);
+		
+		myGridLayout.addComponent(new Label("Adr 3"), 1, 3, 1, 3);
+		
+		myGridLayout.addComponent(new Label("Adr 4"), 1, 4, 1, 4);
+		
+		myGridLayout.addComponent(new Label("Web"), 0, 5, 0, 5);
+		
+		myGridLayout.addComponent(new Label("Mail"), 0, 6, 0, 6);
+		
+		myGridLayout.addComponent(new Label("Tel"), 1, 5, 1, 5);
+		
+		myGridLayout.addComponent(new Label("Fax"), 1, 6, 1, 6);
+		
+		myGridLayout.addComponent(new Label("Text"), 0, 7, 1, 7);
+		
+		return subWin;
 	}
 
 	private Button kalenderButton() {

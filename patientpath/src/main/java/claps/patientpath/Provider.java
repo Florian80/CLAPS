@@ -95,32 +95,34 @@ public class Provider extends VerticalLayout implements View {
 		
 		Window subWin = new Window();
 		
+		GridLayout myGridLayout = new GridLayout(2,8);
+		
 		VerticalLayout subContent = new VerticalLayout();
         subWin.setContent(subContent);
+		subContent.addComponent(myGridLayout);
 		
-		subContent.addComponent(new Label("Titel"));
+		myGridLayout.addComponent(new Label("Titel"), 0, 0, 1, 0);
 		
-		/**
-		myInfoGrid.addComponent(new Label("Picture"), 1, 1, 1, 4);
+		myGridLayout.addComponent(new Label("Picture"), 0, 1, 0, 4);
 		
-		myInfoGrid.addComponent(new Label("Adr 1"), 1, 1, 1, 1);
+		myGridLayout.addComponent(new Label("Adr 1"), 1, 1, 1, 1);
 		
-		myInfoGrid.addComponent(new Label("Adr 2"), 1, 2, 1, 1);
+		myGridLayout.addComponent(new Label("Adr 2"), 1, 2, 1, 2);
 		
-		myInfoGrid.addComponent(new Label("Adr 3"), 1, 3, 1, 1);
+		myGridLayout.addComponent(new Label("Adr 3"), 1, 3, 1, 3);
 		
-		myInfoGrid.addComponent(new Label("Adr 4"), 1, 4, 1, 1);
+		myGridLayout.addComponent(new Label("Adr 4"), 1, 4, 1, 4);
 		
-		myInfoGrid.addComponent(new Label("Web"), 0, 5, 1, 1);
+		myGridLayout.addComponent(new Label("Web"), 0, 5, 0, 5);
 		
-		myInfoGrid.addComponent(new Label("Mail"), 0, 6, 1, 1);
+		myGridLayout.addComponent(new Label("Mail"), 0, 6, 0, 6);
 		
-		myInfoGrid.addComponent(new Label("Tel"), 1, 5, 1, 1);
+		myGridLayout.addComponent(new Label("Tel"), 1, 5, 1, 5);
 		
-		myInfoGrid.addComponent(new Label("Fax"), 1, 6, 1, 1);
+		myGridLayout.addComponent(new Label("Fax"), 1, 6, 1, 6);
 		
-		myInfoGrid.addComponent(new Label("Text"), 0, 7, 2, 1);
-		**/
+		myGridLayout.addComponent(new Label("Text"), 0, 7, 1, 7);
+		
 		return subWin;
 	}
 	
