@@ -29,7 +29,6 @@ import claps.persistence.Info;
 							+ "addressLineThree, AddressLineFour, telefon, fax, website, eMail, infoText) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
-					ptmt.setString(1, info.getInfoName());
 					ptmt.setString(2, info.getInfoImageURL());
 					ptmt.setString(3, info.getAddressLineOne());
 					ptmt.setString(4, info.getAddressLineTwo());
@@ -66,7 +65,6 @@ import claps.persistence.Info;
 					String queryString = "UPDATE info SET infoName=? infoImageURL=? addressLineOne=? addressLineTwo=? addressLineThree=? AddressLineFour=? telefon=? fax=? website=?, eMail=?, infoText=? WHERE infoID=?";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
-					ptmt.setString(1, info.getInfoName());
 					ptmt.setString(2, info.getInfoImageURL());
 					ptmt.setString(3, info.getAddressLineOne());
 					ptmt.setString(4, info.getAddressLineTwo());
@@ -159,18 +157,17 @@ import claps.persistence.Info;
 			public Info returnInfo(int infoID) {
 				Info info = new Info();	
 				try {
-					String queryString = "SELECT FROM info WHERE infoID=?";
+					String queryString = "SELECT * FROM info WHERE infoID=?";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
 					ptmt.setInt(1, infoID);
 					resultSet = ptmt.executeQuery();
 					while (resultSet.next()) {
-						info.setInfoName(resultSet.getString("infoName"));
 						info.setInfoImageURL(resultSet.getString("infoImageURL"));
 						info.setAddressLineOne(resultSet.getString("addressLineOne"));
 						info.setAddressLineTwo(resultSet.getString("addressLineTwo"));
 						info.setAddressLineThree(resultSet.getString("addressLineThree"));
-						info.setAddressLineFour(resultSet.getString("adressLineFour"));
+						info.setAddressLineFour(resultSet.getString("addressLineFour"));
 						info.setTelefon(resultSet.getString("telefon"));
 						info.setFax(resultSet.getString("fax"));
 						info.setWebsite(resultSet.getString("website"));

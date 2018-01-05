@@ -1,7 +1,5 @@
 package claps.patientpath;
 
-import java.time.LocalDateTime;
-
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.VaadinService;
@@ -18,7 +16,6 @@ import com.vaadin.ui.Window;
 import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.MenuBar.MenuItem;
-import com.vaadin.ui.renderers.LocalDateTimeRenderer;
 
 import claps.persistence.ProviderDAO;
 import claps.patientpath.MyUI;
@@ -71,7 +68,7 @@ public class Provider extends VerticalLayout implements View {
 					
 					myGrid.addSelectionListener(event -> {
 						
-						selection.getValue().getProviderinfoID();
+						id = selection.getValue().getProviderinfoID();
 						
 						//addWindow(InfoSubWindow());
 						UI.getCurrent().addWindow(InfoSubWindow());
@@ -98,8 +95,10 @@ public class Provider extends VerticalLayout implements View {
 		GridLayout myGridLayout = new GridLayout(2,8);
 		
 		VerticalLayout subContent = new VerticalLayout();
+		
         subWin.setContent(subContent);
 		subContent.addComponent(myGridLayout);
+
 		
 		myGridLayout.addComponent(new Label("Titel"), 0, 0, 1, 0);
 		
