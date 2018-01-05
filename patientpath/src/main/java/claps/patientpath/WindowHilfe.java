@@ -7,6 +7,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.ui.Button.ClickEvent;
 
 @SuppressWarnings("serial")
 public class WindowHilfe extends VerticalLayout implements View {
@@ -62,7 +63,7 @@ public class WindowHilfe extends VerticalLayout implements View {
 	
 	
 	//Under Construction
-		private Button labelVersions = new Button("Zurück");
+		private Button zuruck = new Button("Zurück");
 
 		public WindowHilfe() {
 			setSizeFull();
@@ -77,6 +78,19 @@ public class WindowHilfe extends VerticalLayout implements View {
 		                "Account erstellen lassen");
 		        
 			 addComponent(panel);
-			addComponent(labelVersions);
+			addComponent(zuruck);
 		}
+		
+		private Button zuruck() {
+			Button button = new Button("Login Demo", new Button.ClickListener() {
+				@Override
+				public void buttonClick(ClickEvent event) {
+					
+					getUI().getNavigator().navigateTo(MyUI.LOGIN);
+					
+				}
+			});
+			return button;
+		}
+
 }
