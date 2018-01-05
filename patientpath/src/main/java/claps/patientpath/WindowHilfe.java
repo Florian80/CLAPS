@@ -67,6 +67,16 @@ public class WindowHilfe extends VerticalLayout implements View {
 		public WindowHilfe() {
 			setSizeFull();
 			setSpacing(true);
+			
+			 Panel panel = new Panel("Um dich in PatientPath einzulogen"+
+		                "verwendest du den von deinem Arzt"+
+		                "zugewiesenen Benutzername und das"+
+		                "entsprechende Password"+
+		                ""+"Falls du noch kein Login hast, kannst"+ 
+		                "du bei einem angeschlossenen Arzt einen"+
+		                "Account erstellen lassen");
+		        
+			 addComponent(panel);
 			addComponent(labelVersions);
 		}
 }
