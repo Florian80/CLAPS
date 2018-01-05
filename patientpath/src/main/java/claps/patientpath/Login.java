@@ -56,10 +56,15 @@ public class Login extends VerticalLayout implements View {
 		Notification.show("Welcome! Please log in.");
 	}
 	
+	MenuBar.Command WindowHilfe = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.WINDOWHILFE);
+	    }
+	};
 	
 	MenuBar loginmenu = new MenuBar();
 	MenuItem myMenu = loginmenu.addItem("MENU", null, null);
-	MenuItem exit = myMenu.addItem("HILFE", null, null);
+	MenuItem exit = myMenu.addItem("HILFE", null, WindowHilfe);
 	
 	TextField username = new TextField("Username");
 	
