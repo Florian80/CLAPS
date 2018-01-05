@@ -10,6 +10,7 @@ import claps.persistence.User;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;
+import com.vaadin.navigator.View;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -38,6 +39,8 @@ public class MyUI extends UI {
 	public static final String INFOHAUSARZT = "InfoHausarzt";
 	public static final String WINDOWHILFE ="WindowHilfe";
 	public static final String PROVIDER ="provider";
+	public static final String MENUHILFE ="MenuHilfe";
+
 	
 
     @Override
@@ -59,6 +62,7 @@ public class MyUI extends UI {
 		navigator.addView(INFOHAUSARZT, new InfoHausarzt());
 		navigator.addView(WINDOWHILFE,new WindowHilfe());
 		navigator.addView(PROVIDER,new Provider());
+		navigator.addView(MENUHILFE,new MenuHilfe());
     }
 
     

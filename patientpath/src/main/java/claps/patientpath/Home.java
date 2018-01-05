@@ -65,10 +65,16 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
+	MenuBar.Command myMenuHilfe = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.MENUHILFE);
+	    }
+	};
+	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
-		MenuItem hilfe = myMenu.addItem("Hilfe", null, null);
+		MenuItem hilfe = myMenu.addItem("Hilfe", null, myMenuHilfe);
 		MenuItem akteure = myMenu.addItem("Akteure", null, null);
 		MenuItem calender = myMenu.addItem("Kalender", null, null);
 		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandProvider);
