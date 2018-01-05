@@ -69,8 +69,12 @@ public class Home extends VerticalLayout implements View {
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, null);
+		MenuItem akteure = myMenu.addItem("Akteure", null, null);
+		MenuItem calender = myMenu.addItem("Kalender", null, null);
 		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandProvider);
 	
+		MenuItem logout = myMenu.addItem("Logout", null, null);
+		
 	private Grid<claps.persistence.Event> myGrid() {
 		
 		EventDAO eventDAO = new EventDAO();
