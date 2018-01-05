@@ -11,82 +11,31 @@ import com.vaadin.ui.Button.ClickEvent;
 
 @SuppressWarnings("serial")
 public class WindowHilfe extends VerticalLayout implements View {
-    
-	/*protected void init(VaadinRequest request) {
-    
-
-        // Create a sub-window and set the content
-        Window subWindow = new Window("Hilfe");
-        VerticalLayout subContent = new VerticalLayout();
-        subWindow.setContent(subContent);
-
-        // Put some components in it
-        subContent.addComponent(new Panel("Um dich in PatientPath einzulogen"+
-                "verwendest du den von deinem Arzt"+
-                "zugewiesenen Benutzername und das"+
-                "entsprechende Password"+
-                ""+"Falls du noch kein Login hast, kannst"+ 
-                "du bei einem angeschlossenen Arzt einen"+
-                "Account erstellen lassen"));
-        subContent.addComponent(new Button("Zurück"));
-
-        // Center it in the browser window
-        subWindow.center();
-
-        // Open it in the UI
-        addWindow(subWindow);
-        addComponent(subContent);
-     
-        Button zuruck = new Button("Zurück");
-        Panel panel = new Panel("Um dich in PatientPath einzulogen"+
-                "verwendest du den von deinem Arzt"+
-                "zugewiesenen Benutzername und das"+
-                "entsprechende Password"+
-                ""+"Falls du noch kein Login hast, kannst"+ 
-                "du bei einem angeschlossenen Arzt einen"+
-                "Account erstellen lassen");
-        
-        
-        addComponent(zuruck);
-        addComponent(panel);
-        
-        
-        
-      
-    }
-
-	private void addWindow(Window subWindow) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
-	
-	
-	//Under Construction
-		private Button zuruck = new Button("Zurück");
+   
+	//	private Button zuruck = new Button("Zurück");
 
 		public WindowHilfe() {
 			setSizeFull();
 			setSpacing(true);
 			
 			 Panel panel = new Panel("Um dich in PatientPath einzulogen"+
-		                "verwendest du den von deinem Arzt"+
-		                "zugewiesenen Benutzername und das"+
-		                "entsprechende Password"+
-		                ""+"Falls du noch kein Login hast, kannst"+ 
-		                "du bei einem angeschlossenen Arzt einen"+
-		                "Account erstellen lassen");
+		                " verwendest du den von deinem Arzt"+
+		                " zugewiesenen Benutzername und das"+
+		                " entsprechende Password"+
+		                " Falls du noch kein Login hast, kannst"+ 
+		                " du bei einem angeschlossenen Arzt einen"+
+		                " Account erstellen lassen");
 		        
 			 addComponent(panel);
-			addComponent(zuruck);
+			addComponent(zuruck());
 		}
 		
 		private Button zuruck() {
-			Button button = new Button("Login Demo", new Button.ClickListener() {
+			Button button = new Button("Zurück", new Button.ClickListener() {
 				@Override
 				public void buttonClick(ClickEvent event) {
 					
-					getUI().getNavigator().navigateTo(MyUI.LOGIN);
+					getUI().getNavigator().navigateTo(MyUI.HOME);
 					
 				}
 			});
