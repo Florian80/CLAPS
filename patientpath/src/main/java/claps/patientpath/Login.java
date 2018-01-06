@@ -1,32 +1,23 @@
 package claps.patientpath;
 
-import java.util.Arrays;
-
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.Page;
-import com.vaadin.server.Resource;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.Notification;
-import com.vaadin.ui.Panel;
-import com.vaadin.ui.PopupView;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
 import claps.persistence.User;
 import claps.persistence.UserDAO;
-import claps.patientpath.MyUI;
 
 
 @SuppressWarnings("serial")
@@ -37,12 +28,18 @@ public class Login extends VerticalLayout implements View {
 		
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
+<<<<<<< HEAD
 		imageLogoLogin.setWidth("50%");
+=======
+		imageLogoLogin.setHeight("100px");
+>>>>>>> refs/remotes/origin/master
 		
 		setSizeFull();
 		setSpacing(true);	
-		addComponent(loginmenu);
+
+		
 		addComponent(imageLogoLogin);
+		addComponent(loginmenu);
 		addComponent(username);
 		addComponent(password);
 		addComponent(loginButton());
@@ -61,7 +58,7 @@ public class Login extends VerticalLayout implements View {
 	
 	MenuBar.Command WindowHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
-	        getUI().getNavigator().navigateTo(MyUI.WINDOWHILFE);
+	        getUI().getNavigator().navigateTo(MyUI.LOGINHILFE);
 	    }
 	};
 
@@ -71,7 +68,7 @@ public class Login extends VerticalLayout implements View {
 	
 	TextField username = new TextField("Username");
 	
-	TextField password = new TextField("Password");
+	PasswordField password = new PasswordField("Password");
 	
 	private Button loginButton2() {
 		Button button = new Button("Login Demo", new Button.ClickListener() {

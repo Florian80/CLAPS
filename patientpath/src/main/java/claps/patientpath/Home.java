@@ -16,7 +16,10 @@ import com.vaadin.data.provider.GridSortOrder;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
+<<<<<<< HEAD
 import com.vaadin.server.ExternalResource;
+=======
+>>>>>>> refs/remotes/origin/master
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
@@ -47,8 +50,15 @@ public class Home extends VerticalLayout implements View {
     private VerticalLayout placeHolder = new VerticalLayout();
 
 	public Home() {
+		
+		Image imageLogo = new Image();
+		
+		imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
+		imageLogo.setHeight("100px");
+		
 		setSizeFull();
 		setSpacing(true);
+		addComponent(imageLogo);
 		addComponent(homeMenu);
 		addComponent(placeHolder);
 		addComponent(kalenderButton());
@@ -71,15 +81,37 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
+	MenuBar.Command myMenuHilfe = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.MENUHILFE);
+	    }
+	};
+	
+	MenuBar.Command myLogout = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.LOGIN);
+	    }
+	};
+	MenuBar.Command myKalender = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.KALENDER);
+	    }
+	};
+	
+	MenuBar.Command myHome = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.HOME);
+	    }
+	};
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
-		MenuItem hilfe = myMenu.addItem("Hilfe", null, null);
+		MenuItem hilfe = myMenu.addItem("Hilfe", null, myMenuHilfe );
 		MenuItem akteure = myMenu.addItem("Akteure", null, null);
-		MenuItem calender = myMenu.addItem("Kalender", null, null);
+		MenuItem calender = myMenu.addItem("Kalender", null, myKalender);
 		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandProvider);
-	
-		MenuItem logout = myMenu.addItem("Logout", null, null);
+		MenuItem home = myMenu.addItem("Home", null, myHome);
+		MenuItem logout = myMenu.addItem("Logout", null, myLogout);
 		
 	private Grid<claps.persistence.Event> myGrid() {
 		
