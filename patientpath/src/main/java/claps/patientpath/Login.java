@@ -28,16 +28,12 @@ public class Login extends VerticalLayout implements View {
 		
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
-<<<<<<< HEAD
 		imageLogoLogin.setWidth("50%");
-=======
 		imageLogoLogin.setHeight("100px");
->>>>>>> refs/remotes/origin/master
-		
+	
 		setSizeFull();
 		setSpacing(true);	
-
-		
+	
 		addComponent(imageLogoLogin);
 		addComponent(loginmenu);
 		addComponent(username);
@@ -45,8 +41,6 @@ public class Login extends VerticalLayout implements View {
 		addComponent(loginButton());
 		addComponent(loginButton2());
 		
-		
-
 	}
 
 	
