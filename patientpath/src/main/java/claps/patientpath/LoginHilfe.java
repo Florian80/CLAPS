@@ -1,20 +1,24 @@
 package claps.patientpath;
 
 import com.vaadin.navigator.View;
-import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.ClassResource;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
-import com.vaadin.ui.Button.ClickEvent;
 
 @SuppressWarnings("serial")
-public class WindowHilfe extends VerticalLayout implements View {
+public class LoginHilfe extends VerticalLayout implements View {
    
 	//	private Button zuruck = new Button("Zurück");
 
-		public WindowHilfe() {
+		public LoginHilfe() {
+			Image imageLogo = new Image();
+			
+			imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
+			imageLogo.setHeight("100px");
+			
 			setSizeFull();
 			setSpacing(true);
 			
@@ -25,13 +29,14 @@ public class WindowHilfe extends VerticalLayout implements View {
 		                " Falls du noch kein Login hast, kannst"+ 
 		                " du bei einem angeschlossenen Arzt einen"+
 		                " Account erstellen lassen");
-		        
+		     
+			 addComponent(imageLogo);
 			 addComponent(panel);
 			addComponent(zuruck());
 		}
 		
 		private Button zuruck() {
-			Button button = new Button("Zurück", new Button.ClickListener() {
+			Button zuruck = new Button("Zurück", new Button.ClickListener() {
 				@Override
 				public void buttonClick(ClickEvent event) {
 					
@@ -39,7 +44,7 @@ public class WindowHilfe extends VerticalLayout implements View {
 					
 				}
 			});
-			return button;
+			return zuruck;
 		}
 
 }

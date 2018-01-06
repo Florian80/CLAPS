@@ -37,9 +37,10 @@ public class MyUI extends UI {
 	public static final String VERSIONTWO = "versionTwo";
 	public static final String VERSIONTHREE = "versionThree";
 	public static final String INFOHAUSARZT = "InfoHausarzt";
-	public static final String WINDOWHILFE ="WindowHilfe";
+	public static final String LOGINHILFE ="LoginHilfe";
 	public static final String PROVIDER ="provider";
 	public static final String MENUHILFE ="MenuHilfe";
+	public static final String AKTEURE ="Akteure";
 
 	
 
@@ -60,9 +61,10 @@ public class MyUI extends UI {
 		navigator.addView(VERSIONTWO, new VersionTwo());
 		navigator.addView(VERSIONTHREE, new VersionThree());
 		navigator.addView(INFOHAUSARZT, new InfoHausarzt());
-		navigator.addView(WINDOWHILFE,new WindowHilfe());
+		navigator.addView(LOGINHILFE,new LoginHilfe());
 		navigator.addView(PROVIDER,new Provider());
 		navigator.addView(MENUHILFE,new MenuHilfe());
+		navigator.addView(AKTEURE,new Akteure());
     }
 
     

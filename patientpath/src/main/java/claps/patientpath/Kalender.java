@@ -1,29 +1,17 @@
 package claps.patientpath;
 
-import claps.persistence.EventDAO;
-import claps.persistence.PathConnect;
-import claps.persistence.UserDAO;
-
 import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Grid;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.DateField;
-import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
+import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
-public class Kalender extends HorizontalLayout implements View {
+public class Kalender extends VerticalLayout implements View {
 	
 	//Label title;
 	//Button logout;
@@ -50,11 +38,11 @@ public class Kalender extends HorizontalLayout implements View {
         //sample.addComponent(label2);
 		
 		//Under construction
-		Label labelHeader = new Label("Stammdaten");
+	//	Label labelHeader = new Label("Stammdaten");
 		Label labelKalender = new Label("Kalender");
 		
 		//Button backButton = new Button("", new Button.ClickListener() {
-		Button backButton = new Button(""); //{
+		Button backButton = new Button("Zurück"); //{
 
 			/*public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(Home.DASHBOARD);*/
@@ -74,25 +62,55 @@ public class Kalender extends HorizontalLayout implements View {
 				Image imageLogo = new Image();
 				
 				imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
-				imageLogo.setHeight("250px");
+				imageLogo.setHeight("100px");
 				//imageLogo.setWidth("%");
 		
 		////////////////
 		
-				addComponent(imageLogo);
-			addComponent(labelHeader);
-			addComponent(labelKalender);
-			addComponent(sample);
-			addComponent(backButton);
 		
+			MenuBar.Command myCommandProvider = new MenuBar.Command() {
+			    public void menuSelected(MenuItem selectedItem) {
+			        getUI().getNavigator().navigateTo(MyUI.PROVIDER);
+			    }
+			};
+			
+			MenuBar.Command myMenuHilfe = new MenuBar.Command() {
+			    public void menuSelected(MenuItem selectedItem) {
+			        getUI().getNavigator().navigateTo(MyUI.MENUHILFE);
+			    }
+			};
+			
+			MenuBar.Command myLogout = new MenuBar.Command() {
+			    public void menuSelected(MenuItem selectedItem) {
+			        getUI().getNavigator().navigateTo(MyUI.LOGIN);
+			    }
+			};
+			MenuBar.Command myKalender = new MenuBar.Command() {
+			    public void menuSelected(MenuItem selectedItem) {
+			        getUI().getNavigator().navigateTo(MyUI.KALENDER);
+			    }
+			};
+			MenuBar.Command myHome = new MenuBar.Command() {
+			    public void menuSelected(MenuItem selectedItem) {
+			        getUI().getNavigator().navigateTo(MyUI.HOME);
+			    }
+			};
+			
 		//MenuBar
 		MenuBar uebersichtMenu = new MenuBar();
-		uebersichtMenu.setWidth(500.0f, Unit.PERCENTAGE);
+	//	uebersichtMenu.setWidth(500.0f, Unit.PERCENTAGE);
 			MenuItem uebersicht = uebersichtMenu.addItem("Übersicht", null, null);
-			    MenuItem kalender = uebersicht.addItem("Kalender", null, null);
-			    MenuItem akteure = uebersicht.addItem("Akteure", null, null);
-				MenuItem logout = uebersicht.addItem("Logout", null, null);			
+			 //   MenuItem kalender = uebersicht.addItem("Kalender", null, null);
+			   /// MenuItem akteure = uebersicht.addItem("Akteure", null, null);
+				//MenuItem logout = uebersicht.addItem("Logout", null, null);			
 				
+			MenuItem hilfe = uebersicht.addItem("Hilfe", null, myMenuHilfe );
+			MenuItem akteure = uebersicht.addItem("Akteure", null, null);
+			MenuItem calender = uebersicht.addItem("Kalender", null, myKalender);
+			MenuItem provider = uebersicht.addItem("Verzeichnis", null, myCommandProvider);
+			MenuItem home = uebersicht.addItem("Home", null, myHome);
+			MenuItem logout = uebersicht.addItem("Logout", null, myLogout);
+			
 				//Horizontal
 		        sample2 = new HorizontalLayout();
 		        sample2.addStyleName("outlined");
@@ -105,6 +123,13 @@ public class Kalender extends HorizontalLayout implements View {
 				
 		        //sample2.addComponent(label3);
 		        //sample2.addComponent(label4);
+
+				addComponent(imageLogo);
+				addComponent(uebersichtMenu);
+			//addComponent(labelHeader);
+			addComponent(labelKalender);
+			addComponent(sample);
+			addComponent(backButton);
 		        addComponent(sample2);
 			
 		
@@ -113,7 +138,7 @@ public class Kalender extends HorizontalLayout implements View {
 		//TextField password = new TextField("Password");
 		
 		//addComponent(label);
-		addComponent(uebersichtMenu);
+	//	addComponent(uebersichtMenu);
 		//addComponent(uebersichtMenu2);
 		/*addComponent(username);
 		addComponent(password);
