@@ -32,11 +32,12 @@ import claps.patientpath.MyUI;
 @SuppressWarnings("serial")
 public class Login extends VerticalLayout implements View {
 
+	
 	public Login() {
 		
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
-		imageLogoLogin.setHeight("40%");
+		imageLogoLogin.setWidth("50%");
 		
 		setSizeFull();
 		setSpacing(true);	
@@ -50,21 +51,20 @@ public class Login extends VerticalLayout implements View {
 		
 
 	}
+
 	
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show(Page.getCurrent().getWebBrowser().toString());
-		Notification.show("Welcome! Please log in.");
+		Notification.show("Size" + Page.getCurrent().getBrowserWindowWidth());
 	}
 	
-//    <<<<<<< HEAD=======
 	MenuBar.Command WindowHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.WINDOWHILFE);
 	    }
 	};
-	
-//  >>>>>>> branch 'master' of https://github.com/Florian80/CLAPS.git
+
 	MenuBar loginmenu = new MenuBar();
 	MenuItem myMenu = loginmenu.addItem("MENU", null, null);
 	MenuItem exit = myMenu.addItem("HILFE", null, WindowHilfe);
@@ -113,5 +113,5 @@ public class Login extends VerticalLayout implements View {
 		});
 		return button;
 	}
-
 }
+

@@ -37,7 +37,7 @@ import claps.persistence.Info;
 					ptmt.setString(7, info.getTelefon());
 					ptmt.setString(8, info.getFax());
 					ptmt.setString(9, info.getWebsite());
-					ptmt.setString(10, info.geteMail());
+					ptmt.setString(10, info.getEMail());
 					ptmt.setString(11, info.getInfoText());
 					ptmt.executeUpdate();
 					System.out.println("Data Added Successfully");
@@ -73,7 +73,7 @@ import claps.persistence.Info;
 					ptmt.setString(7, info.getTelefon());
 					ptmt.setString(8, info.getFax());
 					ptmt.setString(9, info.getWebsite());
-					ptmt.setString(10, info.geteMail());
+					ptmt.setString(10, info.getEMail());
 					ptmt.setString(11, info.getInfoText());
 					ptmt.setInt(12, info.getInfoID());
 					ptmt.executeUpdate();
@@ -154,13 +154,13 @@ import claps.persistence.Info;
 				}
 			}
 			
-			public Info returnInfo(int infoID) {
+			public Info returnInfo(int myInfoID) {
 				Info info = new Info();	
 				try {
 					String queryString = "SELECT * FROM info WHERE infoID=?";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
-					ptmt.setInt(1, infoID);
+					ptmt.setInt(1, myInfoID);
 					resultSet = ptmt.executeQuery();
 					while (resultSet.next()) {
 						info.setInfoImageURL(resultSet.getString("infoImageURL"));
@@ -171,7 +171,7 @@ import claps.persistence.Info;
 						info.setTelefon(resultSet.getString("telefon"));
 						info.setFax(resultSet.getString("fax"));
 						info.setWebsite(resultSet.getString("website"));
-						info.setWebsite(resultSet.getString("eMail"));
+						info.setEMail(resultSet.getString("eMail"));
 						info.setInfoText(resultSet.getString("infoText"));
 						
 					}

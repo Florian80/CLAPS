@@ -6,12 +6,10 @@ import claps.patientpath.Home;
 import claps.patientpath.Login;
 import claps.patientpath.Kalender;
 import claps.patientpath.VersionTwo;
-import claps.persistence.User;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;
 import com.vaadin.navigator.View;
-import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;

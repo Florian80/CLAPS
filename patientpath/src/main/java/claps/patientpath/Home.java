@@ -15,6 +15,8 @@ import java.util.Locale;
 import com.vaadin.data.provider.GridSortOrder;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.ClassResource;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
@@ -34,6 +36,7 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.MenuBar.MenuItem;
 
 @SuppressWarnings("serial")
@@ -95,7 +98,7 @@ public class Home extends VerticalLayout implements View {
 				//addWindow(InfoSubWindow());
 				UI.getCurrent().addWindow(InfoSubWindow());
 				
-			});
+				});
 			
 			myGrid.addColumn(claps.persistence.Event::getEventName);
 			Column <claps.persistence.Event, LocalDateTime> myColumn = myGrid.addColumn(claps.persistence.Event::getSimpleDateTime, new LocalDateTimeRenderer("dd.MM.yyyy 'um' hh:mm"));
@@ -110,43 +113,44 @@ public class Home extends VerticalLayout implements View {
 		Window subWin = new Window();
 		
 		GridLayout myGridLayout = new GridLayout(2,8);
+		myGridLayout.setWidth("700px");
+		myGridLayout.setHeight("100%");
 		
 		VerticalLayout subContent = new VerticalLayout();
+		Info myInfo = new Info();		
+		InfoDAO eventDAO = new InfoDAO();
+		myInfo = eventDAO.returnInfo(infoID);
+		String myImageURL = myInfo.getInfoImageURL();
+
+		Image myImage = new Image();
+		myImage.setSource(new ClassResource("/PatientPath_Logo.png"));
+		myImage.setWidth("50%");
 		
-		InfoDAO infoDAO = new InfoDAO();
-		Info myInfo = new Info();
-		myInfo = infoDAO.returnInfo(infoID);
+		if(myImageURL != null) {
+			ExternalResource resource = new ExternalResource(myInfo.getInfoImageURL());
+			Image myOnlineImage = new Image("", resource);
+			myOnlineImage.setWidth("80%");
+			myOnlineImage.setHeight("80%");
+			myImage = myOnlineImage;
+		};
 		
-		//System.out.println(infoDAO.returnInfo(infoID).getAddressLineOne());
-		
-		System.out.println("Hello: " + myInfo.getAddressLineOne());
-		System.out.println("Hello: " + infoDAO.returnInfo(infoID).getAddressLineOne());
+		Label text = new Label(myInfo.getInfoText());
+		text.setWidth("90%");
+
+		myGridLayout.addComponent(new Label("Information"), 0, 0, 1, 0);
+		myGridLayout.addComponent(myImage, 0, 1, 0, 4);	
+		myGridLayout.addComponent(new Label(myInfo.getAddressLineOne()), 1, 1, 1, 1);	
+		myGridLayout.addComponent(new Label(myInfo.getAddressLineTwo()), 1, 2, 1, 2);	
+		myGridLayout.addComponent(new Label(myInfo.getAddressLineThree()), 1, 3, 1, 3);	
+		myGridLayout.addComponent(new Label(myInfo.getAddressLineFour()), 1, 4, 1, 4);	
+		myGridLayout.addComponent(new Label(myInfo.getWebsite()), 0, 5, 0, 5);		
+		myGridLayout.addComponent(new Label(myInfo.getEMail()), 0, 6, 0, 6);		
+		myGridLayout.addComponent(new Label(myInfo.getTelefon()), 1, 5, 1, 5);		
+		myGridLayout.addComponent(new Label(myInfo.getFax()), 1, 6, 1, 6);
+		myGridLayout.addComponent(text, 0, 7, 1, 7);
 		
         subWin.setContent(subContent);
 		subContent.addComponent(myGridLayout);
-		
-		myGridLayout.addComponent(new Label("Information"), 0, 0, 1, 0);
-		
-		myGridLayout.addComponent(new Label("Picture"), 0, 1, 0, 4);
-		
-		myGridLayout.addComponent(new Label("Adr 1"), 1, 1, 1, 1);
-		
-		myGridLayout.addComponent(new Label("Adr 2"), 1, 2, 1, 2);
-		
-		myGridLayout.addComponent(new Label("Adr 3"), 1, 3, 1, 3);
-		
-		myGridLayout.addComponent(new Label("Adr 4"), 1, 4, 1, 4);
-		
-		myGridLayout.addComponent(new Label("Web"), 0, 5, 0, 5);
-		
-		myGridLayout.addComponent(new Label("Mail"), 0, 6, 0, 6);
-		
-		myGridLayout.addComponent(new Label("Tel"), 1, 5, 1, 5);
-		
-		myGridLayout.addComponent(new Label("Fax"), 1, 6, 1, 6);
-		
-		myGridLayout.addComponent(new Label("Text"), 0, 7, 1, 7);
-		
 		return subWin;
 	}
 
