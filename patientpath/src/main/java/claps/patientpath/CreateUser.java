@@ -9,7 +9,8 @@ public class CreateUser extends VerticalLayout implements View {
 
 	public CreateUser() {
 	
-		
+		setSizeFull();
+		setSpacing(true);
 		
 	
 		}

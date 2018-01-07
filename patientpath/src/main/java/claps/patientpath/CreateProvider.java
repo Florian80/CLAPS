@@ -9,8 +9,14 @@ public class CreateProvider extends VerticalLayout implements View {
 
 	public CreateProvider() {
 	
-		
+		setSizeFull();
+		setSpacing(true);
 		
 	
 		}
-	}
+
+	
+
+
+
+}

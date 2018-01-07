@@ -9,7 +9,8 @@ public class CreateEvent extends VerticalLayout implements View {
 
 	public CreateEvent() {
 	
-		
+		setSizeFull();
+		setSpacing(true);
 		
 	
 		}
