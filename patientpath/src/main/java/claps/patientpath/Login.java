@@ -3,6 +3,7 @@ package claps.patientpath;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -60,7 +61,7 @@ public class Login extends VerticalLayout implements View {
 	};
 
 	MenuBar loginmenu = new MenuBar();
-	MenuItem myMenu = loginmenu.addItem("MENU",null , null);
+	MenuItem myMenu = loginmenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
 	MenuItem exit = myMenu.addItem("HILFE", null, WindowHilfe);
 	
 	TextField username = new TextField("Username");
