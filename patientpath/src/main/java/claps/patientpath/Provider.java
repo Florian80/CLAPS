@@ -4,16 +4,12 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.ExternalResource;
-import com.vaadin.server.Sizeable;
-import com.vaadin.server.VaadinService;
-import com.vaadin.shared.data.sort.SortDirection;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.SingleSelect;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -25,7 +21,6 @@ import com.vaadin.ui.MenuBar.MenuItem;
 import claps.persistence.Info;
 import claps.persistence.InfoDAO;
 import claps.persistence.ProviderDAO;
-import claps.patientpath.MyUI;
 
 @SuppressWarnings("serial")
 public class Provider extends VerticalLayout implements View {
@@ -43,9 +38,10 @@ public class Provider extends VerticalLayout implements View {
 		setSizeFull();
 		setSpacing(true);
 		addComponent(homeMenu);
+		addComponent(imageLogo);
 		addComponent(placeHolder);
 		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
-		//setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
+		setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
 		setComponentAlignment(placeHolder, Alignment.MIDDLE_CENTER);
 		homeMenu.setWidth("100%");
 	}	
@@ -118,12 +114,19 @@ public class Provider extends VerticalLayout implements View {
 		Info myInfo = new Info();		
 		InfoDAO infoDAO = new InfoDAO();
 		myInfo = infoDAO.returnInfo(infoID);
-
-		ExternalResource resource = new ExternalResource(myInfo.getInfoImageURL());
+		String myImageURL = myInfo.getInfoImageURL();
 		
-		Image myImage = new Image("", resource);
-		myImage.setWidth("80%");
-		myImage.setHeight("80%");
+		Image myImage = new Image();
+		myImage.setSource(new ClassResource("/PatientPath_Logo.png"));
+		myImage.setWidth("50%");
+		
+		if(myImageURL != null) {
+			ExternalResource resource = new ExternalResource(myInfo.getInfoImageURL());
+			Image myOnlineImage = new Image("", resource);
+			myOnlineImage.setWidth("80%");
+			myOnlineImage.setHeight("80%");
+			myImage = myOnlineImage;
+		};
 		
 		Label text = new Label(myInfo.getInfoText());
 		text.setWidth("90%");

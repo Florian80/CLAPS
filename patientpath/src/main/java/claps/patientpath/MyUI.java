@@ -20,6 +20,7 @@ import com.vaadin.ui.VerticalLayout;
  * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be 
  * overridden to add component to the user interface and initialize non-component functionality.
  */
+
 @Theme("mytheme")
 public class MyUI extends UI {
 	
@@ -31,7 +32,9 @@ public class MyUI extends UI {
 	public static final String HOMEHILFE = "homeHilfe";
 	public static final String PROVIDER ="provider";
 	public static final String PROVIDERHILFE = "providerHilfe";
-
+	public static final String CREATEUSER = "createUser";
+	public static final String CREATEEVENT = "createEvent";
+	public static final String CREATEPROVIDER = "createProvider";
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -39,7 +42,6 @@ public class MyUI extends UI {
 
     	//Please change with caution
         final VerticalLayout layout = new VerticalLayout();
-        layout.setMargin(true);
         layout.setMargin(true);
         setContent(layout);
         ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(layout);
@@ -50,6 +52,9 @@ public class MyUI extends UI {
 		navigator.addView(HOMEHILFE, new HomeHilfe());
 		navigator.addView(PROVIDER,new Provider());
 		navigator.addView(PROVIDERHILFE,new ProviderHilfe());
+		navigator.addView(CREATEUSER, new CreateUser());
+		navigator.addView(CREATEEVENT, new CreateEvent());
+		navigator.addView(CREATEPROVIDER, new CreateProvider());
     }
 
     

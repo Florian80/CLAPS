@@ -3,27 +3,16 @@ package claps.patientpath;
 import claps.persistence.EventDAO;
 import claps.persistence.Info;
 import claps.persistence.InfoDAO;
-import claps.persistence.Event;
-import claps.patientpath.Login;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Locale;
 
-import com.vaadin.data.provider.GridSortOrder;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
-
 import com.vaadin.server.ExternalResource;
-
-import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
 import com.vaadin.ui.Alignment;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
@@ -31,14 +20,11 @@ import com.vaadin.ui.SingleSelect;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
-import com.vaadin.ui.renderers.LocalDateRenderer;
 import com.vaadin.ui.renderers.LocalDateTimeRenderer;
-import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.MenuBar.MenuItem;
 
@@ -115,7 +101,6 @@ public class Home extends VerticalLayout implements View {
 			
 				infoID = selection.getValue().getEventinfoID();
 
-				//addWindow(InfoSubWindow());
 				UI.getCurrent().addWindow(InfoSubWindow());
 				
 				});

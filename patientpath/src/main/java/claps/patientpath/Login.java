@@ -3,14 +3,11 @@ package claps.patientpath;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
-import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.Layout;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.Notification;
@@ -24,7 +21,6 @@ import claps.persistence.UserDAO;
 
 @SuppressWarnings("serial")
 public class Login extends VerticalLayout implements View {
-
 	
 	public Login() {
 		
@@ -63,7 +59,7 @@ public class Login extends VerticalLayout implements View {
 	};
 
 	MenuBar loginmenu = new MenuBar();
-	MenuItem myMenu = loginmenu.addItem("MENU", null, null);
+	MenuItem myMenu = loginmenu.addItem("MENU",null , null);
 	MenuItem exit = myMenu.addItem("HILFE", null, WindowHilfe);
 	
 	TextField username = new TextField("Username");
