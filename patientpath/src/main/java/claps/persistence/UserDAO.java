@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 //Data Access Object for User
 public class UserDAO {
@@ -174,4 +176,37 @@ public class UserDAO {
 			}
 			return user;
 		}
+		
+		public List<Integer> returnAllUserIDs() {
+			List<Integer> myIDs = new ArrayList<Integer>();
+			try {
+				String queryString = "SELECT userID FROM user";
+				connection = getConnection();
+				ptmt = connection.prepareStatement(queryString);
+				resultSet = ptmt.executeQuery();
+				while (resultSet.next()) {
+					
+					myIDs.add(resultSet.getInt("userID"));
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (resultSet != null)
+						resultSet.close();
+					if (ptmt != null)
+						ptmt.close();
+					if (connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+			return myIDs;
+		}
+		
 }

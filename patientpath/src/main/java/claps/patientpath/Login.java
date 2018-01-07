@@ -39,6 +39,7 @@ public class Login extends VerticalLayout implements View {
 		addComponent(password);
 		addComponent(loginButton());
 		addComponent(loginButtonDemo());
+		addComponent(registerButton());
 		setComponentAlignment(loginmenu, Alignment.TOP_RIGHT);
 		setComponentAlignment(imageLogoLogin, Alignment.MIDDLE_CENTER);
 		setComponentAlignment(username, Alignment.MIDDLE_CENTER);
@@ -99,6 +100,7 @@ public class Login extends VerticalLayout implements View {
 	
 	private Button loginButtonDemo() {
 		Button button = new Button("Login Demo", new Button.ClickListener() {
+			
 			@Override
 			public void buttonClick(ClickEvent event) {
 				UserDAO userDAO = new UserDAO();
@@ -119,6 +121,19 @@ public class Login extends VerticalLayout implements View {
 					Notification.show("RETRY");
 					
 				}
+				
+			}
+		});
+		return button;
+	}
+	
+	private Button registerButton() {
+		Button button = new Button("Registrieren", new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+	
+				getUI().getNavigator().navigateTo(MyUI.CREATEUSER);	
 				
 			}
 		});
