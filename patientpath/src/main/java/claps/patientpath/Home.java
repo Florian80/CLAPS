@@ -22,6 +22,7 @@ import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
@@ -51,18 +52,19 @@ public class Home extends VerticalLayout implements View {
 	public Home() {
 		
 		Image imageLogo = new Image();
-		
 		imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
-		imageLogo.setHeight("100px");
+		imageLogo.setHeight("10%");
+		imageLogo.setWidth("10%");
 		
 		setSizeFull();
 		setSpacing(true);
-		addComponent(imageLogo);
 		addComponent(homeMenu);
+		addComponent(imageLogo);
 		addComponent(placeHolder);
-		addComponent(kalenderButton());
-		addComponent(viewTwoButton());
-		addComponent(viewThreeButton());
+		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
+		setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
+		setComponentAlignment(placeHolder, Alignment.MIDDLE_CENTER);
+		homeMenu.setWidth("100%");
 
 	}
 
@@ -74,52 +76,39 @@ public class Home extends VerticalLayout implements View {
 		placeHolder.addComponent(myGrid());
 	}
 	
+	MenuBar.Command myCommandMenuHilfe = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.HOMEHILFE);
+	    }
+	};
+	
 	MenuBar.Command myCommandProvider = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.PROVIDER);
 	    }
 	};
 	
-	MenuBar.Command myMenuHilfe = new MenuBar.Command() {
-	    public void menuSelected(MenuItem selectedItem) {
-	        getUI().getNavigator().navigateTo(MyUI.MENUHILFE);
-	    }
-	};
-	
-	MenuBar.Command myLogout = new MenuBar.Command() {
+	MenuBar.Command myCommandLogout = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.LOGIN);
 	    }
 	};
-	MenuBar.Command myKalender = new MenuBar.Command() {
-	    public void menuSelected(MenuItem selectedItem) {
-	        getUI().getNavigator().navigateTo(MyUI.KALENDER);
-	    }
-	};
 	
-	MenuBar.Command myHome = new MenuBar.Command() {
-	    public void menuSelected(MenuItem selectedItem) {
-	        getUI().getNavigator().navigateTo(MyUI.HOME);
-	    }
-	};
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
-		MenuItem hilfe = myMenu.addItem("Hilfe", null, myMenuHilfe );
-		MenuItem akteure = myMenu.addItem("Akteure", null, null);
-		MenuItem calender = myMenu.addItem("Kalender", null, myKalender);
+		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
 		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandProvider);
-		MenuItem home = myMenu.addItem("Home", null, myHome);
-		MenuItem logout = myMenu.addItem("Logout", null, myLogout);
+		MenuItem logout = myMenu.addItem("Logout", null, myCommandLogout);
 		
 	private Grid<claps.persistence.Event> myGrid() {
 		
 		EventDAO eventDAO = new EventDAO();
 		
 		Grid<claps.persistence.Event> myGrid = new Grid();
-		
+			myGrid.setHeightUndefined();
+			myGrid.setWidth("100%");
 			myGrid.setSelectionMode(SelectionMode.SINGLE);
-			
 			SingleSelect<claps.persistence.Event> selection = myGrid.asSingleSelect();
 			
 			myGrid.addSelectionListener(event -> {
@@ -142,6 +131,7 @@ public class Home extends VerticalLayout implements View {
 	public Window InfoSubWindow() {
 		
 		Window subWin = new Window();
+		subWin.center();
 		
 		GridLayout myGridLayout = new GridLayout(2,8);
 		myGridLayout.setWidth("700px");
@@ -183,39 +173,6 @@ public class Home extends VerticalLayout implements View {
         subWin.setContent(subContent);
 		subContent.addComponent(myGridLayout);
 		return subWin;
-	}
-
-	private Button kalenderButton() {
-		Button kalenderButton = new Button("Kalender", new Button.ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				getUI().getNavigator().navigateTo(MyUI.KALENDER);
-			}
-		});
-		return kalenderButton;
-	}
-	
-	private Button viewTwoButton() {
-		Button viewTwoButton = new Button("Stammdaten", new Button.ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				getUI().getNavigator().navigateTo(MyUI.VERSIONTWO);
-			}
-		});
-		return viewTwoButton;
-	}
-
-	
-	private Button viewThreeButton() {
-		Button viewThreeButton = new Button("Version 3 - Provider", new Button.ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				getUI().getNavigator().navigateTo(MyUI.VERSIONTHREE);
-			}
-		});
-		return viewThreeButton;
-	}
-	
-	
+	}	
 	
 }

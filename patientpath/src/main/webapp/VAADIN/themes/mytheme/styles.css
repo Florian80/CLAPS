@@ -14788,7 +14788,8 @@ div.v-layout.v-horizontal.v-widget {
 	margin: 10px;
 	font-weight: bold;
 	height: 50px;
-	width: 50%;
+	width: 100%;
+	float: center;
 	position: center;
 }
 

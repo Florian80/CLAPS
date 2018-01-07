@@ -5,10 +5,12 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
+import com.vaadin.ui.Layout;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.Notification;
@@ -28,26 +30,30 @@ public class Login extends VerticalLayout implements View {
 		
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
-		imageLogoLogin.setWidth("50%");
-		imageLogoLogin.setHeight("100px");
-	
+		imageLogoLogin.setWidth("33%");
+		imageLogoLogin.setHeight("33%");
+		
 		setSizeFull();
 		setSpacing(true);	
-	
-		addComponent(imageLogoLogin);
+		
 		addComponent(loginmenu);
+		loginmenu.setWidth("100%");
+		addComponent(imageLogoLogin);
 		addComponent(username);
 		addComponent(password);
 		addComponent(loginButton());
-		addComponent(loginButton2());
-		
+		addComponent(loginButtonDemo());
+		setComponentAlignment(loginmenu, Alignment.TOP_RIGHT);
+		setComponentAlignment(imageLogoLogin, Alignment.MIDDLE_CENTER);
+		setComponentAlignment(username, Alignment.MIDDLE_CENTER);
+		setComponentAlignment(password, Alignment.MIDDLE_CENTER);
+		//setComponentAlignment(loginButton(), Alignment.MIDDLE_CENTER);
+		//setComponentAlignment(loginButtonDemo(), Alignment.MIDDLE_CENTER);
 	}
-
 	
 	@Override
 	public void enter(ViewChangeEvent event) {
-		Notification.show(Page.getCurrent().getWebBrowser().toString());
-		Notification.show("Size" + Page.getCurrent().getBrowserWindowWidth());
+		Notification.show("Welcome");
 	}
 	
 	MenuBar.Command WindowHilfe = new MenuBar.Command() {
@@ -64,20 +70,10 @@ public class Login extends VerticalLayout implements View {
 	
 	PasswordField password = new PasswordField("Password");
 	
-	private Button loginButton2() {
-		Button button = new Button("Login Demo", new Button.ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				
-				getUI().getNavigator().navigateTo(MyUI.HOME);
-				
-			}
-		});
-		return button;
-	}
-
 	private Button loginButton() {
 		Button button = new Button("Login", new Button.ClickListener() {
+
+			
 			@Override
 			public void buttonClick(ClickEvent event) {
 				
@@ -104,5 +100,34 @@ public class Login extends VerticalLayout implements View {
 		});
 		return button;
 	}
+	
+	private Button loginButtonDemo() {
+		Button button = new Button("Login Demo", new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				UserDAO userDAO = new UserDAO();
+				User actualUser = new User();
+				
+				actualUser.setUserName("test1");
+				actualUser.setPassword("test1");
+				
+				if (actualUser.getPassword().equals(userDAO.returnUserID(actualUser.getUserName()).getPassword())) {
+
+					VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myValue", userDAO.returnUserID(actualUser.getUserName()).getUserID());
+					
+					getUI().getNavigator().navigateTo(MyUI.HOME);
+					
+				}
+				else {
+					
+					Notification.show("RETRY");
+					
+				}
+				
+			}
+		});
+		return button;
+	}
+
 }
 

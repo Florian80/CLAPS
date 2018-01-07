@@ -2,14 +2,10 @@ package claps.patientpath;
 
 import javax.servlet.annotation.WebServlet;
 
-import claps.patientpath.Home;
 import claps.patientpath.Login;
-import claps.patientpath.Kalender;
-import claps.patientpath.VersionTwo;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;
-import com.vaadin.navigator.View;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -30,17 +26,12 @@ public class MyUI extends UI {
 	public Navigator navigator;
 	
 	public static final String LOGIN = "login";
-	public static final String HOME = "home";
-	public static final String KALENDER = "kalender";
-	public static final String VERSIONTWO = "versionTwo";
-	public static final String VERSIONTHREE = "versionThree";
-	public static final String INFOHAUSARZT = "InfoHausarzt";
 	public static final String LOGINHILFE ="LoginHilfe";
+	public static final String HOME = "home";
+	public static final String HOMEHILFE = "homeHilfe";
 	public static final String PROVIDER ="provider";
-	public static final String MENUHILFE ="MenuHilfe";
-	public static final String AKTEURE ="Akteure";
+	public static final String PROVIDERHILFE = "providerHilfe";
 
-	
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -54,15 +45,11 @@ public class MyUI extends UI {
         ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(layout);
 		navigator = new Navigator(UI.getCurrent(), viewDisplay);
 		navigator.addView("", new Login());
+		navigator.addView(LOGINHILFE, new LoginHilfe());
 		navigator.addView(HOME, new Home());
-		navigator.addView(KALENDER, new Kalender());
-		navigator.addView(VERSIONTWO, new VersionTwo());
-		navigator.addView(VERSIONTHREE, new VersionThree());
-		navigator.addView(INFOHAUSARZT, new InfoHausarzt());
-		navigator.addView(LOGINHILFE,new LoginHilfe());
+		navigator.addView(HOMEHILFE, new HomeHilfe());
 		navigator.addView(PROVIDER,new Provider());
-		navigator.addView(MENUHILFE,new MenuHilfe());
-		navigator.addView(AKTEURE,new Akteure());
+		navigator.addView(PROVIDERHILFE,new ProviderHilfe());
     }
 
     

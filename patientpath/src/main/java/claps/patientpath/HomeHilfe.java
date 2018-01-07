@@ -12,14 +12,14 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
-public class MenuHilfe extends VerticalLayout implements View{
+public class HomeHilfe extends VerticalLayout implements View{
 
 	
 
 	//Under Construction
 	private Label labelVersions = new Label("Home hilfe Anleitung");
 
-	public MenuHilfe() {
+	public HomeHilfe() {
 		
 Image imageLogo = new Image();
 		
@@ -29,7 +29,7 @@ Image imageLogo = new Image();
 		setSpacing(true);
 		
 		
-		
+	/**	
 		MenuBar.Command myCommandProvider = new MenuBar.Command() {
 		    public void menuSelected(MenuItem selectedItem) {
 		        getUI().getNavigator().navigateTo(MyUI.PROVIDER);
@@ -73,6 +73,7 @@ Image imageLogo = new Image();
 		MenuItem home = uebersicht.addItem("Home", null, myHome);
 		MenuItem logout = uebersicht.addItem("Logout", null, myLogout);
 		
+		**/
 		
 		 Panel panel = new Panel(" Hier finden sie alle Termine im Überblick. Die Termine die schon vorbei sind,"
 		 		+ " haben einen anderen Farbton als die Termine die noch bevorstehen. Jeder Termin hat eine Menüansicht,"
@@ -82,7 +83,7 @@ Image imageLogo = new Image();
 	   
 
 			addComponent(imageLogo);
-			addComponent(uebersichtMenu);
+			//addComponent(uebersichtMenu);
 			addComponent(labelVersions);
 			 addComponent(panel);
 			 addComponent(HomeButton());

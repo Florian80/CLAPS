@@ -2,10 +2,12 @@ package claps.patientpath;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.ClassResource;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Sizeable;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Image;
@@ -30,14 +32,24 @@ public class Provider extends VerticalLayout implements View {
 	
 	private int infoID;
     private VerticalLayout placeHolder = new VerticalLayout();
-
+    
 	public Provider() {
+    
+		Image imageLogo = new Image();
+		imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
+		imageLogo.setHeight("10%");
+		imageLogo.setWidth("10%");
+
 		setSizeFull();
 		setSpacing(true);
 		addComponent(homeMenu);
 		addComponent(placeHolder);
-	}
-	
+		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
+		//setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
+		setComponentAlignment(placeHolder, Alignment.MIDDLE_CENTER);
+		homeMenu.setWidth("100%");
+	}	
+		
 	@Override
 	public void enter(ViewChangeEvent event) {
 		placeHolder.removeAllComponents();
@@ -45,55 +57,58 @@ public class Provider extends VerticalLayout implements View {
 	}
 	
 	
+	MenuBar.Command myCommandProviderHilfe = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.PROVIDERHILFE);
+	    }
+	};
+	
 	MenuBar.Command myCommandHome = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.HOME);
 	    }
 	};
 	
-	//Menu in Provider
+	MenuBar.Command myCommandLogout = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.LOGIN);
+	    }
+	};
+	
+	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
-		MenuItem myMenu = homeMenu.addItem("Menu", null, null);
-			MenuItem hilfe = myMenu.addItem("Hilfe", null, null);
-			MenuItem home = myMenu.addItem("Home", null, myCommandHome);
+	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
+		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandProviderHilfe );
+		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandHome);
+		MenuItem logout = myMenu.addItem("Logout", null, myCommandLogout);
 	
 
 	private Grid<claps.persistence.Provider> myGrid() {
 				
 				ProviderDAO providerDAO = new ProviderDAO();
-				
 				Grid<claps.persistence.Provider> myGrid = new Grid();
-				
-					myGrid.setSelectionMode(SelectionMode.SINGLE);
-					SingleSelect<claps.persistence.Provider> selection = myGrid.asSingleSelect();
+				myGrid.setHeightUndefined();
+				myGrid.setWidth("100%");
+				myGrid.setSelectionMode(SelectionMode.SINGLE);
+				SingleSelect<claps.persistence.Provider> selection = myGrid.asSingleSelect();
+				myGrid.setItems(providerDAO.findAllProvider());	
+				Column <claps.persistence.Provider, String> myColumn = myGrid.addColumn(claps.persistence.Provider::getProviderName);
 					
-					Column <claps.persistence.Provider, String> myColumn = myGrid.addColumn(claps.persistence.Provider::getProviderName);
-					
-					myGrid.addSelectionListener(event -> {
+				myGrid.addSelectionListener(event -> {
 						
 						infoID = selection.getValue().getProviderinfoID();
 						
 						//addWindow(InfoSubWindow());
 						UI.getCurrent().addWindow(InfoSubWindow());
 						
-						
-						System.out.println(selection.getValue().getProviderinfoID());
-						
-
-					});
-					
-					myGrid.sort(myColumn, SortDirection.DESCENDING);
-					
-					myGrid.setItems(providerDAO.findAllProvider());
-					
-					
-				
+				});
 				return myGrid;
 			}
 	
 	public Window InfoSubWindow() {
 		
 		Window subWin = new Window();
+		subWin.center();
 		
 		GridLayout myGridLayout = new GridLayout(2,8);
 		myGridLayout.setWidth("700px");
