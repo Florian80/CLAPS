@@ -55,12 +55,13 @@ public class UserDAO {
 		public void updateUser(User user) {
 
 			try {
-				String queryString = "UPDATE user SET userName=? password=? WHERE userID=?";
+				String queryString = "UPDATE user SET userName = ?, password = ? WHERE userID = ?";
 				connection = getConnection();
 				ptmt = connection.prepareStatement(queryString);
 				ptmt.setString(1, user.getUserName());
 				ptmt.setString(2, user.getPassword());
 				ptmt.setInt(3, user.getUserID());
+				System.out.println(ptmt);
 				ptmt.executeUpdate();
 				System.out.println("Data Updated Successfully");
 			} catch (SQLException e) {

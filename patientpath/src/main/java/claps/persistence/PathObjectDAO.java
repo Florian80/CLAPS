@@ -142,18 +142,20 @@ public class PathObjectDAO {
 				return pathObject;
 			}
 			
-			/** Deactivated, please dont't delete, necessary for further updates/development, returns all PaathObjects from DB
-			 * 
-			public void findAllPathObject() {
+
+			public List<PathObject> findAllPathObject() {
+				List<PathObject> pathObjects = new ArrayList<PathObject>();
 				try {
 					String queryString = "SELECT * FROM pathObject";
 					connection = getConnection();
 					ptmt = connection.prepareStatement(queryString);
 					resultSet = ptmt.executeQuery();
 					while (resultSet.next()) {
-						System.out.println("pathObjectID " + resultSet.getInt("pathObjectID")
-								+ ", pathObjectinfoID " + resultSet.getInt("pathObjectinfoID") + ", pathObjectName "
-								+ resultSet.getString("pathObjectName"));
+						PathObject pathObject = new PathObject();
+						pathObject.setPathObjectID(resultSet.getInt("pathObjectID"));
+						pathObject.setPathObjectinfoID(resultSet.getInt("pathObjectinfoID"));
+						pathObject.setPathObjectName(resultSet.getString("pathObjectName"));
+						pathObjects.add(pathObject);
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -172,6 +174,7 @@ public class PathObjectDAO {
 					}
 
 				}
+				return pathObjects;
 			}
-			**/
+
 }

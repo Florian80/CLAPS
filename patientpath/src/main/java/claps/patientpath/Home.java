@@ -13,6 +13,7 @@ import com.vaadin.server.ExternalResource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
@@ -20,6 +21,7 @@ import com.vaadin.ui.SingleSelect;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.renderers.LocalDateTimeRenderer;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
@@ -32,7 +34,8 @@ import com.vaadin.ui.MenuBar.MenuItem;
 public class Home extends VerticalLayout implements View {
 	
 	private int id;
-	private int infoID;
+	private int eventInfoID;
+	private int eventID;
     private VerticalLayout placeHolder = new VerticalLayout();
 
 	public Home() {
@@ -47,6 +50,8 @@ public class Home extends VerticalLayout implements View {
 		addComponent(homeMenu);
 		addComponent(imageLogo);
 		addComponent(placeHolder);
+		addComponent(editButton());
+		addComponent(newButton());
 		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
 		setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
 		setComponentAlignment(placeHolder, Alignment.MIDDLE_CENTER);
@@ -68,15 +73,21 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
+	MenuBar.Command myCommandDemo = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.DEMOPFADPHASEN);
+	    }
+	};
+	
 	MenuBar.Command myCommandProvider = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.PROVIDER);
 	    }
 	};
 	
-	MenuBar.Command myCommandLogout = new MenuBar.Command() {
+	MenuBar.Command myCommandCreateUser = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
-	        getUI().getNavigator().navigateTo(MyUI.LOGIN);
+	        getUI().getNavigator().navigateTo(MyUI.CREATEUSER);
 	    }
 	};
 	
@@ -84,8 +95,9 @@ public class Home extends VerticalLayout implements View {
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
-		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandProvider);
-		MenuItem logout = myMenu.addItem("Logout", null, myCommandLogout);
+		MenuItem demo = myMenu.addItem("Demo - Modus", null, myCommandDemo);
+		MenuItem provider = myMenu.addItem("Alle Provider", null, myCommandProvider);
+		MenuItem logout = myMenu.addItem("Mein Account", null, myCommandCreateUser);
 		
 	private Grid<claps.persistence.Event> myGrid() {
 		
@@ -98,10 +110,12 @@ public class Home extends VerticalLayout implements View {
 			SingleSelect<claps.persistence.Event> selection = myGrid.asSingleSelect();
 			
 			myGrid.addSelectionListener(event -> {
-			
-				infoID = selection.getValue().getEventinfoID();
-
-				UI.getCurrent().addWindow(InfoSubWindow());
+				
+				if(selection.getValue() != null && selection.getValue() != null) {
+					eventInfoID = selection.getValue().getEventinfoID();
+					eventID = selection.getValue().getEventID();
+					UI.getCurrent().addWindow(InfoSubWindow());
+				}
 				
 				});
 			
@@ -111,6 +125,33 @@ public class Home extends VerticalLayout implements View {
 			myGrid.sort(myColumn, SortDirection.ASCENDING);
 		
 		return myGrid;
+	}
+	
+	private Button editButton() {
+		Button button = new Button("Gewählten Eintrag" + " Ändern oder Löschen", new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+		        VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myEventID", eventID);
+		        VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myInfoID", eventInfoID);
+				getUI().getNavigator().navigateTo(MyUI.CREATEEVENT);	
+				
+			}
+		});
+		return button;
+	}
+	
+	private Button newButton() {
+		Button button = new Button("Neuen Eintrag Erstellen", new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+	
+				getUI().getNavigator().navigateTo(MyUI.CREATEEVENT);	
+				
+			}
+		});
+		return button;
 	}
 	
 	public Window InfoSubWindow() {
@@ -125,7 +166,7 @@ public class Home extends VerticalLayout implements View {
 		VerticalLayout subContent = new VerticalLayout();
 		Info myInfo = new Info();		
 		InfoDAO eventDAO = new InfoDAO();
-		myInfo = eventDAO.returnInfo(infoID);
+		myInfo = eventDAO.returnInfo(eventInfoID);
 		String myImageURL = myInfo.getInfoImageURL();
 
 		Image myImage = new Image();

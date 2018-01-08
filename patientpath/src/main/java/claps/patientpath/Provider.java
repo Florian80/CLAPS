@@ -4,7 +4,9 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Image;
@@ -14,6 +16,7 @@ import com.vaadin.ui.SingleSelect;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.MenuBar.MenuItem;
@@ -25,7 +28,8 @@ import claps.persistence.ProviderDAO;
 @SuppressWarnings("serial")
 public class Provider extends VerticalLayout implements View {
 	
-	private int infoID;
+	private int providerID;
+	private int providerInfoID;
     private VerticalLayout placeHolder = new VerticalLayout();
     
 	public Provider() {
@@ -40,6 +44,8 @@ public class Provider extends VerticalLayout implements View {
 		addComponent(homeMenu);
 		addComponent(imageLogo);
 		addComponent(placeHolder);
+		addComponent(editButton());
+		addComponent(newButton());
 		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
 		setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
 		setComponentAlignment(placeHolder, Alignment.MIDDLE_CENTER);
@@ -92,14 +98,42 @@ public class Provider extends VerticalLayout implements View {
 					
 				myGrid.addSelectionListener(event -> {
 						
-						infoID = selection.getValue().getProviderinfoID();
-						
-						//addWindow(InfoSubWindow());
+					if(selection.getValue() != null && selection.getValue() != null) {
+						providerInfoID = selection.getValue().getProviderinfoID();
+						providerID = selection.getValue().getProviderID();
 						UI.getCurrent().addWindow(InfoSubWindow());
+					}
 						
 				});
 				return myGrid;
 			}
+	
+	private Button editButton() {
+		Button button = new Button("Gewählten Eintrag" + "Ändern oder Löschen", new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+		        VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myProviderID", providerID);
+		        VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myInfoID", providerInfoID);
+				getUI().getNavigator().navigateTo(MyUI.CREATEPROVIDER);	
+				
+			}
+		});
+		return button;
+	}
+	
+	private Button newButton() {
+		Button button = new Button("Neuen Eintrag Erstellen", new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+	
+				getUI().getNavigator().navigateTo(MyUI.CREATEPROVIDER);	
+				
+			}
+		});
+		return button;
+	}
 	
 	public Window InfoSubWindow() {
 		
@@ -113,7 +147,7 @@ public class Provider extends VerticalLayout implements View {
 		VerticalLayout subContent = new VerticalLayout();
 		Info myInfo = new Info();		
 		InfoDAO infoDAO = new InfoDAO();
-		myInfo = infoDAO.returnInfo(infoID);
+		myInfo = infoDAO.returnInfo(providerInfoID);
 		String myImageURL = myInfo.getInfoImageURL();
 		
 		Image myImage = new Image();

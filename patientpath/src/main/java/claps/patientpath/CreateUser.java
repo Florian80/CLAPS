@@ -2,6 +2,7 @@ package claps.patientpath;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
@@ -14,9 +15,6 @@ import claps.persistence.UserDAO;
 
 @SuppressWarnings("serial")
 public class CreateUser extends VerticalLayout implements View {
-	
-	int actualUserID;
-	int confirmedUserID;
 
 	public CreateUser() {
 		
@@ -33,17 +31,20 @@ public class CreateUser extends VerticalLayout implements View {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		Notification.show("WELCOME");
-		//confirmedUserID = Integer.valueOf(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue").toString());
+		
+		if (VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue") != null) {
+			patIDField.setValue(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue").toString());
+		} 
+		
 	}
 	
-	Label titel = new Label("Neuen Benutzer Eingeben"); 
+	Label titel = new Label("Neuen Benutzer Eingeben"); 	
 
-		TextField patIDField = new TextField("eHealthID");
+	TextField patIDField = new TextField("eHealthID");
 
-		TextField userNameField = new TextField("Name");
+	TextField userNameField = new TextField("Name");
 
-		TextField passwordField = new TextField("Passwort");
+	TextField passwordField = new TextField("Passwort");
 
 	
 	private Button saveButton() {
@@ -54,22 +55,23 @@ public class CreateUser extends VerticalLayout implements View {
 				
 				UserDAO userDAO = new UserDAO();
 				User actualUser = new User();
-				actualUser.setUserID(Integer.valueOf(patIDField.getValue()));
+				actualUser.setUserID(Integer.parseInt(patIDField.getValue()));
 				actualUser.setUserName(userNameField.getValue());
 				actualUser.setPassword(passwordField.getValue());
 				
-				
-
-				if (userDAO.returnAllUserIDs().contains(Integer.valueOf(patIDField.getValue()))) {
+				if (VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue") != null && userNameField.getValue() != null && passwordField.getValue() != null) {
+					userDAO.updateUser(actualUser);
+					getUI().getNavigator().navigateTo(MyUI.HOME);
+					
+				} else if (userDAO.returnAllUserIDs().contains(Integer.valueOf(patIDField.getValue()))) {
 					Notification.show("eHealthID schon vergeben!");
-				} else { 
+				} else if (patIDField.getValue() != null) { 
 					userDAO.addUser(actualUser);
+					VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myValue", userDAO.returnUserID(actualUser.getUserName()).getUserID());
 					getUI().getNavigator().navigateTo(MyUI.HOME);
 					}	
-				}
-				
-				
-			
+				else {Notification.show("Bitte eHealthID eingeben");}
+			}
 		});
 		return button;
 	}
@@ -82,9 +84,7 @@ public class CreateUser extends VerticalLayout implements View {
 			
 					getUI().getNavigator().navigateTo(MyUI.HOME);
 					
-				}
-				
-				
+				}		
 			
 		});
 		return button;

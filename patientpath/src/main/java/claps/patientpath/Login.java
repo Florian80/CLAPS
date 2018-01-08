@@ -52,6 +52,7 @@ public class Login extends VerticalLayout implements View {
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("Welcome");
+		VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myValue", null);
 	}
 	
 	MenuBar.Command WindowHilfe = new MenuBar.Command() {

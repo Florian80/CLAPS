@@ -35,7 +35,7 @@ public class MyUI extends UI {
 	public static final String CREATEUSER = "createUser";
 	public static final String CREATEEVENT = "createEvent";
 	public static final String CREATEPROVIDER = "createProvider";
-
+	public static final String DEMOPFADPHASEN = "demoPfadPhasen";
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	
@@ -55,6 +55,7 @@ public class MyUI extends UI {
 		navigator.addView(CREATEUSER, new CreateUser());
 		navigator.addView(CREATEEVENT, new CreateEvent());
 		navigator.addView(CREATEPROVIDER, new CreateProvider());
+		navigator.addView(DEMOPFADPHASEN, new DemoPfadPhasen());
     }
 
     
