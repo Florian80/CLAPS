@@ -87,7 +87,7 @@ Image imageLogo = new Image();
 			addComponent(labelVersions);
 			 addComponent(panel);
 			 addComponent(HomeButton());
-		
+	
 	}
 	private Button HomeButton() {
 		Button HomeButton = new Button("Zurück", new Button.ClickListener() {

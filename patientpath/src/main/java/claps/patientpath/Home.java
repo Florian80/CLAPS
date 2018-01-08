@@ -153,6 +153,8 @@ public class Home extends VerticalLayout implements View {
 		});
 		return button;
 	}
+		
+	
 	
 	public Window InfoSubWindow() {
 		

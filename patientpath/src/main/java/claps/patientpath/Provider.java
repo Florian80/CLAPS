@@ -46,6 +46,7 @@ public class Provider extends VerticalLayout implements View {
 		addComponent(placeHolder);
 		addComponent(editButton());
 		addComponent(newButton());
+		addComponent(returnButton());
 		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
 		setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
 		setComponentAlignment(placeHolder, Alignment.MIDDLE_CENTER);
@@ -134,7 +135,18 @@ public class Provider extends VerticalLayout implements View {
 		});
 		return button;
 	}
+	private Button returnButton() {
+		Button button = new Button("Zurück", new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
 	
+				getUI().getNavigator().navigateTo(MyUI.HOME);	
+				
+			}
+		});
+		return button;
+}
 	public Window InfoSubWindow() {
 		
 		Window subWin = new Window();

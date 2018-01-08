@@ -40,7 +40,7 @@ public class LoginHilfe extends VerticalLayout implements View {
 				@Override
 				public void buttonClick(ClickEvent event) {
 					
-					getUI().getNavigator().navigateTo(MyUI.HOME);
+					getUI().getNavigator().navigateTo(MyUI.LOGIN);
 					
 				}
 			});
