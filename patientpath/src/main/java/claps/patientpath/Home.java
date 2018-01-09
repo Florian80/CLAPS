@@ -91,13 +91,20 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
+	MenuBar.Command myLogout = new MenuBar.Command() {
+	    public void menuSelected(MenuItem selectedItem) {
+	        getUI().getNavigator().navigateTo(MyUI.LOGIN);
+	    }
+	};
+	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
 		MenuItem demo = myMenu.addItem("Demo - Modus", null, myCommandDemo);
 		MenuItem provider = myMenu.addItem("Alle Provider", null, myCommandProvider);
-		MenuItem logout = myMenu.addItem("Mein Account", null, myCommandCreateUser);
+		MenuItem meinaccount = myMenu.addItem("Mein Account", null, myCommandCreateUser);
+		MenuItem logout = myMenu.addItem("Logout", null, myLogout);
 		
 	private Grid<claps.persistence.Event> myGrid() {
 		
