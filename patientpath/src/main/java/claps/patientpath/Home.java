@@ -98,14 +98,17 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
+	
+	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
 	//MenuItem myMenu = homeMenu.addItem("Menu", null, null);
-		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
+
 		MenuItem demo = myMenu.addItem("Demo - Modus", null, myCommandDemo);
 		MenuItem provider = myMenu.addItem("Alle Provider", null, myCommandProvider);
 		MenuItem meinaccount = myMenu.addItem("Mein Account", null, myCommandCreateUser);
+		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
 		MenuItem logout = myMenu.addItem("Logout", null, myLogout);
 		
 	private Grid<claps.persistence.Event> myGrid() {
