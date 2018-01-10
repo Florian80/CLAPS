@@ -14791,8 +14791,13 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	float: center;
 	position: center;
+	border-radius: 5px;
 }
 
 .mytheme .v-button .v-button-caption {
 	color: blue;
+}
+
+.mytheme .v-button .v-label .v-label-caption {
+	color: red;
 }
