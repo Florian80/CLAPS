@@ -14,7 +14,7 @@
 	</prerequisites>
 
 	<properties>
-		<vaadin.version>8.1.6</vaadin.version>
+		<vaadin.version>8.2.0</vaadin.version>
 		<vaadin.plugin.version>8.1.6</vaadin.plugin.version>
 		<jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -93,7 +93,7 @@
 			<plugin>
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-maven-plugin</artifactId>
-				<version>${vaadin.plugin.version}</version>
+				<version>8.2.0</version>
 				<executions>
 					<execution>
 						<goals>
@@ -122,6 +122,11 @@
 						</fileset>
 					</filesets>
 				</configuration>
+			</plugin>
+			<plugin>
+  				 <groupId>com.google.appengine</groupId>
+  				 <artifactId>appengine-maven-plugin</artifactId>
+  				 <version>99.99.99</version>
 			</plugin>
 
 			<!-- The Jetty plugin allows us to easily test the development build by
