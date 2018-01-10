@@ -17,7 +17,7 @@ public class HomeHilfe extends VerticalLayout implements View{
 	
 
 	//Under Construction
-	private Label labelVersions = new Label("Home hilfe Anleitung");
+//	private Label labelVersions = new Label("Home hilfe Anleitung");
 
 	public HomeHilfe() {
 		
@@ -75,16 +75,31 @@ Image imageLogo = new Image();
 		
 		**/
 		
-		 Panel panel = new Panel(" Hier finden sie alle Termine im Überblick. Die Termine die schon vorbei sind,"
-		 		+ " haben einen anderen Farbton als die Termine die noch bevorstehen. Jeder Termin hat eine Menüansicht,"
-		 		+ " bei der verschiedene Möglichkeiten bestehen, den Termin zu bearbeiten. Wenn Sie einen Termin verschieben möchten,"
-		 		+ " können sie auf Edit klicken und danach den passenden Termin eingeben."
-		 		+ " Bei jedem Termin haben Sie die Möglichkeit für einen Arzt eine Datei hochzuladen. ");
+		
 	   
+		 
+		 
+		 Panel panel = new Panel("Home hilfe Anleitung");
+		 Panel panel2 = new Panel(" Hier finden sie alle Termine im Überblick. Die Termine die schon vorbei sind,"
+			 		+ " haben einen anderen Farbton als die Termine die noch bevorstehen. Jeder Termin hat eine Menüansicht,"
+			 		+ " bei der verschiedene Möglichkeiten bestehen, den Termin zu bearbeiten. Wenn Sie einen Termin verschieben möchten,"
+			 		+ " können sie auf Edit klicken und danach den passenden Termin eingeben."
+			 		+ " Bei jedem Termin haben Sie die Möglichkeit für einen Arzt eine Datei hochzuladen. ");
+			
+			
+			panel.setWidth("300px");
+			panel.setHeight("300px");
+			panel.setContent(panel2);
+			 addComponent(imageLogo);
+			 addComponent(panel);
+			
+		 
+		 
+		 
 
 			addComponent(imageLogo);
 			//addComponent(uebersichtMenu);
-			addComponent(labelVersions);
+	//		addComponent(labelVersions);
 			 addComponent(panel);
 			 addComponent(HomeButton());
 	

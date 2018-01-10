@@ -10,6 +10,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.data.sort.SortDirection;
 import com.vaadin.ui.Alignment;
@@ -99,7 +100,8 @@ public class Home extends VerticalLayout implements View {
 	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
-	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
+	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
+	//MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
 		MenuItem demo = myMenu.addItem("Demo - Modus", null, myCommandDemo);
 		MenuItem provider = myMenu.addItem("Alle Provider", null, myCommandProvider);

@@ -14,6 +14,11 @@
     background:-webkit-gradient(linear, 0% 0%, 100% 21%, from(#00E6BD), to(#FF8200));
   }
    
+<<<<<<< HEAD
+=======
+  // background-color: $awesome-blue;
+   
+>>>>>>> 62c4468c6ee8a6eb89cfe66ea346fce3976d6b80
      /* All buttons have blue caption and some margin */
     .v-button {
       margin: 10px;
@@ -26,7 +31,7 @@
 
     /* A nested selector to increase specificity */
     .v-button-caption {
-      color: blue;
+      color: red;
     }
     
      /* All buttons have blue caption and some margin */
@@ -43,5 +48,6 @@
     .v-label-caption {
       color: red;
     }
+
 
 }
