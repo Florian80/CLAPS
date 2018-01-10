@@ -15056,16 +15056,3 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-ui {
 	background: -webkit-gradient(linear, 0% 0%, 100% 21%, from(#00E6BD), to(#FF8200));
 }
-
-.mytheme .v-button {
-	margin: 10px;
-	font-weight: bold;
-	height: 50px;
-	width: 100%;
-	float: center;
-	position: center;
-}
-
-.mytheme .v-button .v-button-caption {
-	color: red;
-}
