@@ -4,6 +4,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -86,7 +87,8 @@ public class Provider extends VerticalLayout implements View {
 	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
-	MenuItem myMenu = homeMenu.addItem("Menu", null, null);
+	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
+	//MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandProviderHilfe );
 		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandHome);
 		MenuItem meinaccount = myMenu.addItem("Mein Account", null, myCommandCreateUser);
