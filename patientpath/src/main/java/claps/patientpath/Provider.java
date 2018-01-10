@@ -90,7 +90,7 @@ public class Provider extends VerticalLayout implements View {
 	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
 	//MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandProviderHilfe );
-		MenuItem provider = myMenu.addItem("Verzeichnis", null, myCommandHome);
+		MenuItem provider = myMenu.addItem("Home", null, myCommandHome);
 		MenuItem meinaccount = myMenu.addItem("Mein Account", null, myCommandCreateUser);
 		MenuItem logout = myMenu.addItem("Logout", null, myCommandLogout);
 	

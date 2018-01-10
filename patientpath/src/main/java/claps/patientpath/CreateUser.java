@@ -4,11 +4,12 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Button.ClickEvent;
 
 import claps.persistence.User;
 import claps.persistence.UserDAO;
@@ -44,7 +45,7 @@ public class CreateUser extends VerticalLayout implements View {
 
 	TextField userNameField = new TextField("Name");
 
-	TextField passwordField = new TextField("Passwort");
+	TextField passwordField = new PasswordField("Passwort");
 
 	
 	private Button saveButton() {
