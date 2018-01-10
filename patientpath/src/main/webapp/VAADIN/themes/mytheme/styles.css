@@ -750,8 +750,8 @@
  * The font weight for headers.
  * 
  * @group label
- */
-
+ */ 
+ 
 /**
  *
  * @group link
@@ -1470,7 +1470,7 @@ div.v-layout.v-horizontal.v-widget {
 	background-color: green;
 }
 
-.v-colorpicker-popup .v-slider.v-slider-blue:before {
+.v-colorpicker-popup .v-slider.v-slider-red:before {
 	background-color: blue;
 }
 
@@ -4673,7 +4673,7 @@ div.v-layout.v-horizontal.v-widget {
 	height: 0;
 	width: 0;
 	content: "";
-	border-top: 5px solid red;
+	border-top: 5px solid blue;
 	border-right: 5px solid transparent;
 }
 
@@ -14796,6 +14796,9 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-button .v-button-caption {
 	color: blue;
 }
+
+
+
 
 
 
