@@ -47,10 +47,18 @@ public class Home extends VerticalLayout implements View {
 
 	public Home() {
 		
+		
+		/*
+		 * This code is responsible for the small image in the app. He forms the logo of this app
+		 */
 		Image imageLogo = new Image();
 		imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
 		imageLogo.setHeight("10%");
 		imageLogo.setWidth("10%");
+		
+		/*
+		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 */
 		
 		setSizeFull();
 		setSpacing(true);

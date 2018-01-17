@@ -56,6 +56,9 @@ public class CreateEvent extends VerticalLayout implements View {
 		
 	}
 	
+	/*
+	 * Here the whole content of the will be changed
+	 */
 	Label titel1 = new Label("Neuen Termin anlegen"); 
 	Label titel2 = new Label("oder"); 
 	Label titel3 = new Label("Termin ändern"); 

@@ -29,7 +29,9 @@ public class ProviderHilfe extends VerticalLayout implements View {
    	             "durchgeführt"));
 		
 	
-	
+        /*
+		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 */
         addComponent(button);
 		addComponent(labelHeader);
 		addComponent(panel);

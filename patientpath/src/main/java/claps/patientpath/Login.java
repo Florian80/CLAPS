@@ -27,6 +27,10 @@ public class Login extends VerticalLayout implements View {
 	
 	public Login() {
 		
+		
+		/*
+		 * This code is responsible for the small image in the app. He forms the logo of this app
+		 */
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
 		imageLogoLogin.setWidth("33%");
@@ -34,6 +38,10 @@ public class Login extends VerticalLayout implements View {
 		
 		setSizeFull();
 		setSpacing(true);	
+		
+		/*
+		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 */
 		
 		addComponent(loginmenu);
 		loginmenu.setWidth("100%");
