@@ -5,21 +5,25 @@ import com.vaadin.server.ClassResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+
+/*
+ * Diese KLasse beinhaltet das Hilfe Text für die Login seite
+ */
+
 
 @SuppressWarnings("serial")
 public class HomeHilfe extends VerticalLayout implements View{
 
 	
 
-	//Under Construction
-//	private Label labelVersions = new Label("Home hilfe Anleitung");
 
 	public HomeHilfe() {
+		
+		/*
+		 * Da kommt ein Bild 
+		 */
 		
 Image imageLogo = new Image();
 		
@@ -28,59 +32,13 @@ Image imageLogo = new Image();
 		setSizeFull();
 		setSpacing(true);
 		
-		
-	/**	
-		MenuBar.Command myCommandProvider = new MenuBar.Command() {
-		    public void menuSelected(MenuItem selectedItem) {
-		        getUI().getNavigator().navigateTo(MyUI.PROVIDER);
-		    }
-		};
-		
-		MenuBar.Command myMenuHilfe = new MenuBar.Command() {
-		    public void menuSelected(MenuItem selectedItem) {
-		        getUI().getNavigator().navigateTo(MyUI.MENUHILFE);
-		    }
-		};
-		
-		MenuBar.Command myLogout = new MenuBar.Command() {
-		    public void menuSelected(MenuItem selectedItem) {
-		        getUI().getNavigator().navigateTo(MyUI.LOGIN);
-		    }
-		};
-		MenuBar.Command myKalender = new MenuBar.Command() {
-		    public void menuSelected(MenuItem selectedItem) {
-		        getUI().getNavigator().navigateTo(MyUI.KALENDER);
-		    }
-		};
-		MenuBar.Command myHome = new MenuBar.Command() {
-		    public void menuSelected(MenuItem selectedItem) {
-		        getUI().getNavigator().navigateTo(MyUI.HOME);
-		    }
-		};
-		
-	//MenuBar
-	MenuBar uebersichtMenu = new MenuBar();
-//	uebersichtMenu.setWidth(500.0f, Unit.PERCENTAGE);
-		MenuItem uebersicht = uebersichtMenu.addItem("Übersicht", null, null);
-		 //   MenuItem kalender = uebersicht.addItem("Kalender", null, null);
-		   /// MenuItem akteure = uebersicht.addItem("Akteure", null, null);
-			//MenuItem logout = uebersicht.addItem("Logout", null, null);			
+		/*
+		 * Für den Text der im Home Hilfe erschient wurde Panel benutzte
+		 */
+		 
 			
-		MenuItem hilfe = uebersicht.addItem("Hilfe", null, myMenuHilfe );
-		MenuItem akteure = uebersicht.addItem("Akteure", null, null);
-		MenuItem calender = uebersicht.addItem("Kalender", null, myKalender);
-		MenuItem provider = uebersicht.addItem("Verzeichnis", null, myCommandProvider);
-		MenuItem home = uebersicht.addItem("Home", null, myHome);
-		MenuItem logout = uebersicht.addItem("Logout", null, myLogout);
-		
-		**/
-		
-		
-	   
-		 
-		 
-		 Panel panel = new Panel("Home hilfe Anleitung");
-		 Panel panel2 = new Panel(" Hier finden sie alle Termine im Überblick. Die Termine die schon vorbei sind,"
+			Panel panel = new Panel("Home Hilfe Anleitung");
+			Panel panel2 = new Panel(" Hier finden sie alle Termine im Überblick. Die Termine die schon vorbei sind,"
 			 		+ " haben einen anderen Farbton als die Termine die noch bevorstehen. Jeder Termin hat eine Menüansicht,"
 			 		+ " bei der verschiedene Möglichkeiten bestehen, den Termin zu bearbeiten. Wenn Sie einen Termin verschieben möchten,"
 			 		+ " können sie auf Edit klicken und danach den passenden Termin eingeben."
@@ -90,20 +48,17 @@ Image imageLogo = new Image();
 			panel.setWidth("300px");
 			panel.setHeight("300px");
 			panel.setContent(panel2);
-			 addComponent(imageLogo);
-			 addComponent(panel);
 			
-		 
-		 
-		 
-
+			
 			addComponent(imageLogo);
-			//addComponent(uebersichtMenu);
-	//		addComponent(labelVersions);
 			 addComponent(panel);
-			 addComponent(HomeButton());
+			addComponent(HomeButton());
+		
 	
 	}
+	/*
+	 * Button für das Zurück zu der Home seite
+	 */
 	private Button HomeButton() {
 		Button HomeButton = new Button("Zurück", new Button.ClickListener() {
 			@Override

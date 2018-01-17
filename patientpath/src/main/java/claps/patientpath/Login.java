@@ -100,6 +100,8 @@ public class Login extends VerticalLayout implements View {
 		return button;
 	}
 	
+	// MIt dem Klicken auf dem Login BUtton wird man auf der Home Seite weitergeleitet
+	
 	private Button loginButtonDemo() {
 		Button button = new Button("Login Demo", new Button.ClickListener() {
 			

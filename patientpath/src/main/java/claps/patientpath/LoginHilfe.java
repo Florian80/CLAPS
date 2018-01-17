@@ -5,14 +5,17 @@ import com.vaadin.server.ClassResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+
+/*
+ * Diese KLasse beinhaltet das Hilfe Text für die Login seite
+ */
 
 @SuppressWarnings("serial")
 public class LoginHilfe extends VerticalLayout implements View {
    
-	//	private Button zuruck = new Button("Zurück");
+
 
 		public LoginHilfe() {
 			Image imageLogo = new Image();
@@ -23,18 +26,7 @@ public class LoginHilfe extends VerticalLayout implements View {
 			setSizeFull();
 			setSpacing(true);
 			
-		//	 Panel panel = new Panel("Um dich in PatientPath einzulogen"+
-		  //              " verwendest du den von deinem Arzt"+
-		    //            " zugewiesenen Benutzername und das"+
-		      //          " entsprechende Password"+
-		        //        " Falls du noch kein Login hast, kannst"+ 
-		          //      " du bei einem angeschlossenen Arzt einen"+
-		            //    " Account erstellen lassen");
-		     
-			// addComponent(imageLogo);
-	//		 addComponent(panel);
-		//	addComponent(zuruck());
-		
+	
 		
 			Panel panel = new Panel("Hilfe");
 			Panel panel2 = new Panel("Um dich in PatientPath einzulogen"+
