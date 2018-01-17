@@ -32,8 +32,14 @@ public class CreateEvent extends VerticalLayout implements View {
 	//claps.persistence.Event newEvent = new claps.persistence.Event();
 	//Info newInfo = new Info();
 
+	
+	
 	public CreateEvent() {
 	
+		/*
+		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 */
+		
 		setSizeFull();
 		setSpacing(true);
 		addComponent(titel1);

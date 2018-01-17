@@ -44,6 +44,10 @@ public class Provider extends VerticalLayout implements View {
 		imageLogo.setHeight("10%");
 		imageLogo.setWidth("10%");
 
+		/*
+		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 */
+		
 		setSizeFull();
 		setSpacing(true);
 		addComponent(homeMenu);

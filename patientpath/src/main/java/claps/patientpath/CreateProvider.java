@@ -22,13 +22,16 @@ public class CreateProvider extends VerticalLayout implements View {
 	Info newInfo = new Info();
 
 	
-	/*
-	 * This method defines which button or textfield of the rows should appear
-	 */
+	
 	public CreateProvider() {
 	
 		setSizeFull();
 		setSpacing(true);
+	
+		/*
+		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 */
+		
 		addComponent(titel1);
 		addComponent(titel2);
 		addComponent(titel3);

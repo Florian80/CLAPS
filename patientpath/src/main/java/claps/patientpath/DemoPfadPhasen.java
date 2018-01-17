@@ -16,6 +16,9 @@ public class DemoPfadPhasen extends VerticalLayout implements View {
 		
 		setSizeFull();
 		setSpacing(true);
+		/*
+		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 */
 		addComponent(titel);
 		addComponent(buttonPhase1());
 		addComponent(buttonPhase2());

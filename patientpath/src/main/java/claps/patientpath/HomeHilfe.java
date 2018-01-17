@@ -49,7 +49,9 @@ Image imageLogo = new Image();
 			panel.setHeight("300px");
 			panel.setContent(panel2);
 			
-			
+			/*
+			 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+			 */
 			addComponent(imageLogo);
 			 addComponent(panel);
 			addComponent(HomeButton());
