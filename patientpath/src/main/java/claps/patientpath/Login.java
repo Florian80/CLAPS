@@ -62,12 +62,22 @@ public class Login extends VerticalLayout implements View {
 	};
 
 	MenuBar loginmenu = new MenuBar();
+	
+	/*
+	 * Here a picture is added in the menubar
+	 */
 	MenuItem myMenu = loginmenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
 	MenuItem exit = myMenu.addItem("HILFE", null, WindowHilfe);
+	
 	
 	TextField username = new TextField("Username");
 	
 	PasswordField password = new PasswordField("Password");
+	
+	/*
+	 * This code determines where to proceed by clicking on the Login button. In this app, it will go further to the home page. 
+	 * This works only with the input of the right passwrot and username
+	 */
 	
 	private Button loginButton() {
 		Button button = new Button("Login", new Button.ClickListener() {
@@ -100,7 +110,9 @@ public class Login extends VerticalLayout implements View {
 		return button;
 	}
 	
-	// MIt dem Klicken auf dem Login BUtton wird man auf der Home Seite weitergeleitet
+	/*
+	 * This code determines where to proceed by clicking on the Login button. In this app, it will go further to the home page
+	 */
 	
 	private Button loginButtonDemo() {
 		Button button = new Button("Login Demo", new Button.ClickListener() {
@@ -131,6 +143,10 @@ public class Login extends VerticalLayout implements View {
 		return button;
 	}
 	
+	
+	/*
+	 * This code determines where to proceed by clicking on the Login button. In this app, it will go further to the Registartion page
+	 */
 	private Button registerButton() {
 		Button button = new Button("Registrieren", new Button.ClickListener() {
 			
