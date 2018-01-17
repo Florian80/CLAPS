@@ -26,6 +26,10 @@ import claps.persistence.Info;
 import claps.persistence.InfoDAO;
 import claps.persistence.ProviderDAO;
 
+/*
+ * In this class all providers of the treatment are displayed. These data are retrieved from the database.
+ */
+
 @SuppressWarnings("serial")
 public class Provider extends VerticalLayout implements View {
 	
@@ -59,7 +63,9 @@ public class Provider extends VerticalLayout implements View {
 		placeHolder.removeAllComponents();
 		placeHolder.addComponent(myGrid());
 	}
-	
+	/*
+	 * This code determines where to go when you click on a menubar.
+	 */
 	
 	MenuBar.Command myCommandProviderHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
@@ -85,6 +91,10 @@ public class Provider extends VerticalLayout implements View {
 	    }
 	};
 	
+	/*
+	 * He will list the whole menubar, what he has for content and in order.
+	 */
+	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
@@ -95,6 +105,9 @@ public class Provider extends VerticalLayout implements View {
 		MenuItem logout = myMenu.addItem("Logout", null, myCommandLogout);
 	
 
+		/*
+		 * 
+		 */
 	private Grid<claps.persistence.Provider> myGrid() {
 				
 				ProviderDAO providerDAO = new ProviderDAO();
@@ -107,7 +120,11 @@ public class Provider extends VerticalLayout implements View {
 				Column <claps.persistence.Provider, String> myColumn = myGrid.addColumn(claps.persistence.Provider::getProviderName);
 					
 				myGrid.addSelectionListener(event -> {
+					/*
+					 * This defines that when you click on a path object, a window appears
+					 */
 						
+					
 					if(selection.getValue() != null && selection.getValue() != null) {
 						providerInfoID = selection.getValue().getProviderinfoID();
 						providerID = selection.getValue().getProviderID();
@@ -117,6 +134,11 @@ public class Provider extends VerticalLayout implements View {
 				});
 				return myGrid;
 			}
+	
+	
+	/*
+	 * This code determines where to proceed by clicking on the edit button. 
+	 */
 	
 	private Button editButton() {
 		Button button = new Button("Gewählten Eintrag" + "Ändern oder Löschen", new Button.ClickListener() {
@@ -131,6 +153,10 @@ public class Provider extends VerticalLayout implements View {
 		});
 		return button;
 	}
+	
+	/*
+	 * This code determines where to proceed by clicking on the new button. 
+	 */
 	
 	private Button newButton() {
 		Button button = new Button("Neuen Eintrag Erstellen", new Button.ClickListener() {
@@ -156,6 +182,11 @@ public class Provider extends VerticalLayout implements View {
 		});
 		return button;
 }
+	
+	
+	/*
+	 * In this method, the window that appears by clicking on the path object is defined
+	 */
 	public Window InfoSubWindow() {
 		
 		Window subWin = new Window();

@@ -18,7 +18,9 @@ import com.vaadin.ui.VerticalLayout;
 
 import claps.persistence.User;
 import claps.persistence.UserDAO;
-
+/*
+ * This is the login page. The user can enter username and password.
+ */
 
 @SuppressWarnings("serial")
 public class Login extends VerticalLayout implements View {
@@ -55,12 +57,21 @@ public class Login extends VerticalLayout implements View {
 		VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myValue", null);
 	}
 	
+	
+	/*
+	 * This code determines where to go when you click on a menubar.
+	 */
+	
 	MenuBar.Command WindowHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.LOGINHILFE);
 	    }
 	};
 
+	
+	/*
+	 * He will list the whole menubar, what he has for content and in order.
+	 */
 	MenuBar loginmenu = new MenuBar();
 	
 	/*

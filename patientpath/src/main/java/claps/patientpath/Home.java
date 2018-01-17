@@ -135,6 +135,10 @@ public class Home extends VerticalLayout implements View {
 			
 			myGrid.addSelectionListener(event -> {
 				
+				/*
+				 * This defines that when you click on a path object, a window appears
+				 */
+				
 				if(selection.getValue() != null && selection.getValue() != null) {
 					eventInfoID = selection.getValue().getEventinfoID();
 					eventID = selection.getValue().getEventID();
@@ -151,6 +155,9 @@ public class Home extends VerticalLayout implements View {
 		return myGrid;
 	}
 	
+	/*
+	 * This code determines where to proceed by clicking on the edit button. 
+	 */
 	private Button editButton() {
 		Button button = new Button("Gewählten Eintrag" + " Ändern oder Löschen", new Button.ClickListener() {
 			
@@ -164,6 +171,9 @@ public class Home extends VerticalLayout implements View {
 		});
 		return button;
 	}
+	/*
+	 * This code determines where to proceed by clicking on the new button. 
+	 */
 	
 	private Button newButton() {
 		Button button = new Button("Neuen Eintrag Erstellen", new Button.ClickListener() {
@@ -178,7 +188,9 @@ public class Home extends VerticalLayout implements View {
 		return button;
 	}
 		
-	
+	/*
+	 * In this method, the window that appears by clicking on the path object is defined
+	 */
 	
 	public Window InfoSubWindow() {
 		
