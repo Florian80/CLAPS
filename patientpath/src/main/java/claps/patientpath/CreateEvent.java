@@ -20,6 +20,10 @@ import claps.persistence.PathObject;
 import claps.persistence.PathObjectDAO;
 import claps.persistence.ProviderDAO;
 
+/*
+ * In this class new information can be entered or which changes from a path object
+ */
+
 @SuppressWarnings("serial")
 public class CreateEvent extends VerticalLayout implements View {
 	

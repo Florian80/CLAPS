@@ -12,12 +12,19 @@ import com.vaadin.ui.Button.ClickEvent;
 import claps.persistence.Info;
 import claps.persistence.Provider;
 
+/*
+ *  In this class new information can be entered or which changes from a Provider
+ */
 @SuppressWarnings("serial")
 public class CreateProvider extends VerticalLayout implements View {
 	
 	Provider newProvider = new Provider();
 	Info newInfo = new Info();
 
+	
+	/*
+	 * This method defines which button or textfield of the rows should appear
+	 */
 	public CreateProvider() {
 	
 		setSizeFull();
