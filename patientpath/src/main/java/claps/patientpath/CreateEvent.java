@@ -95,6 +95,9 @@ public class CreateEvent extends VerticalLayout implements View {
 		return providerComboBox;
 	};
 	
+	/*
+	 * This method will bring the content from database and let it appear
+	 */
 	ComboBox<claps.persistence.Provider> eventComboBox() {
 		
 		ComboBox<claps.persistence.Provider> eventComboBox = new ComboBox<claps.persistence.Provider>(); {
@@ -110,6 +113,9 @@ public class CreateEvent extends VerticalLayout implements View {
 		return eventComboBox;
 	};
 	
+	/*
+	 * this method saves the content that has been changed and indicates which page should appear
+	 */
 	private Button saveButton() {
 		Button saveButton = new Button("Speichern", new Button.ClickListener() {
 			
@@ -126,6 +132,9 @@ public class CreateEvent extends VerticalLayout implements View {
 	Button save = new Button("Speichern") {
 
 	};
+	/*
+	 * This code determines where to proceed by clicking on the back button. 
+	 */
 	
 	private Button backButton() {
 		Button backButton = new Button("Zurück/Verwerfen", new Button.ClickListener() {
