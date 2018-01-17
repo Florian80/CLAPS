@@ -9,7 +9,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
 /*
- * Diese KLasse beinhaltet das Hilfe Text für die Login seite
+ * This class contains the help text for the Home page
  */
 
 
@@ -22,7 +22,7 @@ public class HomeHilfe extends VerticalLayout implements View{
 	public HomeHilfe() {
 		
 		/*
-		 * Da kommt ein Bild 
+		 * This code is responsible for the small image in the app. He forms the logo of this app
 		 */
 		
 Image imageLogo = new Image();
@@ -33,7 +33,7 @@ Image imageLogo = new Image();
 		setSpacing(true);
 		
 		/*
-		 * Für den Text der im Home Hilfe erschient wurde Panel benutzte
+		 * This code is responsible for the text. It allows to see the text without editing or changing it
 		 */
 		 
 			
@@ -57,7 +57,7 @@ Image imageLogo = new Image();
 	
 	}
 	/*
-	 * Button für das Zurück zu der Home seite
+	 *This method allows the user to go back to the previous page by clicking on the button 
 	 */
 	private Button HomeButton() {
 		Button HomeButton = new Button("Zurück", new Button.ClickListener() {

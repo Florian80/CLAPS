@@ -9,7 +9,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
 /*
- * Diese KLasse beinhaltet das Hilfe Text für die Login seite
+ * This class contains the help text for the login page
  */
 
 @SuppressWarnings("serial")
@@ -18,6 +18,10 @@ public class LoginHilfe extends VerticalLayout implements View {
 
 
 		public LoginHilfe() {
+			
+			/*
+			 * This code is responsible for the small image in the app. He forms the logo of this app
+			 */
 			Image imageLogo = new Image();
 			
 			imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
@@ -26,7 +30,9 @@ public class LoginHilfe extends VerticalLayout implements View {
 			setSizeFull();
 			setSpacing(true);
 			
-	
+	/*
+	 * This code is responsible for the text. It allows to see the text without editing or changing it
+	 */
 		
 			Panel panel = new Panel("Hilfe");
 			Panel panel2 = new Panel("Um dich in PatientPath einzulogen"+
@@ -40,6 +46,9 @@ public class LoginHilfe extends VerticalLayout implements View {
 			
 			panel.setWidth("300px");
 			panel.setHeight("300px");
+		
+		
+			
 			panel.setContent(panel2);
 			 addComponent(imageLogo);
 			 addComponent(panel);
@@ -47,9 +56,15 @@ public class LoginHilfe extends VerticalLayout implements View {
 		
 		}
 		
+		/*
+		 *This method allows the user to go back to the previous page by clicking on the button 
+		 */
+		
+		
 		private Button zuruck() {
 			Button zuruck = new Button("Zurück", new Button.ClickListener() {
 				@Override
+			
 				public void buttonClick(ClickEvent event) {
 					
 					getUI().getNavigator().navigateTo(MyUI.LOGIN);

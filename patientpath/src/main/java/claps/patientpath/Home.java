@@ -1,6 +1,7 @@
 package claps.patientpath;
 
 import claps.persistence.EventDAO;
+
 import claps.persistence.Info;
 import claps.persistence.InfoDAO;
 
@@ -30,6 +31,11 @@ import com.vaadin.ui.Grid.Column;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.MenuBar.MenuItem;
+
+/*
+ * In this class you see the pathobject through the whole treatment, 
+ * the Pafdobjects are retrieved from the database. The user can read in any path object
+ */
 
 @SuppressWarnings("serial")
 public class Home extends VerticalLayout implements View {
@@ -68,6 +74,10 @@ public class Home extends VerticalLayout implements View {
 		placeHolder.addComponent(myGrid());
 	}
 	
+	
+	/*
+	 * This code determines where to go when you click on a menubar.
+	 */
 	MenuBar.Command myCommandMenuHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.HOMEHILFE);
@@ -98,7 +108,9 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
-	
+	/*
+	 * He will list the whole menubar, what he has for content and in order.
+	 */
 	
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();

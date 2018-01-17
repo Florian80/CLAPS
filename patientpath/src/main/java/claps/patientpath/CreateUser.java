@@ -14,6 +14,11 @@ import com.vaadin.ui.VerticalLayout;
 import claps.persistence.User;
 import claps.persistence.UserDAO;
 
+/*
+ * A new user is entered in this class. He has an ID, 
+ * username and password entered. These are stored in the database and so he can log on
+ */
+
 @SuppressWarnings("serial")
 public class CreateUser extends VerticalLayout implements View {
 
