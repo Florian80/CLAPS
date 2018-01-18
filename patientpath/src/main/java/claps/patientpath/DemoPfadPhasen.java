@@ -2,8 +2,10 @@ package claps.patientpath;
 
 
 import com.vaadin.navigator.View;
+import com.vaadin.server.ClassResource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
@@ -14,19 +16,63 @@ public class DemoPfadPhasen extends VerticalLayout implements View {
 
 	public DemoPfadPhasen() {
 		
+		Image imageZuHause = new Image();
+		imageZuHause.setSource(new ClassResource("/house.ico"));
+		imageZuHause.setWidth("20%");
+		imageZuHause.setHeight("20%");
+		
+		Image imageHausarzt = new Image();
+		imageHausarzt.setSource(new ClassResource("/hausarzt.ico"));
+		imageHausarzt.setWidth("20%");
+		imageHausarzt.setHeight("20%");
+		
+		Image imageSpezialist = new Image();
+		imageSpezialist.setSource(new ClassResource("/spzialist.ico"));
+		imageSpezialist.setWidth("20%");
+		imageSpezialist.setHeight("20%");
+		
+		Image imageHospital = new Image();
+		imageHospital.setSource(new ClassResource("/hospital.ico"));
+		imageHospital.setWidth("20%");
+		imageHospital.setHeight("20%");
+		
+		Image imageOp = new Image();
+		imageOp.setSource(new ClassResource("/op.ico"));
+		imageOp.setWidth("20%");
+		imageOp.setHeight("20%");
+		
+		Image imagePostOp = new Image();
+		imagePostOp.setSource(new ClassResource("/postop.ico"));
+		imagePostOp.setWidth("20%");
+		imagePostOp.setHeight("20%");
+		
+		Image imageReha = new Image();
+		imageReha.setSource(new ClassResource("/reha.ico"));
+		imageReha.setWidth("20%");
+		imageReha.setHeight("20%");
+		
+		
 		setSizeFull();
 		setSpacing(true);
 		/*
 		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
 		 */
 		addComponent(titel);
+		addComponent(imageZuHause);
 		addComponent(buttonPhase1());
+		addComponent(imageHausarzt);
 		addComponent(buttonPhase2());
+		addComponent(imageSpezialist);
 		addComponent(buttonPhase3());
+		addComponent(imageHospital);
 		addComponent(buttonPhase4());
+		addComponent(imageOp);
 		addComponent(buttonPhase5());
+		addComponent(imagePostOp);
 		addComponent(buttonPhase6());
+		addComponent(imageReha);
 		addComponent(buttonPhase7());
+		addComponent(imageZuHause);
 		addComponent(buttonPhase8());
 	
 

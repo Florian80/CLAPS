@@ -110,12 +110,6 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
-	MenuBar.Command myLogout = new MenuBar.Command() {
-	    public void menuSelected(MenuItem selectedItem) {
-	        getUI().getNavigator().navigateTo(MyUI.LOGIN);
-	    }
-	};
-	
 	/*
 	 * He will list the whole menubar, what he has for content and in order.
 	 */
@@ -125,11 +119,10 @@ public class Home extends VerticalLayout implements View {
 	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
 	//MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 
-		MenuItem demo = myMenu.addItem("Demo - Modus", null, myCommandDemo);
+		MenuItem demo = myMenu.addItem("App - Demo", null, myCommandDemo);
 		MenuItem provider = myMenu.addItem("Alle Provider", null, myCommandProvider);
 		MenuItem meinaccount = myMenu.addItem("Mein Account", null, myCommandCreateUser);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
-		MenuItem logout = myMenu.addItem("Logout", null, myLogout);
 		
 	private Grid<claps.persistence.Event> myGrid() {
 		

@@ -37,8 +37,8 @@ Image imageLogo = new Image();
 		 */
 		 
 			
-			Panel panel = new Panel("Home Hilfe Anleitung");
-			Panel panel2 = new Panel(" Hier finden sie alle Termine im Überblick. Die Termine die schon vorbei sind,"
+		Panel panel = new Panel("Home Hilfe Anleitung");
+		Panel panel2 = new Panel(" Hier finden sie alle Termine im Überblick. Die Termine die schon vorbei sind,"
 			 		+ " haben einen anderen Farbton als die Termine die noch bevorstehen. Jeder Termin hat eine Menüansicht,"
 			 		+ " bei der verschiedene Möglichkeiten bestehen, den Termin zu bearbeiten. Wenn Sie einen Termin verschieben möchten,"
 			 		+ " können sie auf Edit klicken und danach den passenden Termin eingeben."

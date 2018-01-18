@@ -134,7 +134,7 @@ public class Login extends VerticalLayout implements View {
 	 */
 	
 	private Button loginButtonDemo() {
-		Button button = new Button("Login Demo", new Button.ClickListener() {
+		Button button = new Button("App - Demo", new Button.ClickListener() {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {

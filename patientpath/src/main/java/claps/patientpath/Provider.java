@@ -82,12 +82,7 @@ public class Provider extends VerticalLayout implements View {
 	        getUI().getNavigator().navigateTo(MyUI.HOME);
 	    }
 	};
-	
-	MenuBar.Command myCommandLogout = new MenuBar.Command() {
-	    public void menuSelected(MenuItem selectedItem) {
-	        getUI().getNavigator().navigateTo(MyUI.LOGIN);
-	    }
-	};
+
 	
 	MenuBar.Command myCommandCreateUser = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
@@ -102,11 +97,10 @@ public class Provider extends VerticalLayout implements View {
 	//Menu in Home
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
-	//MenuItem myMenu = homeMenu.addItem("Menu", null, null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandProviderHilfe );
 		MenuItem provider = myMenu.addItem("Home", null, myCommandHome);
 		MenuItem meinaccount = myMenu.addItem("Mein Account", null, myCommandCreateUser);
-		MenuItem logout = myMenu.addItem("Logout", null, myCommandLogout);
+	
 	
 
 		/*

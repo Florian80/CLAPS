@@ -41,7 +41,9 @@ public class LoginHilfe extends VerticalLayout implements View {
 					                " entsprechende Password"+
 					                " Falls du noch kein Login hast, kannst"+ 
 					                " du bei einem angeschlossenen Arzt einen"+
-					               " Account erstellen lassen");
+					               " Account erstellen lassen oder dich selber"+
+					                " Registrieren, als ID benutzt du bitte deine"+
+					               " eHealth Id (auf deiner Versichertenkarte)");
 			
 			
 			panel.setWidth("300px");
@@ -67,7 +69,7 @@ public class LoginHilfe extends VerticalLayout implements View {
 			
 				public void buttonClick(ClickEvent event) {
 					
-					getUI().getNavigator().navigateTo(MyUI.LOGIN);
+					getUI().getNavigator().navigateTo(MyUI.HOME);
 					
 				}
 			});
