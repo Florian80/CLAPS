@@ -8,20 +8,17 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
-/*
- * This class contains the help text for the login page
- */
+//This Page is a simple Help Page to the Login Page with a short Text and a Button to Navigate 
+//Back (Still open issue: Navigation to first Page (Login) illegal, -> navigates to home
+//Label "zurück" on Button is misleading -> partial unresolved issue...
+//(Back Button on Browser works better / can navigate to Login)
 
 @SuppressWarnings("serial")
 public class LoginHilfe extends VerticalLayout implements View {
    
 
-
 		public LoginHilfe() {
-			
-			/*
-			 * This code is responsible for the small image in the app. He forms the logo of this app
-			 */
+
 			Image imageLogo = new Image();
 			
 			imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
@@ -29,11 +26,7 @@ public class LoginHilfe extends VerticalLayout implements View {
 			
 			setSizeFull();
 			setSpacing(true);
-			
-	/*
-	 * This code is responsible for the text. It allows to see the text without editing or changing it
-	 */
-		
+
 			Panel panel = new Panel("Hilfe");
 			Panel panel2 = new Panel("Um dich in PatientPath einzulogen"+
 					                " verwendest du den von deinem Arzt"+
@@ -45,30 +38,20 @@ public class LoginHilfe extends VerticalLayout implements View {
 					                " Registrieren, als ID benutzt du bitte deine"+
 					               " eHealth Id (auf deiner Versichertenkarte)");
 			
-			
 			panel.setWidth("300px");
 			panel.setHeight("300px");
-		
-		
-			
 			panel.setContent(panel2);
-			 addComponent(imageLogo);
-			 addComponent(panel);
+			addComponent(imageLogo);
+			addComponent(panel);
 			addComponent(zuruck());
 		
 		}
-		
-		/*
-		 *This method allows the user to go back to the previous page by clicking on the button 
-		 */
-		
 		
 		private Button zuruck() {
 			Button zuruck = new Button("Zurück", new Button.ClickListener() {
 				@Override
 			
 				public void buttonClick(ClickEvent event) {
-					
 					getUI().getNavigator().navigateTo(MyUI.HOME);
 					
 				}

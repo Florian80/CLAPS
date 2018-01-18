@@ -78,7 +78,7 @@ public class CreateUser extends VerticalLayout implements View {
 				
 				//Check if this is an existing or a new User
 				if (VaadinService.getCurrentRequest().getWrappedSession().getAttribute("myValue") != null && userNameField.getValue() != null && passwordField.getValue() != null) {
-					//If this is an existing user, values get Udated, and navigates to Home Page
+					//If this is an existing user, values get Updated, and navigates to Home Page
 					userDAO.updateUser(actualUser);
 					getUI().getNavigator().navigateTo(MyUI.HOME);
 					

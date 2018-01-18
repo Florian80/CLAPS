@@ -10,10 +10,11 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
 
-
+//The Page App Demo, where user can change Path - Settings of Demo-User
 @SuppressWarnings("serial")
 public class DemoPfadPhasen extends VerticalLayout implements View {
 
+	//Method containing the simple Fields (images) and adds all Components
 	public DemoPfadPhasen() {
 		
 		Image imageZuHause = new Image();
@@ -54,9 +55,7 @@ public class DemoPfadPhasen extends VerticalLayout implements View {
 		
 		setSizeFull();
 		setSpacing(true);
-		/*
-		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
-		 */
+		
 		addComponent(titel);
 		addComponent(imageZuHause);
 		addComponent(buttonPhase1());
@@ -78,8 +77,12 @@ public class DemoPfadPhasen extends VerticalLayout implements View {
 
 	}
 	
+	// The Titel Label
 	Label titel = new Label("Wählen Sie die Pfad - Phase");
 	
+	//All following Buttons stand for one Phase in Patient Path (of Demo Patient)
+	//Chose Phase and move back to home page, with id set to Demo-User in chosen Path - Phase
+	//Value (Demo-User-Id) passing Thread-/Session-Save to Home Page
 	Button buttonPhase1() {
 		Button buttonPhase1 = new Button ("Zuhause (Start) 1",  new Button.ClickListener() {
 			

@@ -4,23 +4,19 @@ import com.vaadin.navigator.View;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
+
+//A simple Help - Page to the Provider - Page with a short Text and a Button navigate back
 
 @SuppressWarnings("serial")
 public class ProviderHilfe extends VerticalLayout implements View {
 
-
 	public ProviderHilfe() {
-		
 		
 		Label labelHeader = new Label("Liste aller Provider");
 		
-		
-		// A container with a defined width.
         Panel panel = new Panel("Beschreibung zu deinen Providern");
-
 
         Panel panel2= new Panel("Beim Hausarzt fängt die ganze" +
    	             " Behandlung an. Sie werden von" +
@@ -34,10 +30,7 @@ public class ProviderHilfe extends VerticalLayout implements View {
         panel2.setHeight("300px");
 		setSizeFull();
 		setSpacing(true);
-	
-        /*
-		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
-		 */
+
         addComponent(backButton());
 		addComponent(labelHeader);
 		addComponent(panel);

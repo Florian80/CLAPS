@@ -12,9 +12,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import claps.persistence.Info;
 import claps.persistence.Provider;
 
-/*
- *  In this class new information can be entered or which changes from a Provider
- */
+//Unfinished / not yet in use - so no comments necessary - yet
 @SuppressWarnings("serial")
 public class CreateProvider extends VerticalLayout implements View {
 	
@@ -28,10 +26,6 @@ public class CreateProvider extends VerticalLayout implements View {
 		setSizeFull();
 		setSpacing(true);
 	
-		/*
-		 * Here everything is written what should appear in the GUI and how it appears in order
-		 */
-		
 		addComponent(titel1);
 		addComponent(titel2);
 		addComponent(titel3);
@@ -82,9 +76,6 @@ public class CreateProvider extends VerticalLayout implements View {
 	
 	TextArea text = new TextArea("Beschreibung");
 	
-	/*
-	 * this method saves the content that has been changed and indicates which page should appear
-	 */
 	
 	private Button saveButton() {
 		Button saveButton = new Button("Speichern", new Button.ClickListener() {
@@ -99,9 +90,6 @@ public class CreateProvider extends VerticalLayout implements View {
 			return saveButton;
 	}
 	
-	/*
-	 * This code determines where to proceed by clicking on the back button. 
-	 */
 	private Button backButton() {
 		Button backButton = new Button("Zurück/Verwerfen", new Button.ClickListener() {
 			

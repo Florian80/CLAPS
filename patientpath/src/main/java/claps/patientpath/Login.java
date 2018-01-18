@@ -18,19 +18,14 @@ import com.vaadin.ui.VerticalLayout;
 
 import claps.persistence.User;
 import claps.persistence.UserDAO;
-/*
- * This is the login page. The user can enter username and password.
- */
 
+//The Login Page
 @SuppressWarnings("serial")
 public class Login extends VerticalLayout implements View {
 	
+	//Method to add all Components to Login Page
 	public Login() {
-		
-		
-		/*
-		 * This code is responsible for the small image in the app. He forms the logo of this app
-		 */
+
 		Image imageLogoLogin = new Image();
 		imageLogoLogin.setSource(new ClassResource("/PatientPath_Logo.png"));
 		imageLogoLogin.setWidth("33%");
@@ -38,11 +33,7 @@ public class Login extends VerticalLayout implements View {
 		
 		setSizeFull();
 		setSpacing(true);	
-		
-		/*
-		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
-		 */
-		
+
 		addComponent(loginmenu);
 		loginmenu.setWidth("100%");
 		addComponent(imageLogoLogin);
@@ -59,6 +50,8 @@ public class Login extends VerticalLayout implements View {
 		//setComponentAlignment(loginButtonDemo(), Alignment.MIDDLE_CENTER);
 	}
 	
+	//On page entry shows Notification "Welcome"
+	//Set Session Attribute (To safely(Thread-/Session-Safe) give Values to Home Page when Navigating)
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("Welcome");
@@ -66,51 +59,46 @@ public class Login extends VerticalLayout implements View {
 	}
 	
 	
-	/*
-	 * This code determines where to go when you click on a menubar.
-	 */
-	
+//The Menu Command to the Menu
 	MenuBar.Command WindowHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.LOGINHILFE);
 	    }
 	};
 
-	
-	/*
-	 * He will list the whole menubar, what he has for content and in order.
-	 */
+	//A simple Menu with one SubMenu to access Help for the Login Screen 
 	MenuBar loginmenu = new MenuBar();
-	
-	/*
-	 * Here a picture is added in the menubar
-	 */
 	MenuItem myMenu = loginmenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
 	MenuItem exit = myMenu.addItem("HILFE", null, WindowHilfe);
 	
+	//Simple Fields (Name, Password) for Logging in
 	
 	TextField username = new TextField("Username");
 	
 	PasswordField password = new PasswordField("Password");
 	
-	/*
-	 * This code determines where to proceed by clicking on the Login button. In this app, it will go further to the home page. 
-	 * This works only with the input of the right passwrot and username
-	 */
-	
+//Login Button with checks for entered Name and Password
 	private Button loginButton() {
 		Button button = new Button("Login", new Button.ClickListener() {
 
-			
+			//The Click event - what happens if Button is clicked
 			@Override
 			public void buttonClick(ClickEvent event) {
 				
+				//Creates a new UserDAO to access DB
 				UserDAO userDAO = new UserDAO();
+				//Creates a new User to store values of fields
 				User actualUser = new User();
 				
+				//Store Values from fields name and password in User
 				actualUser.setUserName(username.getValue());
 				actualUser.setPassword(password.getValue());
 				
+				//Checks if the username and the password are correct
+				//-> Asks DB for Password of entered username and checks if the password is 
+				//the password of this username
+				//If so -> navigates to Home and passes userId Thread-/Session-Safe to next page
+				//If not so -> Shows Notification "Retry"
 				if (actualUser.getPassword().equals(userDAO.returnUserID(actualUser.getUserName()).getPassword())) {
 
 					VaadinService.getCurrentRequest().getWrappedSession().setAttribute("myValue", userDAO.returnUserID(actualUser.getUserName()).getUserID());
@@ -129,10 +117,8 @@ public class Login extends VerticalLayout implements View {
 		return button;
 	}
 	
-	/*
-	 * This code determines where to proceed by clicking on the Login button. In this app, it will go further to the home page
-	 */
-	
+//This Button allows Login without account
+	//Username, and ID, will be set to predetermined Value (Here: Frau Brönnimann)
 	private Button loginButtonDemo() {
 		Button button = new Button("App - Demo", new Button.ClickListener() {
 			
@@ -163,9 +149,9 @@ public class Login extends VerticalLayout implements View {
 	}
 	
 	
-	/*
-	 * This code determines where to proceed by clicking on the Login button. In this app, it will go further to the Registartion page
-	 */
+	//This Button Navigates to CreateUserPage to create new User
+	//To change User Attributes, user has to login first and navigate to 
+	//Register Page from Home!
 	private Button registerButton() {
 		Button button = new Button("Registrieren", new Button.ClickListener() {
 			

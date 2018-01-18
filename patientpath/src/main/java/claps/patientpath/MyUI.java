@@ -19,13 +19,16 @@ import com.vaadin.ui.VerticalLayout;
  * <p>
  * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be 
  * overridden to add component to the user interface and initialize non-component functionality.
+ * 
+ * THIS PAGE FOLLOWS STRICT VAADIN DESIGN PATTERNS FOR FURTHER INFO: vaadin.com
+ * 
  */
 
 @Theme("mytheme")
 public class MyUI extends UI {
 	
 	
-	//Navigator - our method to navigate in the app
+	//Navigator - our method to navigate in the App
 	public Navigator navigator;
 	
 	//All Enum - Variables for the Navigation
@@ -41,13 +44,13 @@ public class MyUI extends UI {
 	public static final String DEMOPFADPHASEN = "demoPfadPhasen";
 	
 	
-	//The init - Method is the central Method, registering all possible
-	//states of Navigation (Pages to go to)
+//The init - Method is the central Method, registering all possible
+//states of Navigation (Pages the user may go to)
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	
 
-    	//Please change with caution
+//Please change with caution! Follow Design Pattern!
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         setContent(layout);
@@ -65,7 +68,7 @@ public class MyUI extends UI {
 		navigator.addView(DEMOPFADPHASEN, new DemoPfadPhasen());
     }
 
-    //The Servlet is empty and gets populated by the App if started or deployed 
+//The Servlet is empty and gets populated by the App if started or deployed 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {

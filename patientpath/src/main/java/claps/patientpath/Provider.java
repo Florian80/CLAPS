@@ -26,17 +26,17 @@ import claps.persistence.Info;
 import claps.persistence.InfoDAO;
 import claps.persistence.ProviderDAO;
 
-/*
- * In this class all providers of the treatment are displayed. These data are retrieved from the database.
- */
 
+//The Provider Page showing a Grid List with all Providers
 @SuppressWarnings("serial")
 public class Provider extends VerticalLayout implements View {
-	
+	 
+	//important Values and placeholder to load Grid on page load
 	private int providerID;
 	private int providerInfoID;
     private VerticalLayout placeHolder = new VerticalLayout();
     
+    //Provider Method to add simple Fields and add all Components
 	public Provider() {
     
 		Image imageLogo = new Image();
@@ -44,10 +44,6 @@ public class Provider extends VerticalLayout implements View {
 		imageLogo.setHeight("10%");
 		imageLogo.setWidth("10%");
 
-		/*
-		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
-		 */
-		
 		setSizeFull();
 		setSpacing(true);
 		addComponent(homeMenu);
@@ -67,9 +63,8 @@ public class Provider extends VerticalLayout implements View {
 		placeHolder.removeAllComponents();
 		placeHolder.addComponent(myGrid());
 	}
-	/*
-	 * This code determines where to go when you click on a menubar.
-	 */
+
+	//Following: The Menu Commands (which Menu navigates where)
 	
 	MenuBar.Command myCommandProviderHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
@@ -89,12 +84,10 @@ public class Provider extends VerticalLayout implements View {
 	        getUI().getNavigator().navigateTo(MyUI.CREATEUSER);
 	    }
 	};
+
 	
-	/*
-	 * He will list the whole menubar, what he has for content and in order.
-	 */
-	
-	//Menu in Home
+	//Menu in Provider, with Logo very small
+	//All Menu Items (Sub-Menu) with their commands registered 
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandProviderHilfe );
@@ -103,26 +96,29 @@ public class Provider extends VerticalLayout implements View {
 	
 	
 
-		/*
-		 * 
-		 */
+//The Provider Grid, showing all Provider from DB
 	private Grid<claps.persistence.Provider> myGrid() {
 				
+				//New ProviderDAO to access DB
 				ProviderDAO providerDAO = new ProviderDAO();
+				//New Grid to b populated, selectionMode set
 				Grid<claps.persistence.Provider> myGrid = new Grid();
 				myGrid.setHeightUndefined();
 				myGrid.setWidth("100%");
 				myGrid.setSelectionMode(SelectionMode.SINGLE);
 				SingleSelect<claps.persistence.Provider> selection = myGrid.asSingleSelect();
+				
+				//Set Items in Grid and add Column with Provider Names
 				myGrid.setItems(providerDAO.findAllProvider());	
 				Column <claps.persistence.Provider, String> myColumn = myGrid.addColumn(claps.persistence.Provider::getProviderName);
 					
 				myGrid.addSelectionListener(event -> {
-					/*
-					 * This defines that when you click on a path object, a window appears
-					 */
-						
-					
+
+					//Checks is Row to be selected is selectable (otherwise no selection happens)
+					//Workaround for Selection issue in Vaadin (if already selcted Row gets selected
+					//the system crashes) - This if statements resolves this issue
+					//If selectable -> selects + stores eventId to show in Window (further below)
+					//and adds this window (populated by info to this providerInfotId)
 					if(selection.getValue() != null && selection.getValue() != null) {
 						providerInfoID = selection.getValue().getProviderinfoID();
 						providerID = selection.getValue().getProviderID();
@@ -173,6 +169,8 @@ public class Provider extends VerticalLayout implements View {
 	
 	 */
 	
+	
+	//Navigation Button to return to Home - Page
 	private Button returnButton() {
 		Button button = new Button("Zurück", new Button.ClickListener() {
 			
@@ -186,23 +184,31 @@ public class Provider extends VerticalLayout implements View {
 		return button;
 }
 	
-	
-	/*
-	 * In this method, the window that appears by clicking on the path object is defined
-	 */
+	//The Window which opens when Clicking on Row
+	//Set up as a custom Grid with coordinates
 	public Window InfoSubWindow() {
 		
+		//Creates the new Window and centers it.
 		Window subWin = new Window();
 		subWin.center();
 		
+		//Creates Custom Grid Layout (2 wide 8 deep)
 		GridLayout myGridLayout = new GridLayout(2,8);
 		myGridLayout.setWidth("700px");
 		myGridLayout.setHeight("100%");
 		
+		//New Vertical Layout Placeholder for SubContent
 		VerticalLayout subContent = new VerticalLayout();
-		Info myInfo = new Info();		
+		
+		//New Info to be filled with info content
+		Info myInfo = new Info();
+		//New InfoDAO to access DB (populated with selected providerInfoID from Grid)
 		InfoDAO infoDAO = new InfoDAO();
 		myInfo = infoDAO.returnInfo(providerInfoID);
+		
+		//The Image is rendered Client Side, therefore has to be stored in Variable (myImage)
+		//And Check is needed to see if there is an Image, otherwise, shows Logo as a Placeholder
+		
 		String myImageURL = myInfo.getInfoImageURL();
 		
 		Image myImage = new Image();
@@ -217,6 +223,8 @@ public class Provider extends VerticalLayout implements View {
 			myImage = myOnlineImage;
 		};
 		
+		//All Components and their positioning in Grid
+		//all get loaded from myInfo and at the end the window is returned
 		Label text = new Label(myInfo.getInfoText());
 		text.setWidth("90%");
 

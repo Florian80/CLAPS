@@ -32,25 +32,20 @@ import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.MenuBar.MenuItem;
 
-/*
- * In this class you see the pathobject through the whole treatment, 
- * the Pafdobjects are retrieved from the database. The user can read in any path object
- */
-
+//The Home - Page
 @SuppressWarnings("serial")
 public class Home extends VerticalLayout implements View {
 	
+	//Important values and a placeholder to load grid with Client-Side Rendering
 	private int id;
 	private int eventInfoID;
 	private int eventID;
     private VerticalLayout placeHolder = new VerticalLayout();
 
+    //Home Method with simple Fields (Images (not yet in use), Logo)
+    //and adding all Components
 	public Home() {
 		
-		
-		/*
-		 * This code is responsible for the small image in the app. He forms the logo of this app
-		 */
 		Image imageLogo = new Image();
 		imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
 		imageLogo.setHeight("20%");
@@ -78,12 +73,7 @@ public class Home extends VerticalLayout implements View {
 		
 		Image imageReha = new Image();
 		imageReha.setSource(new ClassResource("/reha.ico"));
-		
-		
-		/*
-		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
-		 */
-		
+
 		setSizeFull();
 		setSpacing(true);
 		addComponent(homeMenu);
@@ -98,6 +88,9 @@ public class Home extends VerticalLayout implements View {
 
 	}
 
+	//On Page-entry takes Thread-/Session-Safe Values from Vaadin Session Wrapper (here:userId
+	//On page entry re-load Grid with correct Values passed in (only events of this user)
+	//Shows a "Welcom" Notification
 	@Override
 	public void enter(ViewChangeEvent event) {
 		Notification.show("WELCOME");
@@ -107,9 +100,8 @@ public class Home extends VerticalLayout implements View {
 	}
 	
 	
-	/*
-	 * This code determines where to go when you click on a menubar.
-	 */
+	//Following: The Menu Commands (which Menu navigates where)
+	
 	MenuBar.Command myCommandMenuHilfe = new MenuBar.Command() {
 	    public void menuSelected(MenuItem selectedItem) {
 	        getUI().getNavigator().navigateTo(MyUI.HOMEHILFE);
@@ -134,36 +126,36 @@ public class Home extends VerticalLayout implements View {
 	    }
 	};
 	
-	/*
-	 * He will list the whole menubar, what he has for content and in order.
-	 */
-	
-	//Menu in Home
+	//Menu in Home, with Logo very small
+	//All Menu Items (Sub-Menu) with their commands registered 
 	MenuBar homeMenu = new MenuBar();
 	MenuItem myMenu = homeMenu.addItem("MENU",new ThemeResource("patientpath_logo_icon.ico") , null);
-	//MenuItem myMenu = homeMenu.addItem("Menu", null, null);
-
 		MenuItem demo = myMenu.addItem("App - Demo", null, myCommandDemo);
 		MenuItem provider = myMenu.addItem("Alle Provider", null, myCommandProvider);
 		MenuItem meinaccount = myMenu.addItem("Mein Account", null, myCommandCreateUser);
 		MenuItem hilfe = myMenu.addItem("Hilfe", null, myCommandMenuHilfe );
-		
+	
+	//The main Grid showing the Events of the logged in user (or App-Demo-User)
 	private Grid<claps.persistence.Event> myGrid() {
 		
+		//A new EventDAO to load Data from DB
 		EventDAO eventDAO = new EventDAO();
 		
+		//The Grid with set Size and Selection Mode
 		Grid<claps.persistence.Event> myGrid = new Grid();
 			myGrid.setHeightUndefined();
 			myGrid.setWidth("100%");
 			myGrid.setSelectionMode(SelectionMode.SINGLE);
 			SingleSelect<claps.persistence.Event> selection = myGrid.asSingleSelect();
 			
+			//The Selection Listener (What to do if selected)
 			myGrid.addSelectionListener(event -> {
-				
-				/*
-				 * This defines that when you click on a path object, a window appears
-				 */
-				
+
+				//Checks is Row to be selected is selectable (otherwise no selection happens)
+				//Workaround for Selection issue in Vaadin (if already selcted Row gets selected
+				//the system crashes) - This if statements resolves this issue
+				//If selectable -> selects + stores eventId to show in Window (further below)
+				//and adds this window (populated by info to this evenInfotId)
 				if(selection.getValue() != null && selection.getValue() != null) {
 					eventInfoID = selection.getValue().getEventinfoID();
 					eventID = selection.getValue().getEventID();
@@ -171,6 +163,9 @@ public class Home extends VerticalLayout implements View {
 				}
 				
 				});
+			//Adding the Columns to the Grid and Set the Items in the Grid and
+			//define order (here:ascending -> by Datetime; later Date = higher Value)
+			//And Rendering Timestamp to Local Date Time for better user readability
 			myGrid.addColumn(claps.persistence.Event::getPathObjectID);
 			myGrid.addColumn(claps.persistence.Event::getEventName);
 			Column <claps.persistence.Event, LocalDateTime> myColumn = myGrid.addColumn(claps.persistence.Event::getSimpleDateTime, new LocalDateTimeRenderer("dd.MM.yyyy 'um' hh:mm"));
@@ -220,19 +215,34 @@ public class Home extends VerticalLayout implements View {
 	 * In this method, the window that appears by clicking on the path object is defined
 	 */
 	
+	
+	//The Window which opens when Clicking on Row
+	//Set up as a custom Grid with coordinates
 	public Window InfoSubWindow() {
 		
+		//The new Windo is created and centered on Screen
 		Window subWin = new Window();
 		subWin.center();
 		
+		//The CusstomGrid is created and Size is set (Custom grid 2 wide, 8 deep)
 		GridLayout myGridLayout = new GridLayout(2,8);
 		myGridLayout.setWidth("700px");
 		myGridLayout.setHeight("100%");
 		
+		//Creates placeholder for Content of Window 
 		VerticalLayout subContent = new VerticalLayout();
-		Info myInfo = new Info();		
+		
+		//New Info to be filled from DB and showed in Window
+		Info myInfo = new Info();
+		
+		//New eventDAO to access events stored in DB
 		InfoDAO eventDAO = new InfoDAO();
+		//MyInfo is the Info of this event, gets called from DB and stored in myInfo
 		myInfo = eventDAO.returnInfo(eventInfoID);
+		
+		//The Image is rendered Client Side, therefore has to be stored in Variable (myImage)
+		//And Check is needed to see if there is an Image, otherwise, shows Logo as a Placeholder
+		
 		String myImageURL = myInfo.getInfoImageURL();
 
 		Image myImage = new Image();
@@ -247,6 +257,8 @@ public class Home extends VerticalLayout implements View {
 			myImage = myOnlineImage;
 		};
 		
+		//All Components and their positioning in Grid
+		//all get loaded from myInfo and at the end the window is returned
 		Label text = new Label(myInfo.getInfoText());
 		text.setWidth("90%");
 
@@ -261,9 +273,10 @@ public class Home extends VerticalLayout implements View {
 		myGridLayout.addComponent(new Label(myInfo.getTelefon()), 1, 5, 1, 5);		
 		myGridLayout.addComponent(new Label(myInfo.getFax()), 1, 6, 1, 6);
 		myGridLayout.addComponent(text, 0, 7, 1, 7);
-		
         subWin.setContent(subContent);
+        
 		subContent.addComponent(myGridLayout);
+		
 		return subWin;
 	}	
 	
