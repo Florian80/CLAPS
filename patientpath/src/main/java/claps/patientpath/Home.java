@@ -53,8 +53,32 @@ public class Home extends VerticalLayout implements View {
 		 */
 		Image imageLogo = new Image();
 		imageLogo.setSource(new ClassResource("/PatientPath_Logo.png"));
-		imageLogo.setHeight("10%");
-		imageLogo.setWidth("10%");
+		imageLogo.setHeight("20%");
+		imageLogo.setWidth("20%");
+		
+		Image imageZuHause = new Image();
+		imageZuHause.setSource(new ClassResource("/house.ico"));
+		
+		Image imageHausarzt = new Image();
+		imageHausarzt.setSource(new ClassResource("/hausarzt.ico"));
+		
+		Image imageSpezialist = new Image();
+		imageSpezialist.setSource(new ClassResource("/spzialist.ico"));
+		imageSpezialist.setWidth("20%");
+		imageSpezialist.setHeight("20%");
+		
+		Image imageHospital = new Image();
+		imageHospital.setSource(new ClassResource("/hospital.ico"));
+		
+		Image imageOp = new Image();
+		imageOp.setSource(new ClassResource("/op.ico"));
+		
+		Image imagePostOp = new Image();
+		imagePostOp.setSource(new ClassResource("/postop.ico"));
+		
+		Image imageReha = new Image();
+		imageReha.setSource(new ClassResource("/reha.ico"));
+		
 		
 		/*
 		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
@@ -65,8 +89,8 @@ public class Home extends VerticalLayout implements View {
 		addComponent(homeMenu);
 		addComponent(imageLogo);
 		addComponent(placeHolder);
-		addComponent(editButton());
-		addComponent(newButton());
+		//addComponent(editButton());
+		//addComponent(newButton());
 		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
 		setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
 		setComponentAlignment(placeHolder, Alignment.MIDDLE_CENTER);
@@ -147,7 +171,7 @@ public class Home extends VerticalLayout implements View {
 				}
 				
 				});
-			
+			myGrid.addColumn(claps.persistence.Event::getPathObjectID);
 			myGrid.addColumn(claps.persistence.Event::getEventName);
 			Column <claps.persistence.Event, LocalDateTime> myColumn = myGrid.addColumn(claps.persistence.Event::getSimpleDateTime, new LocalDateTimeRenderer("dd.MM.yyyy 'um' hh:mm"));
 			myGrid.setItems(eventDAO.findAllEvent(id));
@@ -158,7 +182,7 @@ public class Home extends VerticalLayout implements View {
 	
 	/*
 	 * This code determines where to proceed by clicking on the edit button. 
-	 */
+
 	private Button editButton() {
 		Button button = new Button("Gewählten Eintrag" + " Ändern oder Löschen", new Button.ClickListener() {
 			
@@ -172,9 +196,12 @@ public class Home extends VerticalLayout implements View {
 		});
 		return button;
 	}
+	
+	*/
+	
 	/*
 	 * This code determines where to proceed by clicking on the new button. 
-	 */
+
 	
 	private Button newButton() {
 		Button button = new Button("Neuen Eintrag Erstellen", new Button.ClickListener() {

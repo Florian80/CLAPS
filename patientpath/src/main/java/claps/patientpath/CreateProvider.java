@@ -29,7 +29,7 @@ public class CreateProvider extends VerticalLayout implements View {
 		setSpacing(true);
 	
 		/*
-		 * Here everything is geschirbene what should appear in the GUI and how it appears in order
+		 * Here everything is written what should appear in the GUI and how it appears in order
 		 */
 		
 		addComponent(titel1);

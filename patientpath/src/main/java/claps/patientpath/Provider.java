@@ -53,8 +53,8 @@ public class Provider extends VerticalLayout implements View {
 		addComponent(homeMenu);
 		addComponent(imageLogo);
 		addComponent(placeHolder);
-		addComponent(editButton());
-		addComponent(newButton());
+		//addComponent(editButton());
+		//addComponent(newButton());
 		addComponent(returnButton());
 		setComponentAlignment(homeMenu, Alignment.TOP_RIGHT);
 		setComponentAlignment(imageLogo, Alignment.TOP_RIGHT);
@@ -136,7 +136,7 @@ public class Provider extends VerticalLayout implements View {
 	
 	/*
 	 * This code determines where to proceed by clicking on the edit button. 
-	 */
+
 	
 	private Button editButton() {
 		Button button = new Button("Gewählten Eintrag" + "Ändern oder Löschen", new Button.ClickListener() {
@@ -152,9 +152,11 @@ public class Provider extends VerticalLayout implements View {
 		return button;
 	}
 	
+	*/
+	
 	/*
 	 * This code determines where to proceed by clicking on the new button. 
-	 */
+
 	
 	private Button newButton() {
 		Button button = new Button("Neuen Eintrag Erstellen", new Button.ClickListener() {
@@ -168,6 +170,9 @@ public class Provider extends VerticalLayout implements View {
 		});
 		return button;
 	}
+	
+	 */
+	
 	private Button returnButton() {
 		Button button = new Button("Zurück", new Button.ClickListener() {
 			
