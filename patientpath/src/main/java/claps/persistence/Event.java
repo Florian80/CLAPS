@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-//Simple Bean for Event with all Variables needed (peek 2 lines below)
+//Simple Bean for Event with all Variables part of Event
+//All getter and setter for every Variable/Value
+//and "main" class Event, once empty, once filled with all variables
+//This class follows classical Bean Design Pattern
 public class Event implements Serializable {
 	
 	int eventID;

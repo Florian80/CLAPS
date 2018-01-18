@@ -8,22 +8,29 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//The Data Access Object of Event
+//Follows DAO-Design-Pattern
 public class EventDAO {
+	
+			//Instantiate all used methods with null to  guarantee 
+			//Thread- and Session Safe use
 			Connection connection = null;
 			PreparedStatement ptmt = null;
 			ResultSet resultSet = null;
-
+			
+			
 			public EventDAO() {
 
 			}
-
+			
+			//Method to get the connection form the Connector PathConnect
 			private Connection getConnection() throws SQLException {
 				Connection conn;
 				conn = PathConnect.getInstance().getConnection();
 				return conn;
 			}
 
+			//Method to Add a new Event
 			public void addEvent(Event event) {
 				try {
 					String queryString = "INSERT INTO event(userID, pathObjectID, providerID, encounterID,\r\n" + 
@@ -58,6 +65,7 @@ public class EventDAO {
 
 			}
 
+			//Method to update/change existing event
 			public void updateEvent(Event event) {
 
 				try {
@@ -94,6 +102,7 @@ public class EventDAO {
 				}
 			}
 
+			//Method to delete existing event
 			public void deleteEvent(int eventID) {
 
 				try {
@@ -157,6 +166,8 @@ public class EventDAO {
 			}
 			**/
 			
+			//Method to return a List of all Events of a given User
+			//The user is given by method parameter "userID"
 			public List<Event> findAllEvent(int userID){
 				List<Event> events = new ArrayList<Event>();
 				try {
@@ -196,8 +207,6 @@ public class EventDAO {
 					e.printStackTrace();
 			}
 			return events;
-		}
-		
-			
+		}		
 			
 }
