@@ -24,8 +24,11 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 	
+	
+	//Navigator - our method to navigate in the app
 	public Navigator navigator;
 	
+	//All Enum - Variables for the Navigation
 	public static final String LOGIN = "login";
 	public static final String LOGINHILFE ="LoginHilfe";
 	public static final String HOME = "home";
@@ -36,6 +39,10 @@ public class MyUI extends UI {
 	public static final String CREATEEVENT = "createEvent";
 	public static final String CREATEPROVIDER = "createProvider";
 	public static final String DEMOPFADPHASEN = "demoPfadPhasen";
+	
+	
+	//The init - Method is the central Method, registering all possible
+	//states of Navigation (Pages to go to)
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	
@@ -58,7 +65,7 @@ public class MyUI extends UI {
 		navigator.addView(DEMOPFADPHASEN, new DemoPfadPhasen());
     }
 
-    
+    //The Servlet is empty and gets populated by the App if started or deployed 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
